@@ -1,4 +1,4 @@
-$.getScript("https://andrew-leedham.tumblr.com/api/read/json", function(script, param2, param3){
+$.getScript("//andrew-leedham.tumblr.com/api/read/json", function(script, param2, param3){
   if(tumblr_api_read){
     var list = "<ul>";
     var max = tumblr_api_read.posts.length > 16 ? 16 : tumblr_api_read.posts.length;
