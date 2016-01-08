@@ -1,0 +1,585 @@
+//Compile
+@import "mixins.scss";
+@import "libs.scss";
+*{
+    padding: 0; margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+p{
+    font-family: "Noto Sans", sans-serif;
+}
+í
+h1, h2, h3, h4, h5{
+    font-family: "Teko", sans-serif;
+}
+
+.band{
+    position: relative;
+    background-color: white;
+}
+
+i{
+    @include disableHighlight;
+}
+
+a{
+    color: grey;
+    @include fade;
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover{
+    color: $accent-light;
+}
+
+span.next{
+    background-color: inherit;
+    color: black;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -25px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1;
+    @include fade;
+}
+
+aside{
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  cursor: pointer;
+  z-index: 2;
+  @include fade;
+}
+
+aside.left{
+  left: 0;
+}
+
+aside.right{
+  right: 0;
+}
+
+aside :last-child{
+  background-color: white;
+  color: black;
+}
+
+aside :last-child:hover{
+  background-color: $accent-dark;
+}
+
+aside > *{
+  @include fade;
+  display: none;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  line-height: 50px !important;
+  text-align: center;
+  z-index: 1;
+}
+aside > :not(:last-child):hover{
+  height: 75px;
+}
+i#fb{background-color: #3B5999;color: white;}
+i#tw{background-color: #55ACEE;color: white;}
+i#ig{background-color: #916046;color: white;}
+i#tb{background-color: #cf523d;color: white;}
+i#em{background-color: #008A17;color: white;}
+
+span.next:hover, i#top:hover{
+    background-color: $accent-dark;
+}
+
+.error{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.5);
+    z-index: 1;
+    padding: 0 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+}
+
+nav#mainNav{
+    position: relative;
+    min-height: 100vh;
+    background: url(../img/wheel.png) center center no-repeat fixed;
+    background-size: cover;
+    section{
+    	padding: 0 !important;
+    }
+    div{
+        min-height: 100vh;
+        ul{
+            font-family: 'Teko', sans-serif;
+            list-style-type: none;
+            padding: 50px 0;
+            li{
+                text-align: center;
+                color: white;
+                font-size: 15vh;
+                line-height: 100%;
+                @include fade;
+                text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            }
+            li:not(:first-child){
+                cursor: pointer;
+            }
+            li:not(:first-child):hover{
+                font-size: 14vh;
+            }
+            li img#logo{
+                width: 4em;
+            }
+        }
+    }
+}
+
+.group{
+	position: relative;
+	i{
+		font-size: 24px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		padding-left: 12px;
+		padding-right: 12px;
+		height: 100%;
+		line-height: 51px;
+		border-right: 1px solid black;
+	}
+	input:focus~i{
+		border-right: 1px solid $accent-light;
+	}
+	input, .btn{
+		padding-left: 56px !important;
+	}
+}
+
+section{
+    position: relative;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    h2.sixteen{
+        font-size: 50px;
+        text-align: center;
+    }
+}
+
+.band#aboutme{
+	.image{
+		display: table;
+		img{
+			display: table-cell;
+			max-width: 100%;
+			max-height: 300px;
+			vertical-align: middle;
+			margin: 0 auto;
+		}
+	}
+}
+
+.band#projects{
+    background-color: $accent-light;
+    figure{
+    	position: relative;
+    	background-color: white;
+    	display: inline-block;
+    	width: 200px;
+    	height: 200px;
+    	padding: 5px;
+    	border: 2px solid black;
+    	img{
+    		width: 100%;
+    		height: 100%;
+    	}
+    }
+    figure::after{
+    	font-family: "FontAwesome";
+		content: "+";
+		color: white;
+		line-height: 186px;
+		font-size: 100px;
+		text-align: center;
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		display: block;
+		width: 186px;
+		height: 186px;
+		background-color: rgba(0, 0, 0, 0.5);
+    	@include fade;
+    	opacity: 0;
+    	cursor: pointer;
+    }
+    figure:hover::after{
+    	opacity: 1;
+	}
+	figcaption{
+		position: absolute;
+		top: 100%;
+		left: -2px;
+		width: 200px;
+		display: none;
+		padding: 5px;
+		background-color: white;
+		border: 2px solid black;
+		border-top: 0;
+		z-index: 1;
+	}
+}
+
+.band#tumblr{
+    background-color: #eaeaea;
+    ul{
+      font-size: 0;
+      li{
+        font-size: default;
+        display: inline-block;
+        width: 25%;
+        height: auto;
+        a{
+          display: inline-block;
+          img{
+            width: 100%;
+            height: 100%;
+            clip: rect(0px, 0px, 250px, 250px);
+          }
+        }
+      }
+    }
+}
+
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {width: 100%; display: block;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+html[xmlns] .slides {display: block;}
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+.flexslider{
+	position: relative;
+	background-color: white;
+	border: 2px solid black;
+	.flex-control-nav{
+		width: 100px;
+		left: 50%;
+		width: 40px;
+		margin-left: -20px;
+		position: absolute;
+		li{
+			display: inline-block;
+			a{
+				display: block;
+				width: 20px;
+				height: 20px;
+				position: relative;
+				text-indent: -9999px;
+			}
+			a::after{
+				font-family: "FontAwesome";
+				color: black;
+				display: block;
+				position: absolute;
+				text-indent: 0;
+				font-size: 20px;
+				top: 0;
+				left: 0;
+				width: 20px;
+				height: 20px;
+				content: "\f10c";
+				cursor: pointer;
+				@include fade;
+			}
+			a.flex-active::after{
+				content: "\f192";
+			}
+			a:hover::after{
+				color: $accent-dark;
+			}
+		}
+	}
+	.flex-direction-nav{
+		li{
+			text-decoration: none;
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 0;
+			text-indent: -9999px;
+			text-align: center;
+			background-color: white;
+		}
+		li:first-child{
+			left: 0px;
+		}
+		li:last-child{
+			right: 0px;
+		}
+		a{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 40px;
+			height: 40px;
+			z-index: 1;
+		}
+		li::after{
+			font-family: "FontAwesome";
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			color: black;
+			font-size: 40px;
+			content: "\f105";
+			text-indent: 0;
+			@include fade;
+		}
+		li:first-child::after{
+			content: "\f104";
+		}
+		li:hover::after{
+			color: $accent-dark;
+		}
+	}
+}
+
+#slider{
+	ul.slides{
+		li{
+			position: relative;
+			div.desc{
+				border-top: 2px solid black;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				display: block;
+				width: 100%;
+				background-color: rgba(255, 255, 255, 0.9);
+				@include fade;
+				opacity: 1;
+				padding: 16px;
+				h3{
+					font-size: 30px;
+				}
+				.link{
+					float: right;
+					i{
+						height: 30px;
+						font-size: 20px;
+						line-height: 30px;
+						padding: 0 5px;
+						margin-top: -3px;
+					}
+					.btn{
+						padding-left: 40px !important;
+					}
+				}
+			}
+		}
+		li:hover{
+			div.desc:not(:hover){
+				opacity: 0;
+			}
+		}
+	}
+}
+
+#carousel{
+	margin-top: 16px;
+	ul.slides{
+		li{
+			position: relative;
+            cursor: pointer;
+		}
+		li::after{
+			display: block;
+			background-color: rgba(255, 255, 255, 0.5);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			content: " ";
+			@include fade;
+		}
+		li:hover::after, li.flex-active-slide::after{
+			background-color: transparent;
+		}
+	}
+}
+
+.band#contact{
+    form{
+    	label{
+    		font-family: "Teko", sans-serif;
+    		font-size: 30px;
+    	}
+    	input:not([type=submit]), textarea{
+    		width: 100%;
+    		border: 2px solid black;
+    		font-size: 20px;
+    		padding: 10px;
+    		outline: none;
+    		font-family: "Noto Sans", sans-serif;
+    	}
+    	input:focus, textarea:focus{
+    		border: 2px solid $accent-light;
+    		outline: 0;
+    	}
+    	textarea{
+    		resize: vertical;
+    	}
+    	#send .group{
+    		margin-top: 16px;
+    		float: right;
+    		i{
+    			border-right: 1px solid black;
+    		}
+    	}
+    	input[type=submit]{
+    		font-size: 30px;
+    		line-height: 30px;
+    		vertical-align: middle;
+    		font-family: "Teko", sans-serif;
+    		width: 250px;
+    		background-color: $accent-light;
+    		color: black;
+    		@include fade;
+    		border: 2px solid black;
+    		padding: 8px;
+    	}
+    	input[type=submit]:hover{
+    		background-color: $accent-dark;
+    	}
+    }
+    ul{
+    	margin-top: 32px;
+    	text-align: center;
+    	li{
+    		display: inline-block;
+    		i{
+    			text-align: center;
+    			line-height: 100px;
+    			width: 100px;
+    			height: 100px;
+    			background-color: $accent-light;
+    			font-size: 40px;
+    			@include fade;
+    			cursor: pointer;
+    		}
+    		i:hover{
+    			opacity: 0.75;
+    		}
+		    i#fb{background-color: #3B5999;color: white;}
+		    i#tw{background-color: #55ACEE;color: white;}
+		    i#ig{background-color: #916046;color: white;}
+		    i#tb{background-color: #cf523d;color: white;}
+		    i#em{background-color: #008A17;color: white;}
+    	}
+    }
+}
+
+.btn{
+	color: black;
+	font-family: "Teko", sans-serif;
+	background-color: $accent-light;
+	border: 2px solid black;
+	padding: 2px 5px;
+}
+
+.btn:hover{
+	color: black;
+	background-color: $accent-dark;
+}
+
+footer{
+	p{
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 767px){
+    background-image: url(../img/wheel_small.png);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px){
+    background-image: url(../img/wheel_medium.png);
+}
+
+@media only screen and (max-width:959px){
+    .band#contact form #send .group{
+    	float: none;
+    	width: 250px;
+    	margin: 0 auto;
+    	margin-top: 16px;
+    }
+}
+
+@media only screen and (max-width:767px){
+    p{
+    	text-align: justify;
+    }
+
+    #slider ul.slides li div.desc{
+        position: relative;
+    }
+
+    #slider ul.slides li{
+        padding-bottom: 16px;
+    }
+
+    #carousel{
+        display: none;
+    }
+    #slider ul.slides li:hover div.desc:not(:hover){
+        opacity: 1;
+    }
+}
+
+.fullscreen{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $accent-light;
+  display: flex;
+  > * {
+    margin: auto;
+    color: white;
+  }
+  z-index: 56;
+}
