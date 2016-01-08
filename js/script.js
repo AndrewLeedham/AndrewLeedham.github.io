@@ -43,7 +43,7 @@ $(document).ready(function(){
     $("aside i[data-href], .social").click(function() {
       window.open($(this).attr("data-href"), "_blank")
     });
-    $("i#top").click(event, function() {
+    $("i#top").click(function() {
         if (e) {
             $("html, body").animate({
                 scrollTop: 0

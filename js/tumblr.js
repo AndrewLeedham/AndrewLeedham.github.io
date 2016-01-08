@@ -9,7 +9,6 @@ $.getScript("http://andrew-leedham.tumblr.com/api/read/json", function(script, p
     }else if($(window).width() <= 767){
       size = "250";
     }
-    console.log(rand);
     for(var i = 0; i < max; i++){
       if(tumblr_api_read.posts[i]["type"] == "photo"){
         list += "<li><a href="+tumblr_api_read.posts[i]["url"]+" target='_blank'><img src='"+tumblr_api_read.posts[i]["photo-url-250"]+"'/></a></li>";
