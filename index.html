@@ -1,8 +1,53 @@
 ---
 layout: default
 ---
+<section>
+  <div class="row">
+    <div class="sixteen columns">
+      <h3>About me</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="one-half column">
+      <p>I'm a Nottingham born student, studying in Kingston upon Hull.
+         I study Computer Science at the University of Hull and work as a telephone interviewer part time.
+      </p>
+      <p>
+        I love exploring new fields in Computing, I find them all fascinating.
+        I've found that Web Design is the most rewarding and intriguing topic,
+        I've designed a lot of websites in my time, including this one, most of my other projects aren't live,
+        since I tend to develop websites for fun and to learn with no intended purpose.
+        I did an internship at <a href="http://riverdeneconsulting.com/">Riverdene Consulting</a> in 2012,
+        where I produced a digital sign in system for the office, so they could pull stats from the employees punctuality.
+      </p>
+    </div>
+    <div class="one-half column">
 
-<div class="home">
+      <p>
+        <img src="/img/me.png" alt="Portrait of Andrew Leedham.">
+        I'd consider myself an amatuer Photographer, firstly sparked by my A-Level photography course.
+        I tend to take landscape, technology and macro based Photography, feel free to check out <a href="/photo/">my work</a>.
+      </p>
+    </div>
+    <div class="sixteen columns">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="sixteen columns">
+      <h3>Projects</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen columns">
+      <ul class="thumbnail-list">{% for post in site.posts %}{% if post.categories contains "website" %}<li><a href="{{ post.url }}"><img src="/{{ post.thumbnail }}" alt="{{ post.title }} post thumbnail."></a></li>{% endif %}{% endfor %}</ul>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="home">
 
   <h1 class="page-heading">Posts</h1>
 
@@ -20,4 +65,4 @@ layout: default
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
-</div>
+</div> -->

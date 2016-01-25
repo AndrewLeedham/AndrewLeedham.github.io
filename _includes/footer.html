@@ -1,4 +1,21 @@
-<footer class="site-footer">
+<footer class="container">
+  <div class="row">
+    <div class="one-third column">
+      <ul>
+        <li><a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }}</a></li>
+        <li><a href="https://{{ site.tumblr_username }}.tumblr.com/" target="_blank">{{ site.tumblr_username }}</a></li>
+      </ul>
+    </div>
+    <div class="one-third column">
+      &copy; Andrew Leedham 2016
+    </div>
+    <div class="one-third column">
+      {{ site.description }}
+    </div>
+  </div>
+</footer>
+
+<!-- <footer class="site-footer">
 
   <div class="wrapper">
 
@@ -11,23 +28,6 @@
           <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
         </ul>
       </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.tumblr_username %}
-          <li>
-            {% include icon-tumblr.html username=site.tumblr_username %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
       <div class="footer-col footer-col-3">
         <p>{{ site.description }}</p>
       </div>
@@ -35,4 +35,4 @@
 
   </div>
 
-</footer>
+</footer> -->

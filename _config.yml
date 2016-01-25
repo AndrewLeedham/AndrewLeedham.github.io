@@ -12,6 +12,8 @@ description: >
   Andrew Leedham's Portfolio - Web Design, Game Dev and Photography.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://AndrewLeedham.github.io/" # the base hostname & protocol for your site
+
+#Social
 tumblr_username: andrew-leedham
 github_username:  AndrewLeedham
 
