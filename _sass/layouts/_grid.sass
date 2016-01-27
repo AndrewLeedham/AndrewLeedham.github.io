@@ -1,0 +1,14 @@
+header, section, footer
+  +outer-container
+
+.full
+  +span-columns(12)
+
+.third
+  +span-columns(4)
+  +media(max-width $media-medium, 12)
+    +span-columns(12)
+.half
+  +span-columns(6)
+  +media(max-width $media-medium, 12)
+    +span-columns(12)
