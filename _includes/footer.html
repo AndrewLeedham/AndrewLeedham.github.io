@@ -1,8 +1,9 @@
 <footer>
   <div class="third">
     <ul>
-      <li><a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }}</a></li>
-      <li><a href="https://{{ site.tumblr_username }}.tumblr.com/" target="_blank">{{ site.tumblr_username }}</a></li>
+      <li><a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }} <span class="icon-github"></span></a></li>
+      <li><a href="mailto:{{ site.email }}" target="_blank">{{ site.email }} <span class="icon-mail"></span></a></li>
+      <li><a href="https://{{ site.tumblr_username }}.tumblr.com/" target="_blank">{{ site.tumblr_username }} <span class="icon-tumblr2"></span></a></li>
     </ul>
   </div>
   <div class="third">
@@ -12,25 +13,3 @@
     {{ site.description }}
   </div>
 </footer>
-
-<!-- <footer class="site-footer">
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>{{ site.title }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        </ul>
-      </div>
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
-      </div>
-    </div>
-
-  </div>
-
-</footer> -->

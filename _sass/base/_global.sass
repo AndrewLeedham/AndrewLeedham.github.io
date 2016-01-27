@@ -1,6 +1,8 @@
 *
   box-sizing: border-box
-  font-family: 'Montserrat', sans-serif
+
+body
+  font-family: 'Roboto', sans-serif
 
 \:root
   font-size: 16px
@@ -8,12 +10,29 @@
 a
   text-decoration: none
   color: $accent-dark
+  +transition(color .4s $ease-in-out-cubic)
 
 a:hover
   color: $accent-light
 
-p
-  line-height: 250%
-  img
-    max-width: 100%
-    max-height: 100%
+h1
+  font-size: modular-scale(4)
+  margin: 0.4rem 0
+h2
+  font-size: modular-scale(3)
+  margin: 0.3rem 0
+
+h3
+  font-size: modular-scale(2)
+  margin: 0.2rem 0
+
+h4
+  font-size: modular-scale(1)
+  margin: 0.1rem 0
+
+h5
+  font-size: modular-scale(0)
+  margin: 0
+
+.center
+  text-align: center

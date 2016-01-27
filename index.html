@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-<section>
-  <div class="full">
+<section id="aboutme">
+  <div class="full center">
     <h3>About me</h3>
   </div>
   <div class="half">
@@ -18,18 +18,18 @@ layout: default
       I did an internship at <a href="http://riverdeneconsulting.com/">Riverdene Consulting</a> in 2012,
       where I produced a digital sign in system for the office, so they could pull stats from the employees punctuality.
     </p>
+    <p>
+      I'd consider myself an amatuer Photographer, firstly sparked by my A-Level photography course.
+      I tend to take landscape, technology and macro based Photography, feel free to check out <a href="{{ site.baseurl }}/photo/">my work</a>.
+    </p>
   </div>
   <div class="half">
-    <p>
-      <img src="/img/me.png" alt="Portrait of Andrew Leedham.">
-      I'd consider myself an amatuer Photographer, firstly sparked by my A-Level photography course.
-      I tend to take landscape, technology and macro based Photography, feel free to check out <a href="/photo/">my work</a>.
-    </p>
+    <img src="{{ site.baseurl }}/img/me.png" alt="Portrait of Andrew Leedham.">
   </div>
 </section>
 
-<section>
-  <div class="full">
+<section id="projects">
+  <div class="full center">
     <h3>Projects</h3>
   </div>
   <div class="full">
@@ -38,7 +38,7 @@ layout: default
         {% if post.categories contains "website" %}
           <div>
             <a href="{{ post.url }}">
-              <img src="{% if post.thumbnail %}{{ post.thumbnail }}{% else %}{{ '/img/project_placeholder.png' }}{% endif %}"
+              <img src="{% if post.thumbnail %}{{ post.thumbnail | prepend: '/img/' | prepend: site.baseurl }}{% else %}{{ '/img/project_placeholder.png' | prepend: site.url }}{% endif %}"
                    alt="{{ post.title }} post thumbnail.">
               <p>
                 <h3>{{ post.title }}</h3>
@@ -51,23 +51,3 @@ layout: default
     </div>
   </div>
 </section>
-
-<!-- <div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div> -->

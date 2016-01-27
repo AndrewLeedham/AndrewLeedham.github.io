@@ -8,7 +8,7 @@ tags: cheatsheet atom.io
 ---
 I find myself constantly referring to google when trying to remember the basic shortcuts and command within Atom.io, so I thought I'd create a basic cheatsheet to show both atom's and some of my favourite packages shortcuts.
 <!-- TODO: Figure out a nicer way of writing columned content. -->
-<div class="row" markdown="1"><div class="one-half column" markdown="1">
+<div class="half" markdown="1">
 ## Atom global
 * ``ctrl+alt+r`` - __Reload Atom__.
 
@@ -45,7 +45,7 @@ I find myself constantly referring to google when trying to remember the basic s
 * ``ctrl+n`` - __New file__
 * ``ctrl+shift+n`` - __New window__
 </div>
-<div class="one-half column" markdown="1">
+<div class="half" markdown="1">
 ## Cursor
 * ``ctrl+d`` - __Select all__ instances of the __current word__.
 * ``ctrl+left|right`` - Jump __cursor__ by a __word__.
@@ -74,4 +74,4 @@ I find myself constantly referring to google when trying to remember the basic s
 
 ## *script* Package
 * ``ctrl+shift+b`` - __Run__ the __current file__ as a script.
-</div></div>
+</div>

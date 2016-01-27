@@ -1,3 +1,19 @@
-footer .row
+footer
+  background: $light-grey
+  +display(flex)
+  +align-items(center)
   padding: 20px 0
   border-top: 1px solid black
+  > div
+    color: $dark-grey
+    text-align: center
+    ul
+      list-style-type: none
+      li
+        padding: 1rem 0
+        a
+          color: $dark-grey
+  > div:first-child
+    text-align: right
+  > div:last-child
+    text-align: left

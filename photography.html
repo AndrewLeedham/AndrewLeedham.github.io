@@ -1,0 +1,22 @@
+---
+layout: page
+title: Photography
+permalink: /photo/
+---
+<p>
+  This is where I store all of my photography, each post represents an individual shoot including multiple images. 
+</p>
+<div class="full">
+  <div class="photo-list">
+    {% for post in site.posts reversed %}
+      {% if post.categories contains "photography" %}
+        <div>
+          <a href="{{ post.url }}">
+            <img src="{% if post.thumbnail %}{{ post.thumbnail | prepend: site.baseurl | prepend: '/img/' }}{% else %}{{ '/img/project_placeholder.png' }}{% endif %}"
+                 alt="{{ post.title }} post thumbnail.">
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,51 @@
+---
+layout: page
+title: Portfolio
+permalink: /portfolio/
+---
+<p>
+  Welcome to my portfolio, here are all the projects I have worked on. The projects are for a variety of purposes, including websites, web applications, games and tools.
+</p>
+<div class="full">
+  <h3>Website Based Projects</h3>
+</div>
+<div class="full">
+  <div class="thumbnail-list">
+    {% for post in site.posts reversed %}
+      {% if post.categories contains "website" %}
+        <div>
+          <a href="{{ post.url }}">
+            <img src="{% if post.thumbnail %}{{ post.thumbnail | prepend: site.baseurl | prepend: '/img/' }}{% else %}{{ '/img/project_placeholder.png' }}{% endif %}"
+                 alt="{{ post.title }} post thumbnail.">
+            <p>
+              <h3>{{ post.title }}</h3>
+              {{ post.content | truncate: 128, '...' }}
+            </p>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<div class="full">
+  <h3>Game Based Projects</h3>
+</div>
+<div class="full">
+  <div class="thumbnail-list">
+    {% for post in site.posts reversed %}
+      {% if post.categories contains "game" %}
+        <div>
+          <a href="{{ post.url }}">
+            <img src="{% if post.thumbnail %}{{ post.thumbnail | prepend: site.baseurl | prepend: '/img/' }}{% else %}{{ '/img/project_placeholder.png' }}{% endif %}"
+                 alt="{{ post.title }} post thumbnail.">
+            <p>
+              <h3>{{ post.title }}</h3>
+              {{ post.content | truncate: 128, '...' }}
+            </p>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

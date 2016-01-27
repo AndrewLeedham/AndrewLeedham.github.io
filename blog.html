@@ -1,0 +1,25 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+---
+<p>
+  Welcome to my blog, where I write about whatever I feel like. Mainly my experience with development, and how I resolve problems.
+</p>
+<div class="full">
+  <div class="thumbnail-list">
+    {% for post in site.posts reversed %}
+      {% if post.categories contains "blog" %}
+        <div>
+          <a href="{{ post.url }}">
+            <p>
+              <h3>{{ post.title }}</h3>
+              <i>{{ post.date | date: '%d %b %Y' }}</i>
+              {{ post.content | truncate: 128, '...' }}
+            </p>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
