@@ -2,18 +2,23 @@
 layout: page
 title: Photography
 permalink: /photo/
+
 ---
-<p>
-  This is where I store all of my photography, each post represents an individual shoot including multiple images. 
-</p>
 <div class="full">
-  <div class="photo-list">
+  <h3>Photo shoots</h3>
+</div>
+<div class="full">
+  <div class="thumbnail-list">
     {% for post in site.posts reversed %}
       {% if post.categories contains "photography" %}
         <div>
           <a href="{{ post.url }}">
-            <img src="{% if post.thumbnail %}{{ post.thumbnail | prepend: site.baseurl | prepend: '/img/' }}{% else %}{{ '/img/project_placeholder.png' }}{% endif %}"
+            <img src="{% if post.thumbnail %}{{ site.baseurl }}/{{ post.gallery | prepend: 'img/galleries/' }}/{{ post.thumbnail }}{% else %}{{ '/img/project_placeholder.png' }}{% endif %}"
                  alt="{{ post.title }} post thumbnail.">
+            <p>
+              <h3>{{ post.title }}</h3>
+              {{ post.content | truncate: 128, '...' }}
+            </p>
           </a>
         </div>
       {% endif %}
