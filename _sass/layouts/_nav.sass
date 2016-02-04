@@ -1,0 +1,33 @@
+nav
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  +clearfix()
+  +transition(background .5s ease-in-out, padding .5s ease-in-out)
+  padding: 1.875rem
+  border: 0
+  #logo
+    float: left
+    img
+      height: 2.5rem
+  #links
+    float: right
+    ul
+      a
+        +transition(color .2s ease-in-out)
+        text-decoration: none
+        color: $darkest-turquoise
+        li
+          display: inline
+          margin-left: 2.8125rem
+          height: 2.5rem
+          line-height: 2.5rem
+      a:hover
+        color: $lightest-turquoise
+
+  &.fixed
+    position: fixed
+    background: white
+    border-bottom: 0.0625rem solid $darkest-turquoise
+    padding: 1rem

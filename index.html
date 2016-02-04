@@ -1,23 +1,19 @@
 ---
 layout: default
+landing: true
 ---
-
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+<section id="about">
+  <div class="full center">
+    <h2>About</h2>
+  </div>
+  <div class="full center">
+    <img src="img/me.png" alt="Portrait of Andrew Leedham"/>
+  </div>
+  <div class="half">
+    <p>Hi, my name is Andrew Leedham. I grew up in Nottingham United Kingdom and studied A-Level Computing, Maths and Photography. I'm currently a student at Hull University studying Computer Science.</p>
+    <p>I am also an amateur Photographer, I enjoy landscape photography(mainly sunsets), as well as macro photography. I upload most of my Photography to Tumblr.</p>
+  </div>
+  <div class="half">
+    <p>I love exploring new fields in Computing, I find them all fascinating. I've found that Web Design is the most rewarding and intriguing topic, I've designed a lot of websites in my time, including this one, most of my other projects aren't live, since I tend to develop websites for fun and to learn with no intended purpose. I did an internship at Riverdene Consulting in 2012, where I produced a digital sign in system for the office, so they could pull stats from the employees punctuality.</p>
+  </div>
+</section>

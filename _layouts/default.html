@@ -4,17 +4,13 @@
   {% include head.html %}
 
   <body>
-
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
-
+    {% if page.landing %}
+      {% include landing.html %}
+    {% else %}
+      {% include header.html %}
+    {% endif %}
+    {{ content }}
     {% include footer.html %}
-
   </body>
 
 </html>
