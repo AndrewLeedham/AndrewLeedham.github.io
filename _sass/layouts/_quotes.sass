@@ -1,0 +1,21 @@
+blockquote
+  width: 100%
+  padding: 6rem 2rem
+  .wrapper
+    font-size: 1.5rem
+    width: auto
+    +display(flex)
+    +justify-content(center)
+    p
+      position: relative
+      padding: 1rem
+      color: white
+      span
+        font-size: 1.25rem
+        position: absolute
+        top: 100%
+        right: 0
+        color: $light-grey
+  &:first-of-type
+    background: url(../img/quote.jpg) center center no-repeat fixed
+    background-size: cover

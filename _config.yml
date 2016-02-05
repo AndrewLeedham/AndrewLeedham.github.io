@@ -18,3 +18,4 @@ youtube: "HowNot2Play"
 
 # Build settings
 markdown: kramdown
+exclude: [Gemfile, Gemfile.lock, Guardfile, todo.md, safe.storage]
