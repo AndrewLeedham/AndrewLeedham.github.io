@@ -1,8 +1,21 @@
-section
+section, blockquote
   +outer-container
+  .row
+    +row
+    width: 100%
   article, .full
+    +clearfix()
     +span-columns(12)
   .half
     +span-columns(6)
+  .third
+    +span-columns(4)
   .center
     text-align: center
+
+.full-background
+  width: 100%
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center center
+  background-attachment: fixed

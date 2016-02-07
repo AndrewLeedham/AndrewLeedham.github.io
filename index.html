@@ -9,19 +9,23 @@ landing: true
   <div class="full center">
     <img src="img/me.png" alt="Portrait of Andrew Leedham"/>
   </div>
-  <div class="half">
-    <p>Hi, my name is Andrew Leedham. I grew up in Nottingham United Kingdom and studied A-Level Computing, Maths and Photography. I'm currently a student at Hull University studying Computer Science.</p>
-    <p>I am also an amateur Photographer, I enjoy landscape photography(mainly sunsets), as well as macro photography. I upload most of my Photography to Tumblr.</p>
-  </div>
-  <div class="half">
-    <p>I love exploring new fields in Computing, I find them all fascinating. I've found that Web Design is the most rewarding and intriguing topic, I've designed a lot of websites in my time, including this one, most of my other projects aren't live, since I tend to develop websites for fun and to learn with no intended purpose. I did an internship at Riverdene Consulting in 2012, where I produced a digital sign in system for the office, so they could pull stats from the employees punctuality.</p>
+  <div class="row">
+    <div class="half">
+      <p>Hi, my name is Andrew Leedham. I grew up in Nottingham United Kingdom and studied A-Level Computing, Maths and Photography. I'm currently a student at Hull University studying Computer Science.</p>
+      <p>I am also an amateur Photographer, I enjoy landscape photography(mainly sunsets), as well as macro photography. I upload most of my Photography to Tumblr.</p>
+    </div>
+    <div class="half">
+      <p>I love exploring new fields in Computing, I find them all fascinating. I've found that Web Design is the most rewarding and intriguing topic, I've designed a lot of websites in my time, including this one, most of my other projects aren't live, since I tend to develop websites for fun and to learn with no intended purpose. I did an internship at Riverdene Consulting in 2012, where I produced a digital sign in system for the office, so they could pull stats from the employees punctuality.</p>
+    </div>
   </div>
 </section>
-<blockquote>
-  <div class="wrapper">
-    <p>"Luck is the resedue of design"<span>- Branch Rickey</span></p>
-  </div>
-</blockquote>
+<div class="full-background" id="resedue">
+  <blockquote>
+    <div class="full center">
+      <p>“Luck is the resedue of design”<span>- Branch Rickey</span></p>
+    </div>
+  </blockquote>
+</div>
 <section id="portfolio">
   <div class="full center">
     <h2>Portfolio</h2>
@@ -40,4 +44,96 @@ landing: true
       <a href="#" style="background-image: url({{ '10.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
     </ul>
   </div>
+  <div class="full center">
+    <a href="#" class="button">See more...</a>
+  </div>
+</section>
+<div class="full-background" id="breath">
+  <blockquote>
+    <div class="full">
+      <p>“Space is the breath of art”<span>- Frank Lloyd Wright</span></p>
+    </div>
+  </blockquote>
+</div>
+<section id="blog">
+  <div class="full center">
+    <h2>Blog</h2>
+  </div>
+  <div class="full">
+    <ul>
+      <li>
+        <h3>SASS vs SCSS</h3>
+        <p>Lorem ipsum dolor sit amet, et usu tota porro copiosae. Ad sea suavitate iracundia. Ne sit semper appareat percipit. Erant ignota aliquid eu qui, ut illud mollis has. Mea zril iudico cu. Vero viris sed te. Vix in veri adhuc numquam...</p>
+        <span class="more"><a href="#">Read more...</a></span>
+      </li>
+      <li>
+        <h3>How I use Jekyll</h3>
+        <p>Eam veniam mucius cu, pro ne novum graece docendi. Cum ut essent lobortis. Ius quas everti expetendis ei. Ex solet molestie expetendis vix, congue mollis ut mel. Ut per sensibus principes. Mundi malorum officiis at has, utinam ignota voluptaria nec ut, saepe dicam munere ea est...</p>
+        <span class="more"><a href="#">Read more...</a></span>
+      </li>
+      <li>
+        <h3>Finding a Web Designer Job</h3>
+        <p>Lorem ipsum dolor sit amet, et usu tota porro copiosae. Ad sea suavitate iracundia. Ne sit semper appareat percipit. Erant ignota aliquid eu qui, ut illud mollis has. Mea zril iudico cu. Vero viris sed te. Vix in veri adhuc numquam...</p>
+        <span class="more"><a href="#">Read more...</a></span>
+      </li>
+      <li>
+        <h3>Hello World</h3>
+        <p>Veri posse pro id. Usu at quas omittantur, cum etiam oporteat reformidans at, ut omittam percipitur ius. Id debitis expetenda honestatis sea, pri ad tation habemus torquatos, et mea ubique epicuri delicata. Vel ad intellegam honestatis. An sed quando feugait efficiendi, eos at tamquam urbanitas moderatius, cu labitur dignissim scribentur eam.</p>
+        <span class="more"><a href="#">Read more...</a></span>
+      </li>
+    </ul>
+  </div>
+  <div class="full center">
+    <a href="#" class="button">Archive...</a>
+  </div>
+</section>
+<div class="full-background" id="hello">
+  <section>
+    <div class="full center">
+      <h2>Say Hello</h2>
+    </div>
+    <div class="full center">
+      <ul>
+        <a href="#">
+          <li>
+            <i class="fa fa-envelope"></i>
+          </li>
+        </a>
+        <a href="#">
+          <li>
+            <i class="fa fa-tumblr"></i>
+          </li>
+        </a>
+        <a href="#">
+          <li>
+            <i class="fa fa-twitter"></i>
+          </li>
+        </a>
+      </ul>
+    </div>
+    <div class="full center">
+      <p>I’d love to hear from you, whether you just want to say hi, you have a question or you want a website designing and or creating. The best way to get ahold of me is to just drop me an email with a sensible subject.</p>
+    </div>
+  </section>
+</div>
+<section id="contact">
+  <form action="">
+    <div class="row">
+      <div class="half">
+        <label for="name">Name</label>
+        <input id="name" type="text">
+      </div>
+      <div class="half">
+        <label for="email">Email</label>
+        <input id="email" type="text">
+      </div>
+    </div>
+    <div class="full">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="8" cols="40"></textarea>
+    </div>
+    <div class="full">
+      <input type="submit"/>
+    </div>
+  </form>
 </section>

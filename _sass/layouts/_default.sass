@@ -1,5 +1,6 @@
 section
   padding: 1.875rem
+  margin-bottom: 2rem
   p
     font-size: 1.2rem
     padding: 1rem
@@ -9,5 +10,28 @@ section
     font-size: 3rem
     margin: 2rem
 
-body
-  margin-bottom: 50rem //TODO: remove!
+a
+  color: $darkest-turquoise
+  transition: color .25s ease-in-out
+  text-decoration: none
+  outline: 0
+  border: 0
+  &:hover
+    color: $lightest-turquoise
+
+button, a.button, input[type=submit]
+  cursor: pointer
+  display: inline-block
+  color: $lightest-grey
+  background: $light-turquoise
+  // border-radius: 0.625rem
+  border-top-right-radius: 0.625rem
+  border-bottom-left-radius: 0.625rem
+  padding: 0.75rem 3rem
+  border: 0.0625rem solid $light-turquoise
+  +transition(.25s ease-in-out)
+  font-family: inherit
+  font-size: 100%
+  &:hover
+    background: none
+    color: $light-turquoise
