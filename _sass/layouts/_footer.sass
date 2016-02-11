@@ -24,3 +24,12 @@ footer
     background: $dark-turquoise
     p
       font-size: 100%
+
++media(max-width 650px)
+  footer#links
+    ul
+      display: block
+      margin: auto
+      text-align: center
+    section > div
+      +flex-direction(column)

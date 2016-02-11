@@ -46,8 +46,38 @@
       option
         font-size: 1.25rem
     ul
-      a
-        // &.active
+      li
+        margin: 2rem 0
+        font-size: 1.25rem
+
++media(max-width 900px)
+  #archive
+    #sort
+      +span-columns(12)
+      text-align: center
+      padding-right: 0
+      height: auto
+      > div
+        display: block
+        width: 100%
+        margin-bottom: 2rem
+      ul
+        +column-count(3)
+        margin-top: 2rem
+        height: auto
         li
-          margin: 2rem 0
-          font-size: 1.25rem
+          margin-top: 0
+    #blog
+      +span-columns(12)
+
++media(max-width 550px)
+  #archive
+    #sort
+      ul
+        +column-count(2)
+
++media(max-width 370px)
+  #archive
+    #sort
+      ul
+        +column-count(1)

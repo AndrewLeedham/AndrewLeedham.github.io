@@ -28,6 +28,24 @@ nav
     border-bottom: 0.0625rem solid $darkest-turquoise
     padding: 1rem
 
++media(max-width 500px)
+  nav
+    text-align: center
+    #logo
+      float: none
+    #links
+      float: none
+      ul
+        a
+          li
+            display: list-item
+            margin-left: 0
+    &.fixed
+      position: absolute
+      background: none
+      border-bottom: 0
+      padding: 1.875rem
+
 #offset
   margin: 0
   padding: 0

@@ -17,6 +17,14 @@
       });
     });
   </script>
+{% else %}
+<script>
+  function resize(){
+      $("#offset").height($("nav").outerHeight());
+  }
+  resize();
+  $(window).resize(resize);
+</script>
 {% endif %}
 
 <footer id="links">
