@@ -1,4 +1,8 @@
-<nav>
+{% if include.landing %}
+  <nav>
+{% else %}
+  <nav class="fixed">
+{% endif %}
   <div id="logo">
     <a href="{{ site.url }}"><img src="{{ 'logo.png' | prepend: site.imagepath | prepend: site.baseurl }}" alt="Andrew Leedham's Portfolio Logo"/></a>
   </div>

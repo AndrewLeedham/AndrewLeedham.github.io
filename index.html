@@ -7,7 +7,7 @@ landing: true
     <h2>About</h2>
   </div>
   <div class="full center">
-    <img src="img/me.png" alt="Portrait of Andrew Leedham"/>
+    <img src="{{ 'img/me.png' | prepend: site.baseurl }}" alt="Portrait of Andrew Leedham"/>
   </div>
   <div class="row">
     <div class="half">
@@ -84,7 +84,7 @@ landing: true
     </ul>
   </div>
   <div class="full center">
-    <a href="#" class="button">Archive...</a>
+    <a href="{{ 'archive/' | prepend: site.baseurl }}" class="button">Archive...</a>
   </div>
 </section>
 <div class="full-background" id="hello">

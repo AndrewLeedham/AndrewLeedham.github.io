@@ -1,5 +1,24 @@
-<script src="{{ "jquery-2.2.0.min.js" | prepend: site.jspath }}"></script>
-<script src="{{ "script.js" | prepend: site.jspath }}"></script>
+<script src="{{ "jquery-2.2.0.min.js" | prepend: site.jspath | prepend: site.baseurl }}"></script>
+<script src="{{ "script.js" | prepend: site.jspath | prepend: site.baseurl }}"></script>
+{% if include.landing %}
+  <script>
+    $(document).ready(function(){
+      function scroll(){
+        if($(document).scrollTop() > 0)
+        {
+          $("nav").addClass("fixed");
+        }else{
+          $("nav").removeClass("fixed");
+        }
+      }
+      scroll();
+      $(document).scroll(function(){
+        scroll();
+      });
+    });
+  </script>
+{% endif %}
+
 <footer id="links">
   <section>
     <div>
