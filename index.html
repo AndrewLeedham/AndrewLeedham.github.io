@@ -7,7 +7,7 @@ landing: true
     <h2>About</h2>
   </div>
   <div class="full center">
-    <img src="{{ 'img/me.png' | prepend: site.baseurl }}" alt="Portrait of Andrew Leedham"/>
+    <img src="{{ '/img/me.png' | prepend: site.baseurl }}" alt="Portrait of Andrew Leedham"/>
   </div>
   <div class="row">
     <div class="half">
@@ -32,16 +32,16 @@ landing: true
   </div>
   <div id="projects" class="full">
     <ul>
-      <a href="#" style="background-image: url({{ '1.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
-      <a href="#" style="background-image: url({{ '2.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
-      <a href="#" style="background-image: url({{ '3.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
-      <a href="#" style="background-image: url({{ '4.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
-      <a href="#" style="background-image: url({{ '5.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
-      <a href="#" style="background-image: url({{ '6.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
-      <a href="#" style="background-image: url({{ '7.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
-      <a href="#" style="background-image: url({{ '8.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
-      <a href="#" style="background-image: url({{ '9.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
-      <a href="#" style="background-image: url({{ '10.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/1.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/2.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/3.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/4.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/5.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/6.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/7.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/8.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/9.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
+      <a href="#" style="background-image: url({{ '/10.jpg' | prepend: site.imagepath | prepend: site.baseurl }})"></a>
     </ul>
   </div>
   <div class="full center">
@@ -61,6 +61,15 @@ landing: true
   </div>
   <div class="full">
     <ul>
+      {% for post in site.posts %}
+        <li data-date="{{ post.date | date: '%d/%m/%Y' }}">
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.content | strip_html | truncate: 256, '...' }}</p>
+          <span class="more"><a href="{{ post.url | prepend: site.baseurl }}">Read more...</a></span>
+        </li>
+      {% endfor %}
+    </ul>
+    <!-- <ul>
       <li data-date="07/02/2016">
         <h3>SASS vs SCSS</h3>
         <p>Lorem ipsum dolor sit amet, et usu tota porro copiosae. Ad sea suavitate iracundia. Ne sit semper appareat percipit. Erant ignota aliquid eu qui, ut illud mollis has. Mea zril iudico cu. Vero viris sed te. Vix in veri adhuc numquam...</p>
@@ -81,10 +90,10 @@ landing: true
         <p>Veri posse pro id. Usu at quas omittantur, cum etiam oporteat reformidans at, ut omittam percipitur ius. Id debitis expetenda honestatis sea, pri ad tation habemus torquatos, et mea ubique epicuri delicata. Vel ad intellegam honestatis. An sed quando feugait efficiendi, eos at tamquam urbanitas moderatius, cu labitur dignissim scribentur eam.</p>
         <span class="more"><a href="#">Read more...</a></span>
       </li>
-    </ul>
+    </ul> -->
   </div>
   <div class="full center">
-    <a href="{{ 'archive/' | prepend: site.baseurl }}" class="button">Archive...</a>
+    <a href="{{ '/archive/' | prepend: site.baseurl }}" class="button">Archive...</a>
   </div>
 </section>
 <div class="full-background" id="hello">
