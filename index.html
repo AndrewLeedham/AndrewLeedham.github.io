@@ -34,10 +34,10 @@ landing: true
     <div class="photogrid">
       {% for post in site.posts %}
         {% if post.categories contains 'photoshoots' %}
-          <a class="photo" href="{{ post.url }}" style="background-image: url('{{ post.thumbnail | prepend: '/' | prepend: post.gallery | prepend: '/img/posts/photoshoots/' | prepend: site.baseurl }}')"></a>
+          <a class="photo" href="{{ post.url }}" data-title="{{ post.title }}" style="background-image: url('{{ post.thumbnail | prepend: '/' | prepend: post.gallery | prepend: '/img/posts/photoshoots/' | prepend: site.baseurl }}')"></a>
         {% endif %}
         {% if post.categories contains 'projects' %}
-          <a class="photo" href="{{ post.url }}" style="background-image: url('{{ 'thumbnail.jpg' | prepend: '/' | prepend: post.title | prepend: '/img/posts/projects/' | prepend: site.baseurl }}')"></a>
+          <a class="photo" href="{{ post.url }}" data-title="{{ post.title }}" style="background-image: url('{{ 'thumbnail.jpg' | prepend: '/' | prepend: post.title | prepend: '/img/posts/projects/' | prepend: site.baseurl }}')"></a>
         {% endif %}
       {% endfor %}
     </div>

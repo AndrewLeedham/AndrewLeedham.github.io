@@ -10,9 +10,13 @@
     background-position: center center
     width: 21.416rem
     height: 21.416rem
-  a.photo::after
+  .photo::after
     opacity: 0
-    content: " "
+    color: white
+    text-align: center
+    line-height: 21.416rem
+    font-size: 2rem
+    cursor: pointer
     position: absolute
     top: 0
     left: 0
@@ -20,5 +24,23 @@
     height: 100%
     background: rgba($light-turquoise, 0.5)
     +transition(opacity .5s ease-in-out)
-  a.photo:hover::after
+  div.photo::after
+    font-family: "FontAwesome"
+    content: "\F002"
+  a.photo::after
+    content: attr(data-title)
+  .photo:hover::after
     opacity: 1
+.fullscreen-photo
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  background: rgba($black, 0.5)
+  display: none
+  z-index: 10
+  .photo
+    background-position: center center,
+    background-repeat: no-repeat
+    background-size: contain
