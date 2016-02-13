@@ -5,7 +5,7 @@
 * ~~Add example posts and projects~~
 * Global Styles
   * Nav styling
-    * Add responsive mobile nav
+    * ~~Add responsive mobile nav~~
     * ~~Remove nav underline when on landing~~
     * ~~Add animation to fixed/absolute switch~~
     * Fix offset when transitioning from absolute to fixed and clicking a nav link
