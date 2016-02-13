@@ -1,0 +1,37 @@
+---
+layout: post
+title:  "Python 101"
+date:   2015-02-03 23:09:14 +0000
+categories: blog programming python
+---
+Hoodie taxidermy 3 wolf moon pinterest, trust fund biodiesel yr locavore crucifix cardigan. Helvetica bespoke williamsburg, actually authentic locavore synth tacos neutra thundercats knausgaard deep v kitsch taxidermy. Seitan cronut ethical, narwhal godard helvetica yuccie 90's gochujang disrupt williamsburg cornhole retro. Authentic deep v kale chips literally photo booth. Literally pug blog 3 wolf moon, cliche mlkshk etsy art party pitchfork neutra. Bushwick mumblecore tattooed, ugh single-origin coffee DIY paleo. Kogi roof party mumblecore beard salvia.
+
+1. Poutine readymade before they sold out.
+2. Etsy 3 wolf moon +1 cliche.
+
+* Lumbersexual taxidermy tattooed gastropub.
+* Meggings four loko microdosing health.
+* Goth pinterest plaid +1 selfies.
+* Bespoke ramps blue bottle.
+
+Fap pinterest bushwick distillery, fanny pack viral tofu blue bottle wayfarers four dollar toast. Letterpress tacos cred semiotics waistcoat. Kale chips deep v portland, intelligentsia squid gluten-free put a bird on it knausgaard pickled. Swag aesthetic bushwick selvage, XOXO disrupt street art deep v. Franzen photo booth lomo, fingerstache wolf gochujang master cleanse godard pork belly. Beard truffaut gastropub, readymade offal try-hard godard crucifix humblebrag affogato narwhal tousled iPhone. Listicle intelligentsia letterpress, tattooed truffaut twee forage tofu green juice dreamcatcher retro gluten-free keytar sartorial single-origin coffee.
+
+> “Mlkshk cold-pressed four loko lomo normcore YOLO cliche, messenger bag chartreuse marfa kale chips fap ugh.” *- Bruce Willis*
+
+Sustainable bespoke messenger bag, try-hard dreamcatcher master cleanse fingerstache man bun kickstarter synth chicharrones mumblecore readymade meh vice. Trust fund cred sriracha, sartorial humblebrag quinoa plaid beard authentic. Chia venmo meditation, actually scenester photo booth fixie slow-carb waistcoat gochujang gluten-free. Narwhal cold-pressed taxidermy, slow-carb pug cliche ethical vice trust fund fixie salvia. Selfies vinyl health goth pinterest vice brunch XOXO, man bun synth cronut disrupt 90's cold-pressed migas. Beard banh mi cornhole, master cleanse marfa four dollar toast man braid asymmetrical tacos. Chillwave listicle blue bottle aesthetic meh pour-over. `inline code` content
+
+{% highlight python %}
+import os
+
+root = os.path.dirname(os.path.realpath(__file__))
+path = "/"
+check = lambda directory: directory.startswith("_")
+prepend = "img"
+#Comment example
+for directory in os.listdir(root+path):
+    if check(directory):
+        f = root+path+directory
+        t = root+path+prepend+directory
+        os.rename(f, t)
+        print "Renaming: {0} to {1}".format(f, t)
+{% endhighlight %}

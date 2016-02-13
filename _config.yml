@@ -18,4 +18,15 @@ youtube: "HowNot2Play"
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 exclude: [Gemfile, Gemfile.lock, Guardfile, todo.md, safe.storage]
+empty: []
+# jekyll-archives:
+#   enabled: all
+#   layout: 'archive'
+#   permalinks:
+#     year: '/archive/:year/'
+#     month: '/archive/:year/:month/'
+#     category: '/archive/category/:name/'
+# gems:
+#   - jekyll-archives
