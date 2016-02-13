@@ -12,6 +12,11 @@ nav
     float: left
     img
       height: 2.5rem
+  #mobile
+    display: none
+    float: right
+    font-size: 1.75rem
+    line-height: 2.5rem
   #links
     float: right
     ul
@@ -21,30 +26,48 @@ nav
           margin-left: 2.8125rem
           height: 2.5rem
           line-height: 2.5rem
-
   &.fixed
     position: fixed
     background: white
     border-bottom: 0.0625rem solid $darkest-turquoise
     padding: 1rem
-
 +media(max-width 500px)
   nav
-    text-align: center
-    #logo
-      float: none
+    #mobile
+      display: initial
     #links
+      display: none
       float: none
+      position: fixed
+      left: 100%
+      top: 0
+      background: white
+      height: 100vh
+      padding: 0 3rem
+      border-left: 0.0625rem solid $darkest-turquoise
+      text-align: center
       ul
         a
           li
             display: list-item
             margin-left: 0
-    &.fixed
-      position: absolute
-      background: none
-      border-bottom: 0
-      padding: 1.875rem
+// +media(max-width 500px)
+//   nav
+//     text-align: center
+//     #logo
+//       float: none
+//     #links
+//       float: none
+//       ul
+//         a
+//           li
+//             display: list-item
+//             margin-left: 0
+//     &.fixed
+//       position: absolute
+//       background: none
+//       border-bottom: 0
+//       padding: 1.875rem
 
 #offset
   margin: 0

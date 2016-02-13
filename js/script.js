@@ -25,4 +25,63 @@ $(document).ready(function(){
     click(this);
     event.preventDefault();
   });
+
+  $(window).resize(function(){
+    console.log($("body").outerWidth());
+    if($(document).outerWidth() > 500){
+      $("body").css({
+        left: "",
+        position: "",
+        width: ""
+      });
+      $("nav #links").css({
+        display: "",
+        left: ""
+      });
+      $("nav").css({
+        left: ""
+      });
+    }
+  });
+
+  $("#mobile").click(function(event){
+    if($("nav #links").css("display") == "none"){
+      $("nav #links").show().animate({
+        left: $("body").outerWidth()-$("nav #links").outerWidth()
+      });
+      $("body").css({
+        position: "absolute",
+        width: $("body").outerWidth()
+      }).animate({
+        left: -($("nav #links").outerWidth())
+      });
+      $("nav.fixed").animate({
+        left: -($("nav #links").outerWidth())
+      });
+    }else{
+      $("nav #links").animate({
+        left: $("body").outerWidth(),
+      }, {
+        complete: function(){
+          $("nav #links").css({
+            display: "",
+            left: ""
+          });
+        }
+      });
+      $("body").animate({
+        left: 0
+      }, {
+        complete: function(){
+          $(this).css({
+            position: "",
+            width: ""
+          });
+        }
+      });
+      $("nav.fixed").animate({
+        left: 0
+      });
+    }
+  });
 });

@@ -7,8 +7,18 @@
         if($(document).scrollTop() > 0)
         {
           $("nav").addClass("fixed");
+          if($(document).outerWidth() <= 500 && $("nav #links").css("display") != "none"){
+            $("nav.fixed").css({
+              left: -($("nav #links").outerWidth())
+            });
+          }
         }else{
           $("nav").removeClass("fixed");
+          if($(document).outerWidth() <= 500 && $("nav #links").css("display") != "none"){
+            $("nav").css({
+              left: ""
+            });
+          }
         }
       }
       scroll();
