@@ -1,0 +1,9 @@
+---
+layout: photoshoot
+title:  "Guitar Shoot"
+date:   2013-04-28 16:00:00 +0000
+categories: photoshoots alevel
+gallery: "Guitar"
+thumbnail: "img_20140317_133047.jpg"
+---
+This photoshoot was for my A-Level photography course, the theme for the shoot was Macro photography of technology. I had an electric guitar lying around, not doing anything, so I thought I'd use it as a subject, which worked well with the tuning knobs, since they created great perspective with the right composition.

@@ -1,0 +1,9 @@
+---
+layout: photoshoot
+title:  "Vinyl Shoot"
+date:   2013-04-28 16:00:00 +0000
+categories: photoshoots alevel
+gallery: "Vinyl"
+thumbnail: "img_20140216_160314.jpg"
+---
+This photoshoot was for my A-Level photography course, the theme for the shoot was Macro photography of technology. I dug out my Dads' old vinyl collection, and photographed both the player and the records, to create pastelly lines diagonally.

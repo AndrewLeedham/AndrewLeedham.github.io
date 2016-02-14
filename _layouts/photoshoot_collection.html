@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<section id="post">
+  <div class="full center">
+    <h2>{{ page.title }} <span class="date">{{ page.date | date: '%d/%m/%Y' }}</span> </h2>
+  </div>
+  <div id="content" class="full">
+    {{ content }}
+  </div>
+  <div class="full">
+    <div class="photogrid">
+      {% for post in site.posts %}
+        {% if post.categories contains 'alevel' and post.portfolio != true %}
+          <a class="photo" href="{{ post.url }}" data-title="{{ post.title }}" style="background-image: url('{{ post.thumbnail | prepend: '/' | prepend: post.gallery | prepend: '/img/posts/photoshoots/' | prepend: site.baseurl }}')"></a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="full">
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = "{{ page.url | prepend: site.url }}";
+            this.page.identifier = "{{ page.url | prepend: site.url }}";
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+
+            s.src = '//andrewleedham.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<div class="fullscreen-photo"></div>

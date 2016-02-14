@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Internships"
+date:   2016-02-14 01:54:59 +0000
+categories: blog career
+---
+I plan to do an internship next year, I'm currently in the process of applying, interviewing and finding the right internship for me. I think doing an internship next yeah will really help with finding a job after University, since it will show industry experience and a drive to do more, the main drawback is having to spend another year in education, but at the end of the day I'm not rushing towards a job, I'll potentially be in that job for the rest of my life, so I might as well enjoy the variety while I can.
+
+My main criteria for an internship is a primarily web design focused role for a year at a mid sized company. Since I don't want to be in a massive company where I don't get to contribute much to each project, however I also don't want to in a small company, since they don't tend to have fully set up IP schemes and I feel a bigger company would look better on my CV.
+
+So far I've had 3 interviews. One for [SEED Software](http://www.seedsoftware.co.uk/) for a 'software engineering' role, which I didn't really want, I mainly just wanted experience in the interview process, which I got and it taught me allot. I've had another for [Xerox](http://www.xerox.co.uk) for a 'web designer/business analyst' role,  however I was also interviewed for 2 other roles 'media and web designer' and 'software engineer', since the other managers read through my CV and decided I maybe be suitable in their departments, the 'media and web designer' role definitely tickles my fancy and I'm waiting to hear back from them some time in the next week. Finally I have been interviewed for [TH3 Design](https://www.th3design.co.uk/) which is a Hull based web design studio, I've been taken on to do a bit of freelancing for them, and if they like what I contribute they may offer me an internship or continued freelance work, personally I'd love to continue freelancing for them, so I can quit my day job, but I think they're a bit too small of a company for an internship. All in all I'm happy with where I'm at with internships and have a couple more to apply to in the near future, I'm hoping to know where I'm working within a couple of weeks.
