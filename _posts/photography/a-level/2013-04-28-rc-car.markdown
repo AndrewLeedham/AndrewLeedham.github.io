@@ -4,6 +4,6 @@ title:  "RC Car Shoot"
 date:   2013-04-28 16:00:00 +0000
 categories: photoshoots alevel
 gallery: "RC Car"
-thumbnail: "IMG_20140402_223906.jpg"
+thumbnail: "RC Car (1).jpg"
 ---
 This photoshoot was for my A-Level photography course, the theme for the shoot was Macro photography of technology. My RC Car had lots of springs nuts and bolts, and gave a breath of fresh air from instruments and motherboards.

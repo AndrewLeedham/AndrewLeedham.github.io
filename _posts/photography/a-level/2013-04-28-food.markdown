@@ -4,6 +4,6 @@ title:  "Food Shoot"
 date:   2013-04-28 16:00:00 +0000
 categories: photoshoots alevel
 gallery: "Food"
-thumbnail: "IMG_20140517_134605.jpg"
+thumbnail: "Food (9).jpg"
 ---
 This photoshoot was for my A-Level photography course, the theme for the shoot was Macro photography of technology. Food isn't really technology based, but they have a lot of intricate detail, which was great for the macro aspect.
