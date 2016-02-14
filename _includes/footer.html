@@ -7,7 +7,7 @@
         if($(document).scrollTop() > 0)
         {
           $("nav").addClass("fixed");
-          if($(document).outerWidth() <= 500 && $("nav #links").css("display") != "none"){
+          if($(document).outerWidth() <= 500 && $("nav #links").css("display") != "none" && !$("nav #links").is(":animated")){
             $("nav.fixed").css({
               left: -($("nav #links").outerWidth())
             });
