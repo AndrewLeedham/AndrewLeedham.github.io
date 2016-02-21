@@ -1,28 +1,45 @@
-{% if include.landing %}
-  <nav>
-{% else %}
-  <nav class="fixed">
-{% endif %}
-  <div id="logo">
-    <a href="{{ '/' | prepend: site.baseurl }}">{% include logo.svg %}</a>
-  </div>
-  <div id="links">
-    <ul>
-      <a href="/#about">
-        <li>About</li>
-      </a>
-      <a href="/#portfolio">
-        <li>Portfolio</li>
-      </a>
-      <a href="/#blog">
-        <li>Blog</li>
-      </a>
-      <a href="/#contact">
-        <li>Contact</li>
-      </a>
-    </ul>
-  </div>
-  <div id="mobile">
-    <a href="javascript:void(0)"><i class="fa fa-bars"></i></a>
-  </div>
-</nav>
+<input id="toggle" type="checkbox">
+<label for="toggle"></label>
+<div id="mobileNav">
+  <ul>
+    <a href="/#about">
+      <li>About</li>
+    </a>
+    <a href="/#portfolio">
+      <li>Portfolio</li>
+    </a>
+    <a href="/#blog">
+      <li>Blog</li>
+    </a>
+    <a href="/#contact">
+      <li>Contact</li>
+    </a>
+  </ul>
+</div>
+<div class="wrapper">
+  {% if include.landing %}
+    <nav>
+  {% else %}
+    <nav class="fixed">
+  {% endif %}
+    <div id="logo">
+      <a href="{{ '/' | prepend: site.baseurl }}">{% include logo.svg %}</a>
+    </div>
+    <div id="links">
+      <ul>
+        <a href="/#about">
+          <li>About</li>
+        </a>
+        <a href="/#portfolio">
+          <li>Portfolio</li>
+        </a>
+        <a href="/#blog">
+          <li>Blog</li>
+        </a>
+        <a href="/#contact">
+          <li>Contact</li>
+        </a>
+      </ul>
+    </div>
+    <div>
+  </nav>

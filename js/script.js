@@ -43,47 +43,6 @@ $(document).ready(function(){
     }
   });
 
-  $("#mobile").click(function(event){
-    if($("nav #links").css("display") == "none"){
-      $("nav #links").show().animate({
-        left: $("body").outerWidth()-$("nav #links").outerWidth()
-      });
-      $("body").css({
-        position: "absolute",
-        width: $("body").outerWidth()
-      }).animate({
-        left: -($("nav #links").outerWidth())
-      });
-      $("nav.fixed").animate({
-        left: -($("nav #links").outerWidth())
-      });
-    }else{
-      $("nav #links").animate({
-        left: $("body").outerWidth(),
-      }, {
-        complete: function(){
-          $("nav #links").css({
-            display: "",
-            left: ""
-          });
-        }
-      });
-      $("body").animate({
-        left: 0
-      }, {
-        complete: function(){
-          $(this).css({
-            position: "",
-            width: ""
-          });
-        }
-      });
-      $("nav.fixed").animate({
-        left: 0
-      });
-    }
-  });
-
   $("div.photo").click(function(event){
     $(".fullscreen-photo").fadeIn().append($(this).clone().css({
       position: "fixed",

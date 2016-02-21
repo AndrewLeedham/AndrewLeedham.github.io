@@ -1,3 +1,5 @@
+#toggle, #toggle + label, #mobileNav
+  display: none
 nav
   z-index: 5
   position: absolute
@@ -13,11 +15,6 @@ nav
     svg
       width: 2.5rem
       height: 2.5rem
-  #mobile
-    display: none
-    float: right
-    font-size: 1.75rem
-    line-height: 2.5rem
   #links
     float: right
     ul
@@ -29,29 +26,81 @@ nav
           line-height: 2.5rem
   &.fixed
     position: fixed
+    right: 0
     background: white
     border-bottom: 0.0625rem solid $darkest-turquoise
     padding: 1rem
 +media(max-width 500px)
+  #mobileNav
+    position: fixed
+    z-index: -1
+    display: inline
+    top: 0
+    bottom: 0
+    right: 0
+    width: 8rem
+    background: black
+    text-align: right
+    ul
+      li
+        color: white
+        margin: 1rem 1rem 1rem 0
+  #toggle + label + #mobileNav + .wrapper
+    position: relative
+    right: 0
+    +transition(right 0.5s ease-in-out)
+  #toggle:checked + label + #mobileNav + .wrapper
+    right: 8rem
+  #toggle + label
+    z-index: 6
+    position: fixed
+    display: inline
+    font-size: 1rem
+    top: 3.125rem
+    right: 1.875rem
+    width: 1.5em
+    height: 0.2em
+    background: black
+    +transition(background 0.5s ease-in-out, top 0.5s ease-in-out, right 0.5s ease-in-out, margin-right 0.5s ease-in-out)
+    +transition-delay(0.5s, 0s, 0s, 0s)
+    &:before
+      position: absolute
+      top: -0.5em
+      left: 0
+      width: 1.5em
+      height: 0.2em
+      background: black
+      content: ""
+      +transition(top 0.5s ease-in-out, transform 0.5s ease-in-out)
+      +transition-delay(0.5s, 0s)
+    &:after
+      position: absolute
+      top: 0.5em
+      left: 0
+      width: 1.5em
+      height: 0.2em
+      background: black
+      content: ""
+      +transition(top 0.5s ease-in-out, transform 0.5s ease-in-out)
+      +transition-delay(0.5s, 0s)
+  #toggle.fixed + label
+    top: 2.25rem
+    right: 1rem
+  #toggle:checked + label
+    margin-right: 8rem
+    background: transparent
+    +transition-delay(0s)
+    &:before
+      top: 0
+      transform: rotate(45deg)
+      +transition-delay(0s, 0.5s)
+    &:after
+      top: 0
+      transform: rotate(-45deg)
+      +transition-delay(0s, 0.5s)
   nav
-    #mobile
-      display: inline
     #links
       display: none
-      float: none
-      position: fixed
-      left: 100%
-      top: 0
-      background: white
-      height: 100vh
-      padding: 0 3rem
-      border-left: 0.0625rem solid $darkest-turquoise
-      text-align: center
-      ul
-        a
-          li
-            display: list-item
-            margin-left: 0
 
 #offset
   margin: 0
