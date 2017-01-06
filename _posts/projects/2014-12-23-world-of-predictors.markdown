@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "World of Predictors"
+title: World of Predictors
 categories: projects web freelance
-date:   2014-12-23 11:15:55 +0000
+date: '2014-12-23 11:15:55 +0000'
+published: false
 ---
 ![mockup of world of predictors](/img/posts/projects/World of Predictors/mockup.jpg)
 World of Predictors (WoP) is a predictor generation tool built by Formula i Studios, I'm the lead designer of the project, and have been working with another develop to produce the web based tool.
