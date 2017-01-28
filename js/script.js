@@ -110,5 +110,7 @@ $(document).ready(function(){
     $(this).empty();
     $(this).fadeOut();
   });
-
+  $("#close-overlay").click(function(e){
+    $(".overlay").fadeOut();
+  });
 });

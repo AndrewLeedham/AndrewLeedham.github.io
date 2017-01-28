@@ -16,6 +16,18 @@
     {% else %}
       {% include footer.html landing=false %}
     {% endif %}
+    <div class="overlay">
+      <center>
+        {% include title.svg %}
+        <br/>
+        <br/>
+        <p>
+          Site information is currently out of date, currently under maintenance.
+        </p>
+        <br/>
+        <button id="close-overlay">See outdated site ></button>
+      </center>
+    </div>
   </body>
 
 </html>
