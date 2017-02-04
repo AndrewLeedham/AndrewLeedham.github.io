@@ -1,0 +1,36 @@
+{
+  "name": "andrewleedham.me",
+  "version": "2.0.0",
+  "description": "Andrew Leedham's Web Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewLeedham/AndrewLeedham.github.io.git"
+  },
+  "keywords": [
+    "Andrew",
+    "Leedham",
+    "Web",
+    "Developer",
+    "Designer",
+    "Freelance",
+    "Contractor"
+  ],
+  "author": "Andrew Leedham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AndrewLeedham/AndrewLeedham.github.io/issues"
+  },
+  "homepage": "https://github.com/AndrewLeedham/AndrewLeedham.github.io#readme",
+  "devDependencies": {
+    "child_process": "^1.0.2",
+    "gulp": "^3.9.1",
+    "gulp-exec": "^2.1.3",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-util": "^3.0.8"
+  }
+}
