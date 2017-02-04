@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/AndrewLeedham/AndrewLeedham.github.io#readme",
   "devDependencies": {
+    "browser-sync": "^2.18.7",
     "child_process": "^1.0.2",
     "gulp": "^3.9.1",
     "gulp-exec": "^2.1.3",

@@ -11,7 +11,8 @@ layout: default
   <div class="full">
     <div class="photogrid">
       {% for image in site.static_files %}
-        {% if image.path contains page.gallery | prepend: "img/posts/photoshoots/" %}
+        {% assign gallery = page.gallery | prepend: 'img/posts/photoshoots/' %}
+        {% if image.path contains gallery %}
           <div class="photo" style="background-image: url('{{ image.path | prepend: site.baseurl }}')"></div>
         {% endif %}
       {% endfor %}
