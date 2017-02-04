@@ -19,7 +19,7 @@ youtube: "HowNot2Play"
 # Build settings
 markdown: kramdown
 highlighter: rouge
-exclude: [Gemfile, Gemfile.lock, Guardfile, todo.md, safe.storage]
+exclude: [Gemfile, Gemfile.lock, todo.md, safe.storage]
 empty: []
 # jekyll-archives:
 #   enabled: all
