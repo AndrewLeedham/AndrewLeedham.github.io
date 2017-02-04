@@ -1,41 +1,4 @@
-<script src="{{ "/jquery-2.2.0.min.js" | prepend: site.jspath | prepend: site.baseurl }}"></script>
 <script src="{{ "/script.js" | prepend: site.jspath | prepend: site.baseurl }}"></script>
-{% if include.landing %}
-  <script>
-    $(document).ready(function(){
-      function scroll(){
-        if($(document).scrollTop() > 0)
-        {
-          $("nav").addClass("fixed");
-          if($(document).outerWidth() <= 500 && $("nav #links").css("display") != "none" && !$("nav #links").is(":animated")){
-            $("nav.fixed").css({
-              left: -($("nav #links").outerWidth())
-            });
-          }
-        }else{
-          $("nav").removeClass("fixed");
-          if($(document).outerWidth() <= 500 && $("nav #links").css("display") != "none"){
-            $("nav").css({
-              left: ""
-            });
-          }
-        }
-      }
-      scroll();
-      $(document).scroll(function(){
-        scroll();
-      });
-    });
-  </script>
-{% else %}
-<script>
-  function resize(){
-      $("#offset").height($("nav").outerHeight());
-  }
-  resize();
-  $(window).resize(resize);
-</script>
-{% endif %}
 
 <footer id="links">
   <section>

@@ -1,8 +1,4 @@
-{% if include.landing %}
-  <nav>
-{% else %}
-  <nav class="fixed">
-{% endif %}
+<nav>
   <div id="logo">
     <a href="{{ '/' | prepend: site.baseurl }}">{% include logo.svg %}</a>
   </div>
@@ -26,3 +22,7 @@
     <a href="javascript:void(0)"><i class="fa fa-bars"></i></a>
   </div>
 </nav>
+<header id="landing">
+  {% include title.svg %}
+  <p>Web Designer & Developer</p>
+</header>
