@@ -16,17 +16,14 @@ tumblr: "andrew-leedham"
 twitch: "Formulayeti"
 youtube: "HowNot2Play"
 
+# Collections
+collections:
+- photoshoots
+- projects
+- icons
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
 exclude: [todo.md, safe.storage, package.json, node_modules, GulpFile.js]
 empty: []
-# jekyll-archives:
-#   enabled: all
-#   layout: 'archive'
-#   permalinks:
-#     year: '/archive/:year/'
-#     month: '/archive/:year/:month/'
-#     category: '/archive/category/:name/'
-# gems:
-#   - jekyll-archives
