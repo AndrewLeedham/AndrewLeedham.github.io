@@ -1987,6 +1987,19 @@ html {
 .fa-percent:before {
   content: "\f295"; }
 
+.is {
+  width: 32px;
+  height: 32px;
+  fill: black; }
+  .is.is-64 {
+    width: 64px;
+    height: 64px; }
+  .is.is-128 {
+    width: 128px;
+    height: 128px; }
+  .is.is-light-grey {
+    fill: #bfbfbf; }
+
 /* BASE */
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -2378,6 +2391,34 @@ header#landing {
   height: 100vh;
   z-index: 20;
   background: rgba(0, 0, 0, 0.7); }
+  .modal-container .close {
+    position: fixed;
+    right: 0;
+    top: 0;
+    line-height: 0;
+    padding: 30px 30px 0 0; }
+    .modal-container .close svg.is {
+      width: 64px;
+      height: 64px;
+      fill: #bfbfbf;
+      cursor: pointer;
+      transition: transform 0.5s ease-in-out;
+      -webkit-transform-origin: center center;
+      -moz-transform-origin: center center;
+      -ms-transform-origin: center center;
+      -o-transform-origin: center center;
+      transform-origin: center center;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg); }
+      .modal-container .close svg.is:hover {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg); }
   .photogrid input[type="checkbox"]:checked + .modal-container {
     display: -webkit-box;
     display: -moz-box;
@@ -2387,7 +2428,6 @@ header#landing {
     display: -ms-flexbox;
     display: flex; }
   .modal-container .modal {
-    position: relative;
     width: 60%;
     background: white;
     border-radius: 5px;
@@ -2433,12 +2473,27 @@ header#landing {
     @media screen and (max-width: 500px) {
       .modal-container .modal #post h2 {
         font-size: 9vw; } }
-    .modal-container .modal .close {
-      color: #bfbfbf;
-      font-size: 24px;
-      position: absolute;
-      left: 100%;
-      top: 0; }
+    .modal-container .modal .left-control, .modal-container .modal .right-control {
+      position: fixed;
+      top: 50%;
+      width: 20%;
+      text-align: center;
+      -webkit-transform: translate(0, -50%);
+      -moz-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      -o-transform: translate(0, -50%);
+      transform: translate(0, -50%); }
+      .no-js .modal-container .modal .left-control, .no-js .modal-container .modal .right-control {
+        display: none; }
+      .modal-container .modal .left-control svg.is, .modal-container .modal .right-control svg.is {
+        width: 100px;
+        height: 100px;
+        fill: #bfbfbf;
+        cursor: pointer; }
+    .modal-container .modal .left-control {
+      left: 0; }
+    .modal-container .modal .right-control {
+      right: 0; }
 
 #blog ul li {
   position: relative;
