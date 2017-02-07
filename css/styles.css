@@ -2305,8 +2305,6 @@ header#landing {
   -moz-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
-  .photogrid input[type="checkbox"] {
-    display: none; }
   .photogrid label.photo {
     cursor: pointer; }
   .photogrid .photo {
@@ -2361,139 +2359,6 @@ header#landing {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain; }
-
-.modal-container {
-  overflow: auto;
-  position: fixed;
-  display: none;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  box-align: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  -o-align-items: center;
-  align-items: center;
-  -ms-flex-align: center;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  box-orient: vertical;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  box-direction: normal;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-direction: column;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 20;
-  background: rgba(0, 0, 0, 0.7); }
-  .modal-container .close {
-    position: fixed;
-    right: 0;
-    top: 0;
-    line-height: 0;
-    padding: 30px 30px 0 0; }
-    .modal-container .close svg.is {
-      width: 64px;
-      height: 64px;
-      fill: #bfbfbf;
-      cursor: pointer;
-      transition: transform 0.5s ease-in-out;
-      -webkit-transform-origin: center center;
-      -moz-transform-origin: center center;
-      -ms-transform-origin: center center;
-      -o-transform-origin: center center;
-      transform-origin: center center;
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg); }
-      .modal-container .close svg.is:hover {
-        -webkit-transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        -o-transform: rotate(90deg);
-        transform: rotate(90deg); }
-  .photogrid input[type="checkbox"]:checked + .modal-container {
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex; }
-  .modal-container .modal {
-    width: 60%;
-    background: white;
-    border-radius: 5px;
-    margin: 30px 0; }
-    .modal-container .modal h2 {
-      display: inline-block;
-      width: auto;
-      text-align: right;
-      margin: 0; }
-      .modal-container .modal h2 span.date {
-        width: 100%;
-        font-size: 20px;
-        color: #bfbfbf; }
-    .modal-container .modal .content {
-      margin-bottom: 2rem;
-      padding: 90px; }
-      .modal-container .modal .content ol {
-        list-style-type: decimal; }
-      .modal-container .modal .content ul {
-        list-style-type: initial; }
-      .modal-container .modal .content ul, .modal-container .modal .content ol {
-        font-size: 1.2rem;
-        list-style-position: inside;
-        padding: 1rem;
-        line-height: 1.5rem; }
-        .modal-container .modal .content ul li, .modal-container .modal .content ol li {
-          margin: 1rem 0; }
-          .modal-container .modal .content ul li:first-child, .modal-container .modal .content ol li:first-child {
-            margin-top: 0; }
-          .modal-container .modal .content ul li:last-child, .modal-container .modal .content ol li:last-child {
-            margin-bottom: 0; }
-      .modal-container .modal .content blockquote {
-        border-left: 0.75rem solid #32807e;
-        margin: 1rem; }
-        .modal-container .modal .content blockquote em {
-          text-decoration: none;
-          color: #bfbfbf; }
-      .modal-container .modal .content img {
-        max-width: 100%;
-        margin: 1rem 0; }
-      .modal-container .modal .content a {
-        border-bottom: 0.1rem dotted #000000; }
-    @media screen and (max-width: 500px) {
-      .modal-container .modal #post h2 {
-        font-size: 9vw; } }
-    .modal-container .modal .left-control, .modal-container .modal .right-control {
-      position: fixed;
-      top: 50%;
-      width: 20%;
-      text-align: center;
-      -webkit-transform: translate(0, -50%);
-      -moz-transform: translate(0, -50%);
-      -ms-transform: translate(0, -50%);
-      -o-transform: translate(0, -50%);
-      transform: translate(0, -50%); }
-      .no-js .modal-container .modal .left-control, .no-js .modal-container .modal .right-control {
-        display: none; }
-      .modal-container .modal .left-control svg.is, .modal-container .modal .right-control svg.is {
-        width: 100px;
-        height: 100px;
-        fill: #bfbfbf;
-        cursor: pointer; }
-    .modal-container .modal .left-control {
-      left: 0; }
-    .modal-container .modal .right-control {
-      right: 0; }
 
 #blog ul li {
   position: relative;
@@ -2778,3 +2643,156 @@ footer {
     color: #0a1a19; }
   .highlight .vc, .highlight .vg, .highlight .vi {
     color: #0a1a19; }
+
+.photogrid input[type="radio"] {
+  display: none; }
+
+.modal-container {
+  overflow: auto;
+  position: fixed;
+  display: flex;
+  opacity: 1;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-transition: visibility 0s linear 0.25s, opacity 0.25s ease-in-out 0s;
+  -moz-transition: visibility 0s linear 0.25s, opacity 0.25s ease-in-out 0s;
+  transition: visibility 0s linear 0.25s, opacity 0.25s ease-in-out 0s;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.7); }
+  .modal-container .content {
+    -webkit-transition: opacity 0.25s ease-in-out 0s;
+    -moz-transition: opacity 0.25s ease-in-out 0s;
+    transition: opacity 0.25s ease-in-out 0s;
+    opacity: 0; }
+  .photogrid input#toggle-modal-close[type="radio"]:checked ~ .modal-container {
+    opacity: 0; }
+    .photogrid input#toggle-modal-close[type="radio"]:checked ~ .modal-container .content {
+      opacity: 1; }
+  .photogrid input[type="radio"]:checked + .modal-container {
+    -webkit-transition: visibility 0s linear 0.25s;
+    -moz-transition: visibility 0s linear 0.25s;
+    transition: visibility 0s linear 0.25s;
+    visibility: visible; }
+    .photogrid input[type="radio"]:checked + .modal-container .content {
+      -webkit-transition: opacity 0.25s ease-in-out 0.25s;
+      -moz-transition: opacity 0.25s ease-in-out 0.25s;
+      transition: opacity 0.25s ease-in-out 0.25s;
+      opacity: 1; }
+  .modal-container .close {
+    position: fixed;
+    right: 0;
+    top: 0;
+    line-height: 0;
+    padding: 30px 30px 0 0; }
+    .modal-container .close svg.is {
+      width: 64px;
+      height: 64px;
+      fill: #bfbfbf;
+      cursor: pointer;
+      transition: transform 0.5s ease-in-out;
+      -webkit-transform-origin: center center;
+      -moz-transform-origin: center center;
+      -ms-transform-origin: center center;
+      -o-transform-origin: center center;
+      transform-origin: center center;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg); }
+      .modal-container .close svg.is:hover {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg); }
+  .modal-container .modal {
+    width: 60%;
+    background: white;
+    border-radius: 5px;
+    margin: 30px 0; }
+    .modal-container .modal h2 {
+      display: inline-block;
+      width: auto;
+      text-align: right;
+      margin: 0; }
+      .modal-container .modal h2 span.date {
+        width: 100%;
+        font-size: 20px;
+        color: #bfbfbf; }
+    .modal-container .modal .content {
+      margin-bottom: 2rem;
+      padding: 90px; }
+      .modal-container .modal .content ol {
+        list-style-type: decimal; }
+      .modal-container .modal .content ul {
+        list-style-type: initial; }
+      .modal-container .modal .content ul, .modal-container .modal .content ol {
+        font-size: 1.2rem;
+        list-style-position: inside;
+        padding: 1rem;
+        line-height: 1.5rem; }
+        .modal-container .modal .content ul li, .modal-container .modal .content ol li {
+          margin: 1rem 0; }
+          .modal-container .modal .content ul li:first-child, .modal-container .modal .content ol li:first-child {
+            margin-top: 0; }
+          .modal-container .modal .content ul li:last-child, .modal-container .modal .content ol li:last-child {
+            margin-bottom: 0; }
+      .modal-container .modal .content blockquote {
+        border-left: 0.75rem solid #32807e;
+        margin: 1rem; }
+        .modal-container .modal .content blockquote em {
+          text-decoration: none;
+          color: #bfbfbf; }
+      .modal-container .modal .content img {
+        max-width: 100%;
+        margin: 1rem 0; }
+      .modal-container .modal .content a {
+        border-bottom: 0.1rem dotted #000000; }
+    @media screen and (max-width: 500px) {
+      .modal-container .modal #post h2 {
+        font-size: 9vw; } }
+    .modal-container .modal .left-control, .modal-container .modal .right-control {
+      user-select: none;
+      position: fixed;
+      top: 50%;
+      width: 20%;
+      text-align: center;
+      -webkit-transform: translate(0, -50%);
+      -moz-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      -o-transform: translate(0, -50%);
+      transform: translate(0, -50%); }
+      .no-js .modal-container .modal .left-control, .no-js .modal-container .modal .right-control {
+        display: none; }
+      .modal-container .modal .left-control svg.is, .modal-container .modal .right-control svg.is {
+        width: 100px;
+        height: 100px;
+        fill: #bfbfbf;
+        cursor: pointer; }
+    .modal-container .modal .left-control {
+      left: 0; }
+    .modal-container .modal .right-control {
+      right: 0; }
