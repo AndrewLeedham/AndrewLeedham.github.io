@@ -1,0 +1,7 @@
+---
+title: "Conduent.com"
+categories: projects web xerox
+date:   2016-12-10 11:26:13 +0000
+---
+![mockup of conduent.com](/img/projects/Conduent.com/mockup.jpg)
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero excepturi, sit, quibusdam recusandae totam voluptatum amet quas possimus sed dignissimos cupiditate? Earum ad itaque impedit rem eveniet quam maiores sed.

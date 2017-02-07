@@ -25,7 +25,7 @@ layout: default
   </div>
   <div id="projects" class="full">
     <div class="photogrid">
-      {% assign total_projects = site.projects | count %}
+      {% assign total_projects = site.projects | size %}
       {% for project in site.projects %}
         {% assign id = project.title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
         <label class="photo" data-title="{{ project.title }}" for="{{ id }}">  
