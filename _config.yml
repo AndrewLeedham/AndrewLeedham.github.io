@@ -18,9 +18,7 @@ youtube: "HowNot2Play"
 
 # Collections
 collections:
-- photoshoots
 - projects
-- icons
 
 # Build settings
 markdown: kramdown
