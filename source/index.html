@@ -37,9 +37,9 @@ layout: default
         {% assign prev_id = site.projects[prev_index].title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
         <label class="photo" data-title="{{ project.title }}" for="{{ id }}">
           <picture>
-            <source srcset="{{ '/thumbnail.webp' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl }}" type="image/webp">
-            <source srcset="{{ '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl }}" type="image/jpeg"> 
-            <img src="{{ '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl }}" alt="{{ project.title | append: 'Thumbnail' }}">
+            <source srcset="{{ '/thumbnail.webp' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/webp">
+            <source srcset="{{ '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/jpeg"> 
+            <img src="{{ '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' }}" alt="{{ project.title | append: 'Thumbnail' }}">
           </picture>
         </label>
 
@@ -79,9 +79,9 @@ layout: default
       {% for photoshoot in site.data.photoshoots %}
         <a class="photo" href="{{ photoshoot.link }}" target="_blank" data-title="{{ photoshoot.title }}">
           <picture>
-            <source srcset="{{ '/thumbnail.webp' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl }}" type="image/webp">
-            <source srcset="{{ '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl }}" type="image/jpeg"> 
-            <img src="{{ '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl }}" alt="{{ photoshoot.title | append: ' Thumbnail' }}">
+            <source srcset="{{ '/thumbnail.webp' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/webp">
+            <source srcset="{{ '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/jpeg"> 
+            <img src="{{ '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' }}" alt="{{ photoshoot.title | append: ' Thumbnail' }}">
           </picture>
         </a>
       {% endfor %}
