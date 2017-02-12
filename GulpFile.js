@@ -21,6 +21,9 @@ gulp.task("watch", function(){
 gulp.task("sass", function(){
     return gulp.src("./_sass/**/*.{sass,scss}")
         .pipe(plugins.sass())
+        .pipe(plugins.autoprefixer({
+            cascade: false
+        }))
         .pipe(gulp.dest("./css/"));
 });
 

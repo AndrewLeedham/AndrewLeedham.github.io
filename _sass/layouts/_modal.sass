@@ -6,8 +6,8 @@
   overflow: auto
   position: fixed
   display: none
-  +align-items(center)
-  +flex-direction(column)
+  align-items: center
+  flex-direction: column
   top: 0
   left: 0
   width: 100vw
@@ -28,10 +28,10 @@
       fill: $light-grey
       cursor: pointer
       transition: transform 0.5s ease-in-out
-      +transform-origin(center center)
-      +transform(rotate(0deg))
+      transform-origin: center center
+      transform: rotate(0deg)
       &:hover
-        +transform(rotate(90deg))
+        transform: rotate(90deg)
     
 
   .modal
@@ -78,10 +78,6 @@
         margin: 1rem 0
       a
         border-bottom: 0.1rem dotted $black
-    +media(max-width 500px)
-      #post
-        h2
-          font-size: 9vw
 
     .left-control, .right-control
       user-select: none
@@ -91,7 +87,7 @@
       top: 50%
       width: 20%
       text-align: center
-      +transform(translate(0, -50%))
+      transform: translate(0, -50%)
       svg.is
         width: 100px
         height: 100px
