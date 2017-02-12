@@ -4,7 +4,7 @@ var gulp = require("gulp"),
     sync = require("browser-sync").create(),
     webp = require("imagemin-webp");
 
-gulp.task("default", ["watch", "sass", "img", "jekyll", "favicons"]);
+gulp.task("default", ["watch", "sass", "img", "jekyll", "favicons", "js"]);
 
 gulp.task("watch", function(){
     sync.init({
@@ -16,6 +16,7 @@ gulp.task("watch", function(){
     });
     gulp.watch("./source/_sass/**/*.{sass,scss}", ["sass"]);
     gulp.watch("./source/_img/**/*.jpg", ["jpg"]);
+    gulp.watch("./source/_js/**/*.js", ["js"]);
 });
 
 gulp.task("sass", function(){
@@ -58,6 +59,15 @@ gulp.task("favicons", function(cb){
         replace: false
     }))
     .pipe(gulp.dest("./source/"));
+});
+
+gulp.task("js", function(cb){
+    return gulp.src("./source/_js/**/*.js")
+    .pipe(plugins.uglify())
+    .pipe(plugins.concatUtil("script.js"))
+    .pipe(plugins.concatUtil.header("(function(){'use scrict';"))
+    .pipe(plugins.concatUtil.footer("})();"))
+    .pipe(gulp.dest("./source/js/"));
 });
 
 gulp.task("jekyll", function(cb){
