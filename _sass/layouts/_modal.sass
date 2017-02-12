@@ -5,45 +5,17 @@
 .modal-container
   overflow: auto
   position: fixed
-  display: flex
-  opacity: 1
+  display: none
   +align-items(center)
   +flex-direction(column)
-  +transition(visibility 0s linear 0.25s, opacity 0.25s ease-in-out 0s)
-  .content
-    +transition(opacity 0.25s ease-in-out 0s)
-    opacity: 0
-  visibility: hidden
   top: 0
   left: 0
-  //transform: translateX(100%)
   width: 100vw
   height: 100vh
   z-index: 20
   background: rgba(0, 0, 0, 0.7)
-  .photogrid input#toggle-modal-close[type="radio"]:checked ~ &
-    opacity: 0
-    .content
-        opacity: 1
   .photogrid input[type="radio"]:checked + &
-    +transition(visibility 0s linear 0.25s)
-    // max-height: initial
-    visibility: visible
-    .content
-        +transition(opacity 0.25s ease-in-out 0.25s)
-        opacity: 1
-    
-    // +display(flex)
-    // transform: translateX(0)
-    //+transition(left 0.25s ease-in-out)
-  //.photogrid input[type="radio"]:checked[id$='-prev'] ~ &
-    //opacity: 1
-    // +display(flex)
-    // transform: translateX(0)
-  //.photogrid input[type="radio"]:checked[id$='-next'] ~ &
-    //opacity: 1
-    // +display(flex)
-    // transform: translateX(0)
+    display: flex
   .close
     position: fixed
     right: 0

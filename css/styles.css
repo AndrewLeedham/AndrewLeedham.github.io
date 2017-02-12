@@ -2650,8 +2650,7 @@ footer {
 .modal-container {
   overflow: auto;
   position: fixed;
-  display: flex;
-  opacity: 1;
+  display: none;
   -webkit-box-align: center;
   -moz-box-align: center;
   box-align: center;
@@ -2671,35 +2670,14 @@ footer {
   -moz-flex-direction: column;
   flex-direction: column;
   -ms-flex-direction: column;
-  -webkit-transition: visibility 0s linear 0.25s, opacity 0.25s ease-in-out 0s;
-  -moz-transition: visibility 0s linear 0.25s, opacity 0.25s ease-in-out 0s;
-  transition: visibility 0s linear 0.25s, opacity 0.25s ease-in-out 0s;
-  visibility: hidden;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 20;
   background: rgba(0, 0, 0, 0.7); }
-  .modal-container .content {
-    -webkit-transition: opacity 0.25s ease-in-out 0s;
-    -moz-transition: opacity 0.25s ease-in-out 0s;
-    transition: opacity 0.25s ease-in-out 0s;
-    opacity: 0; }
-  .photogrid input#toggle-modal-close[type="radio"]:checked ~ .modal-container {
-    opacity: 0; }
-    .photogrid input#toggle-modal-close[type="radio"]:checked ~ .modal-container .content {
-      opacity: 1; }
   .photogrid input[type="radio"]:checked + .modal-container {
-    -webkit-transition: visibility 0s linear 0.25s;
-    -moz-transition: visibility 0s linear 0.25s;
-    transition: visibility 0s linear 0.25s;
-    visibility: visible; }
-    .photogrid input[type="radio"]:checked + .modal-container .content {
-      -webkit-transition: opacity 0.25s ease-in-out 0.25s;
-      -moz-transition: opacity 0.25s ease-in-out 0.25s;
-      transition: opacity 0.25s ease-in-out 0.25s;
-      opacity: 1; }
+    display: flex; }
   .modal-container .close {
     position: fixed;
     right: 0;
