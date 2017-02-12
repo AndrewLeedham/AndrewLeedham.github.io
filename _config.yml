@@ -25,3 +25,5 @@ markdown: kramdown
 highlighter: rouge
 exclude: [todo.md, safe.storage, package.json, node_modules, GulpFile.js]
 empty: []
+source: "./source/"
+destination: "./dest/"

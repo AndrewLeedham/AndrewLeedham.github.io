@@ -4,38 +4,60 @@ var gulp = require("gulp"),
     sync = require("browser-sync").create(),
     webp = require("imagemin-webp");
 
-gulp.task("default", ["watch", "sass", "img", "jekyll"]);
+gulp.task("default", ["watch", "sass", "img", "jekyll", "favicons"]);
 
 gulp.task("watch", function(){
     sync.init({
-        files: ["./_site/**"],
+        files: ["./source/_site/**"],
         port: 4000,
         server: {
-            baseDir: "./_site/"
+            baseDir: "./dest/"
         }
     });
-    gulp.watch("./_sass/**/*.{sass,scss}", ["sass"]);
-    gulp.watch("./_img/**/*.jpg", ["jpg"]);
+    gulp.watch("./source/_sass/**/*.{sass,scss}", ["sass"]);
+    gulp.watch("./source/_img/**/*.jpg", ["jpg"]);
 });
 
 gulp.task("sass", function(){
-    return gulp.src("./_sass/**/*.{sass,scss}")
+    return gulp.src("./source/_sass/**/*.{sass,scss}")
         .pipe(plugins.sass())
         .pipe(plugins.autoprefixer({
             cascade: false
         }))
-        .pipe(gulp.dest("./css/"));
+        .pipe(gulp.dest("./source/css/"));
 });
 
 gulp.task("img", ["jpg"/*, "png", "svg"*/]);
 
 gulp.task("jpg", function(){
-    return gulp.src("./_img/**/*.jpg")
+    return gulp.src("./source/_img/**/*.jpg")
     .pipe(plugins.imagemin([ plugins.imagemin.jpegtran({progressive: true}) ]))
-    .pipe(gulp.dest("./img/"))
+    .pipe(gulp.dest("./source/img/"))
     .pipe(plugins.imagemin([ webp({quality: 80}) ]))
     .pipe(plugins.rename({extname: ".webp"}))
-    .pipe(gulp.dest("./img/"));
+    .pipe(gulp.dest("./source/img/"));
+});
+
+gulp.task("favicons", function(cb){
+    return gulp.src("./source/_img/logo.svg")
+    .pipe(plugins.favicons({
+        appName: "Andrew Leedham's Portfolio",
+        appDescription: "Andrew Leedham: Web Developer and Designer",
+        developerName: "Andrew Leedham",
+        developerUrl: "http://andrewleedham.me",
+        background: "#FFFFFF",
+        path: "./source/",
+        display: "browser",
+        orientation: "portrait",
+        start_url: "./source/",
+        version: "2.0",
+        logging: false,
+        online: false,
+        html: "./source/_includes/head.html",
+        pipeHTML: false,
+        replace: false
+    }))
+    .pipe(gulp.dest("./source/"));
 });
 
 gulp.task("jekyll", function(cb){
