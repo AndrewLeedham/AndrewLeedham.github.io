@@ -7,26 +7,27 @@
   overflow-x: hidden
   position: fixed
   display: none
-  align-items: center
-  flex-direction: column
+  // align-items: center
+  // flex-direction: column
   top: 0
   left: 0
   width: 100vw
   height: 100vh
   z-index: 20
   background: rgba(0, 0, 0, 0.7)
-  padding: 30px 0
+  // padding: 30px 0
   input[type="radio"]:not(:checked) + &
-    display: flex
+    // display: flex
+    display: block
   .close
     position: fixed
     right: 0
     top: 0
     line-height: 0
-    padding: 30px 30px 0 0
+    padding: 20px 20px 0 0
     svg.is
-      width: 64px
-      height: 64px
+      width: 48px
+      height: 48px
       fill: $light-grey
       cursor: pointer
       transition: transform 0.5s ease-in-out
@@ -35,6 +36,7 @@
       &:hover
         transform: rotate(90deg)
   .left-control, .right-control
+    z-index: 21
     user-select: none
     .no-js &
       display: none
@@ -43,20 +45,25 @@
     text-align: center
     transform: translate(0, -50%)
     svg.is
-      width: 100px
-      height: 100px
+      width: 48px
+      height: 48px
       fill: $light-grey
       cursor: pointer
   .left-control
-    left: 10%
-    margin-left: -50px
+    left: 20px
+    margin-left: -24px
   .right-control
-    right: 10%
-    margin-right: -50px
+    right: 20px
+    margin-right: -24px
+  // .left-control
+  //   left: 10%
+  //   margin-left: -50px
+  // .right-control
+  //   right: 10%
+  //   margin-right: -50px
 .modal
-  width: 60%
   background: white
-  border-radius: 5px
+  // border-radius: 5px
   display: none
   input[type="radio"]:checked + &
     display: block
@@ -71,7 +78,8 @@
       color: $light-grey
   .content
     margin-bottom: 2rem
-    padding: 90px
+    padding: 90px 20px
+    box-sizing: border-box
     ol
       list-style-type: decimal
     ul

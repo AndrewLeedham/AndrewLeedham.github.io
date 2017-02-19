@@ -2,7 +2,15 @@ var gulp = require("gulp"),
     spawn = require("child_process").spawn,
     plugins = require("gulp-load-plugins")(),
     sync = require("browser-sync").create(),
-    webp = require("imagemin-webp");
+    webp = require("imagemin-webp"),
+    path = require("path");
+
+var SASS_INCLUDES = [
+    path.join(__dirname, "/node_modules/bourbon-neat/core/"),
+    path.join(__dirname, "/node_modules/bourbon/app/assets/stylesheets/")
+]
+
+console.log(SASS_INCLUDES);
 
 gulp.task("default", ["watch", "sass", "img", "jekyll", "favicons", "js"]);
 
@@ -21,7 +29,7 @@ gulp.task("watch", function(){
 
 gulp.task("sass", function(){
     return gulp.src("./source/_sass/**/*.{sass,scss}")
-        .pipe(plugins.sass())
+        .pipe(plugins.sass({includePaths: SASS_INCLUDES}))
         .pipe(plugins.autoprefixer({
             cascade: false
         }))

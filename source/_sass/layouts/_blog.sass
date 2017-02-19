@@ -52,10 +52,10 @@
         &.active
           text-decoration: underline
 
-+media(max-width 900px)
+@media (max-width: 900px)
   #archive
     #sort
-      +span-columns(12)
+      +grid-column(12)
       text-align: center
       padding-right: 0
       height: auto
@@ -64,22 +64,22 @@
         width: 100%
         margin-bottom: 2rem
       ul
-        +column-count(3)
+        column-count: 3
         margin-top: 2rem
         height: auto
         li
           margin-top: 0
     #blog
-      +span-columns(12)
+      +grid-column(12)
 
-+media(max-width 550px)
+@media (max-width: 550px)
   #archive
     #sort
       ul
-        +column-count(2)
+        column-count: 2
 
-+media(max-width 370px)
+@media (max-width: 370px)
   #archive
     #sort
       ul
-        +column-count(1)
+        column-count: 1

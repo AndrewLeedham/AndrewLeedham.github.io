@@ -26,6 +26,8 @@
   },
   "homepage": "https://github.com/AndrewLeedham/AndrewLeedham.github.io#readme",
   "devDependencies": {
+    "bourbon": "^4.3.2",
+    "bourbon-neat": "^2.0.0",
     "browser-sync": "^2.18.7",
     "child_process": "^1.0.2",
     "gulp": "^3.9.1",
@@ -39,7 +41,8 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.0.1",
     "gulp-util": "^3.0.8",
-    "imagemin-webp": "^4.0.0"
+    "imagemin-webp": "^4.0.0",
+    "path": "^0.12.7"
   },
   "browserslist": [
     "not ie <= 8"
