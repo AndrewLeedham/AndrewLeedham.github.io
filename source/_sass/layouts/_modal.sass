@@ -4,6 +4,7 @@
 
 .modal-container
   overflow: auto
+  overflow-x: hidden
   position: fixed
   display: none
   align-items: center
@@ -14,7 +15,8 @@
   height: 100vh
   z-index: 20
   background: rgba(0, 0, 0, 0.7)
-  .photogrid input[type="radio"]:checked + &
+  padding: 30px 0
+  input[type="radio"]:not(:checked) + &
     display: flex
   .close
     position: fixed
@@ -32,68 +34,154 @@
       transform: rotate(0deg)
       &:hover
         transform: rotate(90deg)
-    
-
-  .modal
-    // position: relative
-    width: 60%
-    background: white
-    border-radius: 5px
-    margin: 30px 0
-    h2
-      display: inline-block
-      width: auto
-      text-align: right
-      margin: 0
-      span.date
-        width: 100%
-        font-size: 20px
-        color: $light-grey
-    .content
-      margin-bottom: 2rem
-      padding: 90px
-      ol
-        list-style-type: decimal
-      ul
-        list-style-type: initial
-      ul, ol
-        font-size: 1.2rem
-        list-style-position: inside
-        padding: 1rem
-        line-height: 1.5rem
-        li
-          margin: 1rem 0
-          &:first-child
-            margin-top: 0
-          &:last-child
-            margin-bottom: 0
-      blockquote
-        border-left: 0.75rem solid $light-turquoise
-        margin: 1rem
-        em
-          text-decoration: none
-          color: $light-grey
-      img
-        max-width: 100%
+  .left-control, .right-control
+    user-select: none
+    .no-js &
+      display: none
+    position: fixed
+    top: 50%
+    text-align: center
+    transform: translate(0, -50%)
+    svg.is
+      width: 100px
+      height: 100px
+      fill: $light-grey
+      cursor: pointer
+  .left-control
+    left: 10%
+    margin-left: -50px
+  .right-control
+    right: 10%
+    margin-right: -50px
+.modal
+  width: 60%
+  background: white
+  border-radius: 5px
+  display: none
+  input[type="radio"]:checked + &
+    display: block
+  h2
+    display: inline-block
+    width: auto
+    text-align: right
+    margin: 0
+    span.date
+      width: 100%
+      font-size: 20px
+      color: $light-grey
+  .content
+    margin-bottom: 2rem
+    padding: 90px
+    ol
+      list-style-type: decimal
+    ul
+      list-style-type: initial
+    ul, ol
+      font-size: 1.2rem
+      list-style-position: inside
+      padding: 1rem
+      line-height: 1.5rem
+      li
         margin: 1rem 0
-      a
-        border-bottom: 0.1rem dotted $black
+        &:first-child
+          margin-top: 0
+        &:last-child
+          margin-bottom: 0
+    blockquote
+      border-left: 0.75rem solid $light-turquoise
+      margin: 1rem
+      em
+        text-decoration: none
+        color: $light-grey
+    img
+      max-width: 100%
+      margin: 1rem 0
+    a
+      border-bottom: 0.1rem dotted $black
 
-    .left-control, .right-control
-      user-select: none
-      .no-js &
-        display: none
-      position: fixed
-      top: 50%
-      width: 20%
-      text-align: center
-      transform: translate(0, -50%)
-      svg.is
-        width: 100px
-        height: 100px
-        fill: $light-grey
-        cursor: pointer
-    .left-control
-      left: 0
-    .right-control
-      right: 0
+@keyframes leftActive
+  0%
+    max-height: 0px
+    visibility: hidden
+    transform: translate(-100vw, 0)
+  1%
+    max-height: 9999px
+    visibility: visible
+  100%
+    transform: translate(0, 0)
+    max-height: 9999px
+    visibility: visible
+
+@keyframes rightActive
+  0%
+    max-height: 0px
+    visibility: hidden
+    transform: translate(100vw, 0)
+  1%
+    max-height: 9999px
+    visibility: visible
+  100%
+    transform: translate(0, 0)
+    max-height: 9999px
+    visibility: visible
+
+@keyframes leftPrev
+  0%
+    transform: translate(0, 0)
+    max-height: 9999px
+    visibility: visible
+  99%
+    max-height: 9999px
+    visibility: visible
+  100%
+    transform: translate(-100vw, 0)
+    max-height: 0px
+    visibility: hidden
+
+
+@keyframes rightPrev
+  0%
+    transform: translate(0, 0)
+    max-height: 9999px
+    visibility: visible
+  99%
+    max-height: 9999px
+    visibility: visible
+  100%
+    transform: translate(100vw, 0)
+    max-height: 0px
+    visibility: hidden
+
+input[type="radio"]:checked + .modal
+  transform: translate(0, 0)
+  max-height: 9999px
+  visibility: visible
+
+input[type="radio"]:not(:checked) + .modal
+  transform: translate(100vw, 0)
+  max-height: 0px
+  visibility: hidden
+
+html.js
+  .modal
+    position: absolute
+    display: block !important
+    &.prev  
+      &.left
+        animation: 0.25s ease-in-out leftPrev forwards
+      &.right
+        animation: 0.25s ease-in-out rightPrev forwards
+    &.active
+      &.left
+        animation: 0.25s ease-in-out leftActive forwards
+      &.right
+        animation: 0.25s ease-in-out rightActive forwards
+  // .modal
+  //   transition: transform 0.5s ease-in-out
+  //   transform: translate(0, 0)
+  //   &.left
+  //     transform: translate(-100vw, 0)
+  //   &.right
+  //     transform: translate(100vw, 0)
+  //   &.active
+  //     transform: translate(0, 0)

@@ -25,16 +25,9 @@ layout: default
   </div>
   <div id="projects" class="full">
     <div class="photogrid">
-      <input type="radio" id="toggle-modal-close" name="toggle-modal">
       {% assign total_projects = site.projects | size %}
-      {% assign total_index = total_projects | minus: 1 %}
-      {% for index in (0..total_index)) %}
-        {% assign project = site.projects[index] %}
+      {% for project in site.projects %}
         {% assign id = project.title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
-        {% assign next_index = index | plus: 1 | modulo: total_projects %}
-        {% assign prev_index = index | minus: 1 | modulo: total_projects %}
-        {% assign next_id = site.projects[next_index].title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
-        {% assign prev_id = site.projects[prev_index].title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
         <label class="photo" data-title="{{ project.title }}" for="{{ id }}">
           <picture>
             <source srcset="{{ '/thumbnail.webp' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/webp">
@@ -42,30 +35,33 @@ layout: default
             <img src="{{ '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' }}" alt="{{ project.title | append: 'Thumbnail' }}">
           </picture>
         </label>
-
-        <input type="radio" id="{{ id }}" name="toggle-modal">
-        <div class="modal-container">
-            <div class="modal">
-              {% if total_projects > 1 %}
-              <label class="left-control" for="{{ prev_id }}">
-                {% include iconset/caret-left.svg %}
-              </label>
-              {% endif %}
-              <div class="full content">
-                <div class="center">
-                  <h2>{{ project.title }}<br/><span class="date">{{ project.date | date: '%d/%m/%Y' }}</span></h2>
-                </div>
-                {{ project.content | markdownify }}
-              </div>
-              {% if total_projects > 1 %}
-              <label class="right-control" for="{{ next_id }}">
-                {% include iconset/caret-right.svg %}
-              </label>
-              {% endif %}
-            </div>
-            <label class="close" for="toggle-modal-close">{% include iconset/cross.svg %}</label>
-          </div>
       {% endfor %}
+      <input type="radio" id="toggle-modal-close" name="toggle-modal" checked>
+      <div class="modal-container">
+        {% if total_projects > 1 %}
+          <span class="left-control">
+            {% include iconset/caret-left.svg %}
+          </span>
+        {% endif %}
+        {% for project in site.projects %}
+          {% assign id = project.title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
+          <input type="radio" id="{{ id }}" name="toggle-modal">
+          <div class="modal">
+            <div class="full content">
+              <div class="center">
+                <h2>{{ project.title }}<br/><span class="date">{{ project.date | date: '%d/%m/%Y' }}</span></h2>
+              </div>
+              {{ project.content | markdownify }}
+            </div>
+          </div>
+        {% endfor %}
+        <label class="close" for="toggle-modal-close">{% include iconset/cross.svg %}</label>
+        {% if total_projects > 1 %}
+          <span class="right-control">
+            {% include iconset/caret-right.svg %}
+          </span>
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>

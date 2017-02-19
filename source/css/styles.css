@@ -2536,6 +2536,7 @@ footer {
 
 .modal-container {
   overflow: auto;
+  overflow-x: hidden;
   position: fixed;
   display: none;
   align-items: center;
@@ -2545,8 +2546,9 @@ footer {
   width: 100vw;
   height: 100vh;
   z-index: 20;
-  background: rgba(0, 0, 0, 0.7); }
-  .photogrid input[type="radio"]:checked + .modal-container {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px 0; }
+  input[type="radio"]:not(:checked) + .modal-container {
     display: flex; }
   .modal-container .close {
     position: fixed;
@@ -2564,64 +2566,142 @@ footer {
       transform: rotate(0deg); }
       .modal-container .close svg.is:hover {
         transform: rotate(90deg); }
-  .modal-container .modal {
-    width: 60%;
-    background: white;
-    border-radius: 5px;
-    margin: 30px 0; }
-    .modal-container .modal h2 {
-      display: inline-block;
-      width: auto;
-      text-align: right;
-      margin: 0; }
-      .modal-container .modal h2 span.date {
-        width: 100%;
-        font-size: 20px;
-        color: #bfbfbf; }
-    .modal-container .modal .content {
-      margin-bottom: 2rem;
-      padding: 90px; }
-      .modal-container .modal .content ol {
-        list-style-type: decimal; }
-      .modal-container .modal .content ul {
-        list-style-type: initial; }
-      .modal-container .modal .content ul, .modal-container .modal .content ol {
-        font-size: 1.2rem;
-        list-style-position: inside;
-        padding: 1rem;
-        line-height: 1.5rem; }
-        .modal-container .modal .content ul li, .modal-container .modal .content ol li {
-          margin: 1rem 0; }
-          .modal-container .modal .content ul li:first-child, .modal-container .modal .content ol li:first-child {
-            margin-top: 0; }
-          .modal-container .modal .content ul li:last-child, .modal-container .modal .content ol li:last-child {
-            margin-bottom: 0; }
-      .modal-container .modal .content blockquote {
-        border-left: 0.75rem solid #32807e;
-        margin: 1rem; }
-        .modal-container .modal .content blockquote em {
-          text-decoration: none;
-          color: #bfbfbf; }
-      .modal-container .modal .content img {
-        max-width: 100%;
+  .modal-container .left-control, .modal-container .right-control {
+    user-select: none;
+    position: fixed;
+    top: 50%;
+    text-align: center;
+    transform: translate(0, -50%); }
+    .no-js .modal-container .left-control, .no-js .modal-container .right-control {
+      display: none; }
+    .modal-container .left-control svg.is, .modal-container .right-control svg.is {
+      width: 100px;
+      height: 100px;
+      fill: #bfbfbf;
+      cursor: pointer; }
+  .modal-container .left-control {
+    left: 45px;
+    margin-left: -50px; }
+  .modal-container .right-control {
+    right: 45px;
+    margin-right: -50px; }
+
+.modal {
+  width: 100%;
+  background: white;
+  border-radius: 5px;
+  display: none; }
+  input[type="radio"]:checked + .modal {
+    display: block; }
+  .modal h2 {
+    display: inline-block;
+    width: auto;
+    text-align: right;
+    margin: 0; }
+    .modal h2 span.date {
+      width: 100%;
+      font-size: 20px;
+      color: #bfbfbf; }
+  .modal .content {
+    margin-bottom: 2rem;
+    padding: 90px; }
+    .modal .content ol {
+      list-style-type: decimal; }
+    .modal .content ul {
+      list-style-type: initial; }
+    .modal .content ul, .modal .content ol {
+      font-size: 1.2rem;
+      list-style-position: inside;
+      padding: 1rem;
+      line-height: 1.5rem; }
+      .modal .content ul li, .modal .content ol li {
         margin: 1rem 0; }
-      .modal-container .modal .content a {
-        border-bottom: 0.1rem dotted #000000; }
-    .modal-container .modal .left-control, .modal-container .modal .right-control {
-      user-select: none;
-      position: fixed;
-      top: 50%;
-      width: 20%;
-      text-align: center;
-      transform: translate(0, -50%); }
-      .no-js .modal-container .modal .left-control, .no-js .modal-container .modal .right-control {
-        display: none; }
-      .modal-container .modal .left-control svg.is, .modal-container .modal .right-control svg.is {
-        width: 100px;
-        height: 100px;
-        fill: #bfbfbf;
-        cursor: pointer; }
-    .modal-container .modal .left-control {
-      left: 0; }
-    .modal-container .modal .right-control {
-      right: 0; }
+        .modal .content ul li:first-child, .modal .content ol li:first-child {
+          margin-top: 0; }
+        .modal .content ul li:last-child, .modal .content ol li:last-child {
+          margin-bottom: 0; }
+    .modal .content blockquote {
+      border-left: 0.75rem solid #32807e;
+      margin: 1rem; }
+      .modal .content blockquote em {
+        text-decoration: none;
+        color: #bfbfbf; }
+    .modal .content img {
+      max-width: 100%;
+      margin: 1rem 0; }
+    .modal .content a {
+      border-bottom: 0.1rem dotted #000000; }
+
+@keyframes leftActive {
+  0% {
+    max-height: 0px;
+    visibility: hidden;
+    transform: translate(-100vw, 0); }
+  1% {
+    max-height: 9999px;
+    visibility: visible; }
+  100% {
+    transform: translate(0, 0);
+    max-height: 9999px;
+    visibility: visible; } }
+
+@keyframes rightActive {
+  0% {
+    max-height: 0px;
+    visibility: hidden;
+    transform: translate(100vw, 0); }
+  1% {
+    max-height: 9999px;
+    visibility: visible; }
+  100% {
+    transform: translate(0, 0);
+    max-height: 9999px;
+    visibility: visible; } }
+
+@keyframes leftPrev {
+  0% {
+    transform: translate(0, 0);
+    max-height: 9999px;
+    visibility: visible; }
+  99% {
+    max-height: 9999px;
+    visibility: visible; }
+  100% {
+    transform: translate(-100vw, 0);
+    max-height: 0px;
+    visibility: hidden; } }
+
+@keyframes rightPrev {
+  0% {
+    transform: translate(0, 0);
+    max-height: 9999px;
+    visibility: visible; }
+  99% {
+    max-height: 9999px;
+    visibility: visible; }
+  100% {
+    transform: translate(100vw, 0);
+    max-height: 0px;
+    visibility: hidden; } }
+
+input[type="radio"]:checked + .modal {
+  transform: translate(0, 0);
+  max-height: 9999px;
+  visibility: visible; }
+
+input[type="radio"]:not(:checked) + .modal {
+  transform: translate(100vw, 0);
+  max-height: 0px;
+  visibility: hidden; }
+
+html.js .modal {
+  position: absolute;
+  display: block !important; }
+  html.js .modal.prev.left {
+    animation: 0.25s ease-in-out leftPrev forwards; }
+  html.js .modal.prev.right {
+    animation: 0.25s ease-in-out rightPrev forwards; }
+  html.js .modal.active.left {
+    animation: 0.25s ease-in-out leftActive forwards; }
+  html.js .modal.active.right {
+    animation: 0.25s ease-in-out rightActive forwards; }
