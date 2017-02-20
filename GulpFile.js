@@ -4,7 +4,8 @@ var gulp = require("gulp"),
     sync = require("browser-sync").create(),
     webp = require("imagemin-webp"),
     path = require("path"),
-    del = require('del');
+    del = require('del'),
+    close = require('browser-sync-close-hook');
 
 var SASS_INCLUDES = [
     path.join(__dirname, "/node_modules/bourbon-neat/core/"),
@@ -97,6 +98,12 @@ function jekyllBuild(done){
 };
 
 var watch = gulp.parallel(jekyll, function(){
+    sync.use({
+        plugin() {},
+        hooks: {
+        'client:js': close,
+        },
+    });
     sync.init({
         files: ["./source/_site/**"],
         port: 4000,
