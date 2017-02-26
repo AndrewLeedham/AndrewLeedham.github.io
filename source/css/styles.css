@@ -92,7 +92,7 @@ section .two-thirds, blockquote .two-thirds, .modal .two-thirds {
   float: left;
   margin-left: 20px; }
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
   section .half, blockquote .half, .modal .half {
     width: calc(100% - 40px);
     float: left;
@@ -109,7 +109,7 @@ section .two-thirds, blockquote .two-thirds, .modal .two-thirds {
   font-size: 16px; }
 
 body {
-  box-sizing: border-box; }
+  min-width: 320px; }
 
 body, select {
   font-family: 'Roboto', sans-serif; }
@@ -546,10 +546,11 @@ footer {
   display: none;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 20;
-  background: rgba(0, 0, 0, 0.7); }
+  background: white;
+  box-sizing: border-box; }
   input[type="radio"]:not(:checked) + .modal-container {
     display: block; }
   .modal-container .close {
@@ -558,6 +559,9 @@ footer {
     top: 0;
     line-height: 0;
     padding: 20px 20px 0 0; }
+    @media (min-width: 1200px) {
+      .modal-container .close {
+        padding: 30px 30px 0 0; } }
     .modal-container .close svg.is {
       width: 48px;
       height: 48px;
@@ -566,6 +570,10 @@ footer {
       transition: transform 0.5s ease-in-out;
       transform-origin: center center;
       transform: rotate(0deg); }
+      @media (min-width: 1200px) {
+        .modal-container .close svg.is {
+          width: 64px;
+          height: 64px; } }
       .modal-container .close svg.is:hover {
         transform: rotate(90deg); }
   .modal-container .left-control, .modal-container .right-control {
@@ -582,23 +590,41 @@ footer {
       height: 48px;
       fill: #bfbfbf;
       cursor: pointer; }
+      @media (min-width: 1200px) {
+        .modal-container .left-control svg.is, .modal-container .right-control svg.is {
+          width: 100px;
+          height: 100px; } }
   .modal-container .left-control {
-    left: 20px;
+    left: 28px;
     margin-left: -24px; }
   .modal-container .right-control {
-    right: 20px;
+    right: 28px;
     margin-right: -24px; }
+  @media (min-width: 1200px) {
+    .modal-container .left-control {
+      left: 10%;
+      margin-left: -50px; }
+    .modal-container .right-control {
+      right: 10%;
+      margin-right: -50px; } }
 
 .modal {
   background: white;
-  display: none; }
+  display: none;
+  max-height: 0;
+  visibility: hidden;
+  box-sizing: border-box;
+  width: 100%; }
   input[type="radio"]:checked + .modal {
     display: block; }
   .modal h2 {
     display: inline-block;
     width: auto;
     text-align: right;
-    margin: 0; }
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%; }
     .modal h2 span.date {
       width: 100%;
       font-size: 20px;
@@ -607,6 +633,12 @@ footer {
     margin-bottom: 2rem;
     padding: 90px 20px;
     box-sizing: border-box; }
+    @media (min-width: 1200px) {
+      .modal .content {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 0);
+        max-width: 60%; } }
     .modal .content ol {
       list-style-type: decimal; }
     .modal .content ul {
@@ -638,7 +670,7 @@ footer {
   0% {
     max-height: 0px;
     visibility: hidden;
-    transform: translate(-100vw, 0); }
+    transform: translate(-100%, 0); }
   1% {
     max-height: 9999px;
     visibility: visible; }
@@ -650,60 +682,72 @@ footer {
 @keyframes rightActive {
   0% {
     max-height: 0px;
+    min-height: 0px;
     visibility: hidden;
-    transform: translate(100vw, 0); }
+    transform: translate(100%, 0); }
   1% {
     max-height: 9999px;
+    min-height: 100%;
     visibility: visible; }
   100% {
     transform: translate(0, 0);
     max-height: 9999px;
+    min-height: 100%;
     visibility: visible; } }
 
 @keyframes leftPrev {
   0% {
+    position: fixed;
     transform: translate(0, 0);
     max-height: 9999px;
+    min-height: 100%;
     visibility: visible; }
   99% {
     max-height: 9999px;
+    min-height: 100%;
     visibility: visible; }
   100% {
-    transform: translate(-100vw, 0);
+    position: absolute;
+    transform: translate(-100%, 0);
     max-height: 0px;
+    min-height: 0px;
     visibility: hidden; } }
 
 @keyframes rightPrev {
   0% {
+    position: fixed;
     transform: translate(0, 0);
     max-height: 9999px;
+    min-height: 100%;
     visibility: visible; }
   99% {
     max-height: 9999px;
+    min-height: 100%;
     visibility: visible; }
   100% {
-    transform: translate(100vw, 0);
+    position: absolute;
+    transform: translate(100%, 0);
     max-height: 0px;
+    min-height: 0px;
     visibility: hidden; } }
 
 input[type="radio"]:checked + .modal {
+  min-height: 100%;
   transform: translate(0, 0);
   max-height: 9999px;
   visibility: visible; }
 
-input[type="radio"]:not(:checked) + .modal {
-  transform: translate(100vw, 0);
-  max-height: 0px;
-  visibility: hidden; }
-
 html.js .modal {
-  position: absolute;
-  display: block !important; }
-  html.js .modal.prev.left {
-    animation: 0.25s ease-in-out leftPrev forwards; }
-  html.js .modal.prev.right {
-    animation: 0.25s ease-in-out rightPrev forwards; }
-  html.js .modal.active.left {
-    animation: 0.25s ease-in-out leftActive forwards; }
-  html.js .modal.active.right {
-    animation: 0.25s ease-in-out rightActive forwards; }
+  position: absolute; }
+  html.js .modal.prev {
+    display: block; }
+    html.js .modal.prev.left {
+      animation: 0.25s ease-in-out leftPrev forwards; }
+    html.js .modal.prev.right {
+      animation: 0.25s ease-in-out rightPrev forwards; }
+  html.js .modal.active {
+    display: block; }
+    html.js .modal.active.left {
+      animation: 0.25s ease-in-out leftActive forwards; }
+    html.js .modal.active.right {
+      animation: 0.25s ease-in-out rightActive forwards; }

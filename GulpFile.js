@@ -14,7 +14,7 @@ var SASS_INCLUDES = [
 
 function sass(){
     return gulp.src("./source/_sass/**/*.{sass,scss}")
-        .pipe(plugins.sass({includePaths: SASS_INCLUDES}))
+        .pipe(plugins.sass({includePaths: SASS_INCLUDES}).on('error', plugins.sass.logError))
         .pipe(plugins.autoprefixer({
             cascade: false
         }))
