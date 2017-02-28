@@ -277,7 +277,7 @@ header#landing {
       background: rgba(50, 128, 126, 0.5);
       transition: opacity .5s ease-in-out;
       content: attr(data-title); }
-    .photogrid .photo:hover::after {
+    html.no-touch .photogrid .photo:hover::after {
       opacity: 1; }
 
 .fullscreen-photo {
@@ -540,19 +540,26 @@ footer {
   display: none; }
 
 .modal-container {
-  overflow: auto;
+  overflow: scroll;
   overflow-x: hidden;
   position: fixed;
-  display: none;
+  display: block;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 20;
   background: white;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  opacity: 0;
+  max-height: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, max-height 0s linear 0.5s, visibility 0s linear 0.5s; }
   input[type="radio"]:not(:checked) + .modal-container {
-    display: block; }
+    transition: opacity 0.5s ease-in-out, max-height 0s linear, visibility 0s linear;
+    visibility: visible;
+    max-height: 9999px;
+    opacity: 1; }
   .modal-container .close {
     position: fixed;
     right: 0;
@@ -574,7 +581,7 @@ footer {
         .modal-container .close svg.is {
           width: 64px;
           height: 64px; } }
-      .modal-container .close svg.is:hover {
+      html.no-touch .modal-container .close svg.is:hover {
         transform: rotate(90deg); }
   .modal-container .left-control, .modal-container .right-control {
     z-index: 21;

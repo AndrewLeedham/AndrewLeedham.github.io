@@ -31,8 +31,9 @@
       background: rgba($light-turquoise, 0.5)
       transition: opacity .5s ease-in-out
       content: attr(data-title)
-    &:hover::after
-      opacity: 1
+    html.no-touch &
+      &:hover::after
+        opacity: 1
 .fullscreen-photo
   position: fixed
   left: 0

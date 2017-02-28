@@ -50,10 +50,12 @@ function modalControl(right){
 }
 
 function modalOpen(){
+    body.style.width = body.offsetWidth.toString() + "px";
     body.style.overflow = "hidden";
 }
 
 function modalClose(){
+    body.style.removeProperty("width");
     body.style.removeProperty("overflow");
     for(var i = 0; i < modalsLength; i++){
         remove(modals[i], "left", "right", "prev", "active");
