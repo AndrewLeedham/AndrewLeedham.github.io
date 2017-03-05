@@ -4,5 +4,12 @@
         "link": "https://adobe.ly/2jLWWbM",
         "colour": "28, 69, 131",
         "description": "A selection of my favorite photos I took on holiday in Les 2 Alpes early 2017. I bought a Sony A330 shortly before, so I was still getting used to the camera."
+    },
+    {
+        "title": "Other",
+        "link": "https://www.instagram.com/andrew_leedham/",
+        "colour": "254, 219, 119",
+        "class": "instagram",
+        "description": "Instagram holds a variety of my photography, mainly shots I've taken while out and about rather than full photo-shoots from my DLSR."
     }
 ]

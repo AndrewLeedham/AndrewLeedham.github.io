@@ -4,16 +4,17 @@
   justify-content: center
   figure
     position: relative
-    width: 100%
+    min-width: 100%
     min-height: 400px
     overflow: hidden
     background-size: cover
     background-repeat: no-repeat
     background-position: center center
+    flex-grow: 1
     +tablet
-      max-width: 50%
+      min-width: 50%
     +desktop
-      max-width: 33.3%
+      min-width: 33.3%
     img
       position: relative
       top: 50%
@@ -33,6 +34,9 @@
       filter: blur(10px) brightness(130%)
       opacity: 0
       transition: opacity .5s ease-in-out
+    &.instagram figcaption
+      background-color: transparent !important
+      background-image: radial-gradient(circle at 33% 100%, rgba(254, 211, 115, 0.7) 4%, rgba(241, 82, 49, 0.7) 30%, rgba(217, 46, 127, 0.7) 62%, rgba(155, 54, 183, 0.7) 85%, rgba(81, 94, 207, 0.7))
     figcaption
       opacity: 0
       color: white
@@ -42,7 +46,7 @@
       top: 0
       left: 0
       width: 100%
-      min-height: 100%
+      height: 100%
       transition: opacity .5s ease-in-out, max-height 0s linear .5s, visibility 0s linear .5s
       padding: 30px
       box-sizing: border-box
@@ -53,6 +57,9 @@
       flex-direction: column
       justify-content: center
       align-items: center
+      // IE Flex bug fix
+      > *
+        max-width: 100%
       h2
         word-wrap: break-word
         overflow-wrap: break-word

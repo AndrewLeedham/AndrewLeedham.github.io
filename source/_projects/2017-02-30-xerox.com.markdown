@@ -1,0 +1,11 @@
+---
+title: "Xerox.com"
+categories: projects web xerox
+date:   2017-02-30 17:42:9 +0000
+colour: "217, 34, 49"
+description: "While working at Xerox in 2016/17, I developed the about page for Xerox.com."
+---
+<div class="full center" markdown="1">
+![mockup of xerox.com](/img/projects/Xerox.com/mockup.jpg)
+</div>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero excepturi, sit, quibusdam recusandae totam voluptatum amet quas possimus sed dignissimos cupiditate? Earum ad itaque impedit rem eveniet quam maiores sed.

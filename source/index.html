@@ -1,42 +1,69 @@
 ---
 layout: default
 ---
-<section id="about">
-  <div class="full center">
-    <h1>About</h1>
-  </div>
-  <div class="full center">
-    <img src="{{ '/img/me.png' | prepend: site.baseurl }}" alt="Portrait of Andrew Leedham"/>
-  </div>
-  <div class="row">
-    <div class="half">
-      <p>Hi, my name is Andrew Leedham. I grew up in Nottingham United Kingdom and studied A-Level Computing, Maths and Photography. I'm currently a student at Hull University studying Computer Science.</p>
-      <p>I am also an amateur Photographer, I enjoy landscape photography(mainly sunsets), as well as macro photography. See my <a href="#portfolio">portfolio</a> for my photography</p>
-    </div>
-    <div class="half">
-      <p>I love exploring new fields in Computing, I find them all fascinating. I've found that Web Design is the most rewarding and intriguing topic, I've designed a lot of websites in my time, including this one, most of my other projects aren't live, since I tend to develop websites for fun and to learn with no intended purpose. I did an internship at Riverdene Consulting in 2012, where I produced a digital sign in system for the office, so they could pull stats from the employees punctuality.</p>
-    </div>
+<section id="about" class="full-bleed">
+  <div class="full">
+    {% assign imagePath = site.baseurl | append: '/img/' %}
+    <article style="border-color: #4BBFBD;">
+      <div class="image" style="background-image: url({{ imagePath | append: 'me.jpg' }});"></div>
+      <div class="text">
+        <div class="title-container" style="border-color: #4BBFBD;">
+          <h2>Me Myself, and I</h2>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+        </p>
+      </div>
+    </article>
+    <article style="border-color: #E53A40;">
+      <div class="image" style="background-image: url({{ imagePath | append: 'xrx.jpg' }});"></div>
+      <div class="text">
+        <div class="title-container" style="border-color: #E53A40;">
+          <h2>Working at Xerox</h2>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+        </p>
+      </div>
+    </article>
+    <article style="border-color: #0D97BF;">
+        <div class="image" style="background-image: url({{ imagePath | append: 'hull.jpg' }});"></div>
+        <div class="text">
+          <div class="title-container" style="border-color: #0D97BF;">
+            <h2>University of Hull</h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+          </p>
+        </div>
+    </article>
+    <article style="border-color: #EC008C;">
+      <div class="image" style="background-image: url({{ imagePath | append: 'tns.jpg' }});"></div>
+      <div class="text">
+        <div class="title-container" style="border-color: #EC008C;">
+          <h2>Working at TNS</h2>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+        </p>
+      </div>
+    </article>
   </div>
 </section>
 <div class="full-background seperator"></div>
-<section id="projects">
-  <div class="full center">
-    <h1>Projects</h1>
-  </div>
+<section id="projects" class="full-bleed">
   <div id="projects" class="full">
     <div class="tile-grid">
       {% assign total_projects = site.projects | size %}
-      {% for project in site.projects %}
+      {% assign sorted = site.projects | sort: 'date' | reverse %}
+      {% for project in sorted %}
         {% assign id = project.title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
         {% assign background = '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' %}
         <figure style="background-image: url({{ background }});">
           <div class="blur" style="background-image: url({{ background }});"></div>
-          <!--<picture>
-            <source srcset="{{ background | replace: '.jpg', '.webp' }}" type="image/webp">
-            <source srcset="{{ background }}" type="image/jpeg"> 
-            <img src="{{ background }}" alt="{{ project.title | append: 'Thumbnail' }}">
-          </picture>-->
-            
             <figcaption style="background-color: rgba({{ project.colour }}, 0.7); ">
               <h2>{{ project.title }}</h2>
               <p>
@@ -77,32 +104,24 @@ layout: default
   </div>
 </section>
 <div class="full-background seperator"></div>
-<section id="blog">
-  <div class="full center">
-    <h1>Photography</h1>
-  </div>
+<section id="blog" class="full-bleed">
   <div id="projects" class="full">
     <div class="tile-grid">
       {% for photoshoot in site.data.photoshoots %}
        {% assign background = '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' %}
-        <figure style="background-image: url({{ background }});">
+        <figure style="background-image: url({{ background }});" class="{{ photoshoot.class }}">
           <div class="blur" style="background-image: url({{ background }});"></div>
           <figcaption style="background-color: rgba({{ photoshoot.colour }}, 0.7); ">
             <h2>{{ photoshoot.title }}</h2>
             <p>{{ photoshoot.description }}</p>
             <a href="{{ photoshoot.link }}" target="_blank" class="button button-hollow">Check it out...</a>
           </figcaption>
-          <!--<picture>
-            <source srcset="{{ '/thumbnail.webp' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/webp">
-            <source srcset="{{ '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/jpeg"> 
-            <img src="{{ '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' }}" alt="{{ photoshoot.title | append: ' Thumbnail' }}">
-          </picture>-->
         </figure>
       {% endfor %}
     </div>
   </div>
 </section>
-<div class="full-background" id="hello">
+<!--<div class="full-background" id="hello">
   <section>
     <div class="full center">
       <h1>Say Hello</h1>
@@ -151,5 +170,5 @@ layout: default
     <div class="full">
       <input type="submit" value="Send"/>
     </div>
-  </form>
+  </form>-->
 </section>

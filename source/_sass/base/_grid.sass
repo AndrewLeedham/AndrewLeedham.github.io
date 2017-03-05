@@ -1,19 +1,24 @@
+$gutterless-grid: (columns: 12, gutter: 0)
+section
 section, blockquote, .modal
   +grid-container
-  // .row
-  //   +row
-  //   width: 100%
-  article, .full
+  padding: 30px 0
+  +tablet
+    padding: 60px 0
+  .full
     +clearfix()
     +grid-column(12)
   .half
     +grid-column(6)
-  .third
-    +grid-column(4)
   .center
     text-align: center
-  .two-thirds
-    +grid-column(8)
+  &.full-bleed
+    padding: 0
+    .full
+      +clearfix()
+      +grid-column(12, $gutterless-grid)
+    .half
+      +grid-column(6, $gutterless-grid)
     
 @media (max-width: $mobile-max)
   section, blockquote, .modal
