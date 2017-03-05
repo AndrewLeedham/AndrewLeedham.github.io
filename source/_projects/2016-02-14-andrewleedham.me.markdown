@@ -2,6 +2,8 @@
 title: "AndrewLeedham.me"
 categories: projects web personal
 date:   2016-02-14 01:01:52 +0000
+colour: "50, 128, 126"
+description: "AndrewLeedham.me version 1.0. I designed and built this website in 2015. The purpose of the website was to show my skill and experience to potential placement employers."
 ---
 <div class="full center" markdown="1">
 ![mockup of andrewleedham.me](/img/projects/AndrewLeedham.me/mockup.jpg)
@@ -21,8 +23,8 @@ This is probably the third time I've redesigned my portfolio, over the last 5 ye
 
 So when it came to actually coding the website, I was fully prepared and knew what challenges to expect.
 </div>
+<div class="half" markdown="1">
 I coded the website using the following tools:
-
 * [Atom - Advanced Text-Editor](http://atom.io)
 * [Jekyll - Static blogging framework](http://jekyllrb.com)
 * [LiveReload - Automatic browser refreshing](http://livereload.com/)
@@ -34,3 +36,4 @@ I coded the website using the following tools:
 * [Formspree - contact form submission](http://formspree.io/)
 * [DISQUS - blog and project comments](https://disqus.com/)
 * [Font Awesome - icons](https://fortawesome.github.io/Font-Awesome/)
+</div>

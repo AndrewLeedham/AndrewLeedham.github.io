@@ -1,0 +1,52 @@
+body, select
+  font-family: 'Roboto', sans-serif
+
+code
+  font-family: 'Roboto Mono', monospace, sans-serif
+
+h1
+  font-size: 30px
+  margin-bottom: 30px
+  +desktop
+    font-size: 36px
+    margin-bottom: 36px
+h2
+  font-size: 28px
+  margin-bottom: 28px
+  +desktop
+    font-size: 32px
+    margin-bottom: 32px
+h3
+  font-size: 24px
+  margin-bottom: 24px
+  +desktop
+    font-size: 28px
+    margin-bottom: 28px
+
+p, ul, ol
+  font-size: 16px
+  line-height: 24px
+  margin-bottom: 24px
+  +desktop
+    font-size: 19px
+    line-height: 26px
+    margin-bottom: 26px
+ol
+  list-style-type: decimal
+ul
+  list-style-type: initial
+ul, ol
+  list-style-position: outside
+  padding: 0 16px
+  li
+    margin: 16px 0
+    &:first-child
+      margin-top: 0
+    &:last-child
+      margin-bottom: 0
+blockquote
+  border-left: 12px solid $light-turquoise
+  margin: 16px
+  em
+    text-decoration: none
+    color: $light-grey

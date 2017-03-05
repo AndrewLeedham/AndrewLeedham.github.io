@@ -3,7 +3,7 @@ layout: default
 ---
 <section id="about">
   <div class="full center">
-    <h2>About</h2>
+    <h1>About</h1>
   </div>
   <div class="full center">
     <img src="{{ '/img/me.png' | prepend: site.baseurl }}" alt="Portrait of Andrew Leedham"/>
@@ -21,20 +21,31 @@ layout: default
 <div class="full-background seperator"></div>
 <section id="projects">
   <div class="full center">
-    <h2>Projects</h2>
+    <h1>Projects</h1>
   </div>
   <div id="projects" class="full">
-    <div class="photogrid">
+    <div class="tile-grid">
       {% assign total_projects = site.projects | size %}
       {% for project in site.projects %}
         {% assign id = project.title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
-        <label class="photo" data-title="{{ project.title }}" for="{{ id }}">
-          <picture>
-            <source srcset="{{ '/thumbnail.webp' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/webp">
-            <source srcset="{{ '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/jpeg"> 
-            <img src="{{ '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' }}" alt="{{ project.title | append: 'Thumbnail' }}">
-          </picture>
-        </label>
+        {% assign background = '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' %}
+        <figure style="background-image: url({{ background }});">
+          <div class="blur" style="background-image: url({{ background }});"></div>
+          <!--<picture>
+            <source srcset="{{ background | replace: '.jpg', '.webp' }}" type="image/webp">
+            <source srcset="{{ background }}" type="image/jpeg"> 
+            <img src="{{ background }}" alt="{{ project.title | append: 'Thumbnail' }}">
+          </picture>-->
+            
+            <figcaption style="background-color: rgba({{ project.colour }}, 0.7); ">
+              <h2>{{ project.title }}</h2>
+              <p>
+                {{ project.description }}
+              </p>
+              <label class="button button-hollow" for="{{ id }}">Learn More...</label>
+            </figcaption>
+          
+        </figure>
       {% endfor %}
       <input type="radio" id="toggle-modal-close" name="toggle-modal" checked>
       <div class="modal-container">
@@ -68,18 +79,25 @@ layout: default
 <div class="full-background seperator"></div>
 <section id="blog">
   <div class="full center">
-    <h2>Photography</h2>
+    <h1>Photography</h1>
   </div>
   <div id="projects" class="full">
-    <div class="photogrid">
+    <div class="tile-grid">
       {% for photoshoot in site.data.photoshoots %}
-        <a class="photo" href="{{ photoshoot.link }}" target="_blank" data-title="{{ photoshoot.title }}">
-          <picture>
+       {% assign background = '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' %}
+        <figure style="background-image: url({{ background }});">
+          <div class="blur" style="background-image: url({{ background }});"></div>
+          <figcaption style="background-color: rgba({{ photoshoot.colour }}, 0.7); ">
+            <h2>{{ photoshoot.title }}</h2>
+            <p>{{ photoshoot.description }}</p>
+            <a href="{{ photoshoot.link }}" target="_blank" class="button button-hollow">Check it out...</a>
+          </figcaption>
+          <!--<picture>
             <source srcset="{{ '/thumbnail.webp' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/webp">
             <source srcset="{{ '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' }}" type="image/jpeg"> 
             <img src="{{ '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' }}" alt="{{ photoshoot.title | append: ' Thumbnail' }}">
-          </picture>
-        </a>
+          </picture>-->
+        </figure>
       {% endfor %}
     </div>
   </div>
@@ -87,7 +105,7 @@ layout: default
 <div class="full-background" id="hello">
   <section>
     <div class="full center">
-      <h2>Say Hello</h2>
+      <h1>Say Hello</h1>
     </div>
     <div class="full center">
       <ul>

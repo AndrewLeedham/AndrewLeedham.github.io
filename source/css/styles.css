@@ -117,17 +117,69 @@ body, select {
 code {
   font-family: 'Roboto Mono', monospace, sans-serif; }
 
+h1 {
+  font-size: 30px;
+  margin-bottom: 30px; }
+  @media (min-width: 1200px) {
+    h1 {
+      font-size: 36px;
+      margin-bottom: 36px; } }
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 28px; }
+  @media (min-width: 1200px) {
+    h2 {
+      font-size: 32px;
+      margin-bottom: 32px; } }
+
+h3 {
+  font-size: 24px;
+  margin-bottom: 24px; }
+  @media (min-width: 1200px) {
+    h3 {
+      font-size: 28px;
+      margin-bottom: 28px; } }
+
+p, ul, ol {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 24px; }
+  @media (min-width: 1200px) {
+    p, ul, ol {
+      font-size: 19px;
+      line-height: 26px;
+      margin-bottom: 26px; } }
+
+ol {
+  list-style-type: decimal; }
+
+ul {
+  list-style-type: initial; }
+
+ul, ol {
+  list-style-position: outside;
+  padding: 0 16px; }
+  ul li, ol li {
+    margin: 16px 0; }
+    ul li:first-child, ol li:first-child {
+      margin-top: 0; }
+    ul li:last-child, ol li:last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 12px solid #32807e;
+  margin: 16px; }
+  blockquote em {
+    text-decoration: none;
+    color: #bfbfbf; }
+
 /* LAYOUTS */
 section {
-  padding: 1.875rem;
-  margin-bottom: 2rem; }
-  section p {
-    font-size: 1.2rem;
-    padding: 1rem;
-    line-height: 1.5rem; }
-  section h2 {
-    font-size: 30px;
-    margin: 2rem; }
+  padding: 30px 0; }
+  @media (min-width: 769px) {
+    section {
+      padding: 60px 0; } }
 
 a {
   color: #0a1a19;
@@ -138,7 +190,7 @@ a {
   a:hover {
     color: #4bbfbd; }
 
-button, a.button, input[type=submit] {
+button, a.button, input[type=submit], label.button {
   cursor: pointer;
   display: inline-block;
   color: #e6e6e6;
@@ -150,7 +202,13 @@ button, a.button, input[type=submit] {
   transition: .25s ease-in-out;
   font-family: inherit;
   font-size: 100%; }
-  button:hover, a.button:hover, input[type=submit]:hover {
+  button.button-hollow, a.button.button-hollow, input[type=submit].button-hollow, label.button.button-hollow {
+    border: 0.0625rem solid white;
+    background: transparent; }
+    button.button-hollow:hover, a.button.button-hollow:hover, input[type=submit].button-hollow:hover, label.button.button-hollow:hover {
+      background: white;
+      color: black; }
+  button:hover, a.button:hover, input[type=submit]:hover, label.button:hover {
     background: none;
     color: #32807e; }
 
@@ -244,55 +302,78 @@ header#landing {
   width: 13rem;
   margin-bottom: 2rem; }
 
-.photogrid {
-  margin-bottom: 2rem;
+.tile-grid {
   display: flex;
-  flex-wrap: wrap; }
-  .photogrid label.photo {
-    cursor: pointer; }
-  .photogrid .photo {
+  flex-wrap: wrap;
+  justify-content: center; }
+  .tile-grid figure {
     position: relative;
-    flex-grow: 1;
-    width: 21.416rem;
-    height: 21.416rem;
-    overflow: hidden; }
-    .photogrid .photo img {
+    width: 100%;
+    min-height: 400px;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; }
+    @media (min-width: 769px) {
+      .tile-grid figure {
+        max-width: 50%; } }
+    @media (min-width: 1200px) {
+      .tile-grid figure {
+        max-width: 33.3%; } }
+    .tile-grid figure img {
       position: relative;
       top: 50%;
       left: 50%;
       width: 100%;
       transform: translate(-50%, -50%); }
-    .photogrid .photo::after {
+    .tile-grid figure .blur {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      filter: blur(10px) brightness(130%);
+      opacity: 0;
+      transition: opacity .5s ease-in-out; }
+    .tile-grid figure figcaption {
       opacity: 0;
       color: white;
       text-align: center;
-      line-height: 21.416rem;
       font-size: 2rem;
-      cursor: pointer;
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background: rgba(50, 128, 126, 0.5);
-      transition: opacity .5s ease-in-out;
-      content: attr(data-title); }
-    html.no-touch .photogrid .photo:hover::after {
+      min-height: 100%;
+      transition: opacity .5s ease-in-out, max-height 0s linear .5s, visibility 0s linear .5s;
+      padding: 30px;
+      box-sizing: border-box;
+      max-height: 0;
+      visibility: hidden;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      .tile-grid figure figcaption h2 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%; }
+      .tile-grid figure figcaption p {
+        text-align: left; }
+        .tile-grid figure figcaption p img {
+          display: none; }
+    .tile-grid figure:hover .blur, .tile-grid figure:focus .blur {
       opacity: 1; }
-
-.fullscreen-photo {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
-  z-index: 10; }
-  .fullscreen-photo .photo {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain; }
+    .tile-grid figure:hover figcaption, .tile-grid figure:focus figcaption {
+      transition: opacity .5s ease-in-out, max-height 0s linear 0s, visibility 0s linear 0s;
+      max-height: 9999px;
+      visibility: visible;
+      opacity: 1; }
 
 #blog ul li {
   position: relative;
@@ -430,39 +511,15 @@ header#landing {
     margin-left: 20px; } }
 
 footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  color: white; }
-  footer section {
-    margin: 0 auto; }
-  footer#links {
-    background: #0a1a19; }
-    footer#links section > div {
-      display: flex;
-      justify-content: space-around; }
-    footer#links h4 {
-      font-size: 1.5rem;
-      margin: 1em 0;
-      text-align: center; }
-    footer#links ul {
-      margin: 1em 0; }
-      footer#links ul li {
-        margin: 1em 0; }
-        footer#links ul li a {
-          color: white; }
-          footer#links ul li a:hover {
-            color: #4bbfbd; }
-  footer#desc {
-    background: #19403e; }
-    footer#desc p {
-      font-size: 100%; }
-
-@media (max-width: 650px) {
-  footer#links ul {
-    display: block;
-    margin: auto;
-    text-align: center; }
-  footer#links section > div {
-    flex-direction: column; } }
+  padding: 20px;
+  box-sizing: border-box; }
+  footer img {
+    width: 40px;
+    height: auto; }
 
 .highlighter-rouge {
   background: #e6e6e6;
@@ -536,7 +593,7 @@ footer {
   .highlight .vc, .highlight .vg, .highlight .vi {
     color: #0a1a19; }
 
-.photogrid input[type="radio"] {
+.tile-grid input[type="radio"] {
   display: none; }
 
 .modal-container {
@@ -564,8 +621,7 @@ footer {
     position: fixed;
     right: 0;
     top: 0;
-    line-height: 0;
-    padding: 20px 20px 0 0; }
+    line-height: 0; }
     @media (min-width: 1200px) {
       .modal-container .close {
         padding: 30px 30px 0 0; } }
@@ -602,10 +658,10 @@ footer {
           width: 100px;
           height: 100px; } }
   .modal-container .left-control {
-    left: 28px;
+    left: 10px;
     margin-left: -24px; }
   .modal-container .right-control {
-    right: 28px;
+    right: 10px;
     margin-right: -24px; }
   @media (min-width: 1200px) {
     .modal-container .left-control {
@@ -638,7 +694,7 @@ footer {
       color: #bfbfbf; }
   .modal .content {
     margin-bottom: 2rem;
-    padding: 90px 20px;
+    padding: 60px 0;
     box-sizing: border-box; }
     @media (min-width: 1200px) {
       .modal .content {
@@ -646,27 +702,6 @@ footer {
         left: 50%;
         transform: translate(-50%, 0);
         max-width: 60%; } }
-    .modal .content ol {
-      list-style-type: decimal; }
-    .modal .content ul {
-      list-style-type: initial; }
-    .modal .content ul, .modal .content ol {
-      font-size: 1.2rem;
-      list-style-position: inside;
-      padding: 1rem;
-      line-height: 1.5rem; }
-      .modal .content ul li, .modal .content ol li {
-        margin: 1rem 0; }
-        .modal .content ul li:first-child, .modal .content ol li:first-child {
-          margin-top: 0; }
-        .modal .content ul li:last-child, .modal .content ol li:last-child {
-          margin-bottom: 0; }
-    .modal .content blockquote {
-      border-left: 0.75rem solid #32807e;
-      margin: 1rem; }
-      .modal .content blockquote em {
-        text-decoration: none;
-        color: #bfbfbf; }
     .modal .content img {
       max-width: 100%;
       margin: 1rem 0; }

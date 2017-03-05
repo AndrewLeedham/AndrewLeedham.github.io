@@ -2,6 +2,8 @@
 title: "Conduent.com"
 categories: projects web xerox
 date:   2016-12-10 11:26:13 +0000
+colour: "255, 135, 0"
+description: "While working at Xerox in 2016, I developed the landing page for the fortune 500 company Conduent."
 ---
 <div class="full center" markdown="1">
 ![mockup of conduent.com](/img/projects/Conduent.com/mockup.jpg)

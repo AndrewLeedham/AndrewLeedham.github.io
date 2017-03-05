@@ -1,15 +1,7 @@
 section
-  padding: 1.875rem
-  margin-bottom: 2rem
-  p
-    font-size: 1.2rem
-    padding: 1rem
-    line-height: 1.5rem
-
-  h2
-    font-size: 30px
-    margin: 2rem
-
+  padding: 30px 0
+  +tablet
+    padding: 60px 0
 a
   color: $darkest-turquoise
   transition: color .25s ease-in-out
@@ -19,12 +11,11 @@ a
   &:hover
     color: $lightest-turquoise
 
-button, a.button, input[type=submit]
+button, a.button, input[type=submit], label.button
   cursor: pointer
   display: inline-block
   color: $lightest-grey
   background: $light-turquoise
-  // border-radius: 0.625rem
   border-top-right-radius: 0.625rem
   border-bottom-left-radius: 0.625rem
   padding: 0.75rem 3rem
@@ -32,6 +23,12 @@ button, a.button, input[type=submit]
   transition: .25s ease-in-out
   font-family: inherit
   font-size: 100%
+  &.button-hollow
+    border: 0.0625rem solid white
+    background: transparent
+    &:hover
+      background: white
+      color: black
   &:hover
     background: none
     color: $light-turquoise
