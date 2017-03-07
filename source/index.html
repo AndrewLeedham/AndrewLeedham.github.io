@@ -2,6 +2,9 @@
 layout: default
 ---
 <section id="about" class="full-bleed">
+  <div class="section__title">
+    <h1>About</h1>
+  </div>
   <div class="full">
     {% assign imagePath = site.baseurl | append: '/img/' %}
     <article style="border-color: #4BBFBD;">
@@ -53,8 +56,11 @@ layout: default
     </article>
   </div>
 </section>
-<div class="full-background seperator"></div>
+<div class="seperator"></div>
 <section id="projects" class="full-bleed">
+  <div class="section__title">
+    <h1>Projects</h1>
+  </div>
   <div id="projects" class="full">
     <div class="tile-grid">
       {% assign total_projects = site.projects | size %}
@@ -103,8 +109,11 @@ layout: default
     </div>
   </div>
 </section>
-<div class="full-background seperator"></div>
+<div class="seperator"></div>
 <section id="blog" class="full-bleed">
+  <div class="section__title">
+    <h1>Photography</h1>
+  </div>
   <div id="projects" class="full">
     <div class="tile-grid">
       {% for photoshoot in site.data.photoshoots %}

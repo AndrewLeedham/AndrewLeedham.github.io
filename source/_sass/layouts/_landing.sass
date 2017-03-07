@@ -1,12 +1,14 @@
-header#landing
+header#parallax
   width: 100%
   height: 100vh
-  background: url(../img/landing.jpg) no-repeat center bottom fixed
-  background-size: cover
+  background: linear-gradient(0deg, #c8dace, #749ac9)
+  background-attachment: fixed
   display: flex
   justify-content: center
   align-items: center
   flex-direction: column
+  position: relative
+  overflow: hidden
   svg
     filter: drop-shadow(0.0625rem 0.0625rem 0.5rem rgba($black, 0.5))
     width: 20rem
@@ -15,3 +17,25 @@ header#landing
     filter: drop-shadow(0.0625rem 0.0625rem 0.2rem rgba($black, 0.5))
     color: white
     font-size: 1.6rem
+
+.header__image--background, .header__image--foreground
+  content: ""
+  display: block
+  position: absolute
+  top: 0
+  right: 0
+
+.header__image--background
+  background: url(../img/header-background.png) no-repeat
+  background-size: contain
+  width: 1920px
+  height: 1080px
+  // background-size: cover
+.header__image--foreground
+  // display: none
+  background: url(../img/header-foreground.png) no-repeat
+  background-size: contain
+  width: 1920px
+  height: 1380px
+  transform: translateY(150px)
+  // background-size: cover

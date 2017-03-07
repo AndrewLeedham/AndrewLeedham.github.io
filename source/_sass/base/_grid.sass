@@ -1,5 +1,5 @@
 $gutterless-grid: (columns: 12, gutter: 0)
-section
+
 section, blockquote, .modal
   +grid-container
   padding: 30px 0
@@ -31,3 +31,27 @@ section, blockquote, .modal
   background-repeat: no-repeat
   background-position: center center
   background-attachment: fixed
+
+section
+  position: relative
+
+.section__title
+  position: absolute
+  top: 0
+  left: 50%
+  margin-left: -150px
+  width: 300px
+  text-align: center
+  background: white
+  z-index: 1
+  padding: 20px 0
+  border-top-right-radius: 0.625rem
+  border-bottom-left-radius: 0.625rem
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25)
+  transition: transform 0.25s ease-in-out
+  .js &
+    transform: translateY(0)
+  &.in
+    transform: translateY(-50%)
+  h1
+    margin: 0

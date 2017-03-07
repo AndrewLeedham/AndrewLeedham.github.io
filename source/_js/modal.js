@@ -4,7 +4,6 @@ var modalContainer = document.querySelector(".modal-container");
 var leftControl = modalContainer.querySelector(".left-control");
 var rightControl = modalContainer.querySelector(".right-control");
 var close = modalContainer.querySelector(".close");
-var body = document.querySelector("body");
 var modalTriggers = modalContainer.querySelectorAll("input[type='radio']");
 var startTouchX = 0, startTouchY = 0;
 var swipeThreshold = 50;

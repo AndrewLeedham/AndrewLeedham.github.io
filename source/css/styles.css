@@ -111,6 +111,30 @@ section, blockquote, .modal {
   background-position: center center;
   background-attachment: fixed; }
 
+section {
+  position: relative; }
+
+.section__title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -150px;
+  width: 300px;
+  text-align: center;
+  background: white;
+  z-index: 1;
+  padding: 20px 0;
+  border-top-right-radius: 0.625rem;
+  border-bottom-left-radius: 0.625rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease-in-out; }
+  .js .section__title {
+    transform: translateY(0); }
+  .section__title.in {
+    transform: translateY(-50%); }
+  .section__title h1 {
+    margin: 0; }
+
 :root {
   font-size: 16px; }
 
@@ -208,11 +232,9 @@ button, a.button, input[type=submit], label.button {
     color: #32807e; }
 
 .seperator {
-  height: 16rem; }
-  .seperator:nth-of-type(odd) {
-    background-image: url(../img/quote.jpg); }
-  .seperator:nth-of-type(even) {
-    background-image: url(../img/quote1.jpg); }
+  height: 16rem;
+  background: url(../img/pattern.jpg);
+  background-attachment: fixed; }
 
 nav {
   box-sizing: border-box;
@@ -274,23 +296,45 @@ nav {
   padding: 0;
   height: 4.75rem; }
 
-header#landing {
+header#parallax {
   width: 100%;
   height: 100vh;
-  background: url(../img/landing.jpg) no-repeat center bottom fixed;
-  background-size: cover;
+  background: linear-gradient(0deg, #c8dace, #749ac9);
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; }
-  header#landing svg {
+  flex-direction: column;
+  position: relative;
+  overflow: hidden; }
+  header#parallax svg {
     filter: drop-shadow(0.0625rem 0.0625rem 0.5rem rgba(0, 0, 0, 0.5));
     width: 20rem;
     height: 7.125rem; }
-  header#landing p {
+  header#parallax p {
     filter: drop-shadow(0.0625rem 0.0625rem 0.2rem rgba(0, 0, 0, 0.5));
     color: white;
     font-size: 1.6rem; }
+
+.header__image--background, .header__image--foreground {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.header__image--background {
+  background: url(../img/header-background.png) no-repeat;
+  background-size: contain;
+  width: 1920px;
+  height: 1080px; }
+
+.header__image--foreground {
+  background: url(../img/header-foreground.png) no-repeat;
+  background-size: contain;
+  width: 1920px;
+  height: 1380px;
+  transform: translateY(150px); }
 
 #about article {
   position: relative;
