@@ -10,22 +10,27 @@ var header = document.getElementById("parallax");
 var headerBg = header.querySelector(".header__image--background");
 var headerFg = header.querySelector(".header__image--foreground");
 var fY = 0;
+var viewport = {w: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
+                h: Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+                scroll: 0};
+
+var FOREGROUND_DISTANCE = 100;
+var BACKGROUND_DISTANCE = -150;
 
 
-function parallax(scrollChange){
-    // console.log(scrollChange);
-    fY += scrollChange;
-    headerFg.style.transform = "translateY(" + ((100/1080) * fY - 100) + "px)";
-    headerBg.style.transform = "translateY(" + ((-150/1080) * fY) + "px)";
+
+function parallax(){
+    headerFg.style.transform = "translate(-50%, calc(-50% + " + ((FOREGROUND_DISTANCE / viewport.h) * viewport.scroll) + "px))";
+    headerBg.style.transform = "translate(-50%, calc(-50% + " + ((BACKGROUND_DISTANCE / viewport.h) * viewport.scroll - (BACKGROUND_DISTANCE / 2)) + "px))";
 }
-parallax(triggerScroll);
+parallax();
 
 
 
 
-function hideTitles(scroll){
+function hideTitles(){
     for(var i = 0; i < totalSections; i++){
-        if(scroll + window.innerHeight <= sections[i].offsetTop){
+        if(viewport.scroll + viewport.h <= sections[i].offsetTop){
             sectionTitles[i].classList.remove("in");
         }
         else{
@@ -36,13 +41,14 @@ function hideTitles(scroll){
 hideTitles(triggerScroll);
 
 window.addEventListener("scroll", function(){
-    var scrollChange = window.scrollY - triggerScroll;
-    triggerScroll = window.scrollY;
+    // var scrollChange = window.scrollY - triggerScroll;
+    // triggerScroll = window.scrollY;
+    viewport.scroll = window.scrollY;
     if(!ticking){
         window.requestAnimationFrame(function(){
-            hideTitles(triggerScroll);
+            hideTitles();
             // if(triggerScroll <= header.clientHeight){
-                parallax(scrollChange);
+                parallax();
             // }
             ticking = false;
         });
