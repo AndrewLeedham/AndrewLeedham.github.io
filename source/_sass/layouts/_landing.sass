@@ -11,12 +11,13 @@ header#parallax
   overflow: hidden
   svg
     filter: drop-shadow(0.0625rem 0.0625rem 0.5rem rgba($black, 0.5))
-    width: 20rem
-    height: 7.125rem
+    width: 300px
   p
     filter: drop-shadow(0.0625rem 0.0625rem 0.2rem rgba($black, 0.5))
     color: white
     font-size: 1.6rem
+    margin-bottom: 0
+    margin-top: 5px
 
 .header__image--background, .header__image--foreground
   content: ""
@@ -26,6 +27,7 @@ header#parallax
   left: 50%
   background-repeat: no-repeat
   background-size: cover
+  pointer-events: none
 
 .header__image--background
   background-image: url(../img/header-background.jpg)

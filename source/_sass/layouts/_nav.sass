@@ -1,60 +1,44 @@
 nav
   box-sizing: border-box
   z-index: 5
-  position: absolute
+  position: fixed
   top: 0
-  left: 0
-  width: 100%
-  +clearfix()
-  transition: background .5s ease-in-out, padding .5s ease-in-out
-  padding: 1.875rem
+  right: 0
+  width: auto
+  padding: 30px
   border: 0
+  background: white
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25)
+  border-top-left-radius: 0.625rem
+  border-bottom-right-radius: 0.625rem
+  
+  &:hover, &:focus
+    #links
+      width: 255px
+
   #logo
-    float: left
-    svg
-      width: 2.5rem
-      height: 2.5rem
-  #mobile
-    display: none
     float: right
-    font-size: 1.75rem
-    line-height: 2.5rem
+    svg
+      width: 40px
+      height: 40px
   #links
     float: right
+    overflow: hidden
+    width: 0px
+    transition: width 0.25s ease-in-out
     ul
+      margin: 0
+      padding: 0
+      overflow: visible
+      height: 40px
+      width: 255px
+      box-sizing: border-box
       a
         li
+          padding: 0
+          margin: 0
           display: inline
-          margin-left: 2.8125rem
-          height: 2.5rem
-          line-height: 2.5rem
-  &.fixed
-    position: fixed
-    background: white
-    border-bottom: 0.0625rem solid $darkest-turquoise
-    padding: 1rem
-@media (max-width: 500px)
-  nav
-    #mobile
-      display: inline
-    #links
-      display: none
-      float: none
-      position: fixed
-      left: 100%
-      top: 0
-      background: white
-      height: 100vh
-      padding: 0 3rem
-      border-left: 0.0625rem solid $darkest-turquoise
-      text-align: center
-      ul
-        a
-          li
-            display: list-item
-            margin-left: 0
-
-#offset
-  margin: 0
-  padding: 0
-  height: 4.75rem
+          margin-right: 45px
+          svg
+            width: 40px
+            height: 40px

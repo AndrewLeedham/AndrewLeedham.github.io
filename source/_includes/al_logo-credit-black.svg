@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.55 42.82">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 9px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+      }
+    </style>
+  </defs>
+  <title>al_logo-credit-black</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <g>
+          <path d="M21.78,42.82,20.53,36H13.35l-1.14,6.81h-6L12.83,10h8.06l6.91,32.8ZM14.13,31.49H19.7l-2.86-15.7Z"/>
+          <polygon points="30.75 10.01 22.34 10.01 22.89 12.59 30.75 12.59 30.75 40.23 28.72 40.23 29.25 42.82 33.49 42.82 33.49 42.79 33.49 40.23 33.49 12.59 33.49 10.01 30.75 10.01"/>
+          <polygon points="19.84 40.23 20.32 42.82 13.67 42.82 14.09 40.23 19.84 40.23"/>
+          <polygon points="10.87 12.6 11.4 10.02 3.53 10.01 3.53 10.01 0.79 10.01 0.79 12.59 0.79 40.2 0.79 42.79 3.53 42.79 4.79 42.79 5.3 40.2 3.53 40.2 3.53 12.6 10.87 12.6"/>
+        </g>
+        <text class="cls-1" transform="translate(0 7.68)">made <tspan class="cls-2" x="24.39" y="0">b</tspan><tspan x="29.26" y="0">y</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

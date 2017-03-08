@@ -1,30 +1,19 @@
 <nav>
   <div id="logo">
-    <a href="{{ '/' | prepend: site.baseurl }}">{% include logo.svg %}</a>
+    {% include al_logo-small-black.svg %}
+
   </div>
   <div id="links">
     <ul>
-      <a href="/#about">
-        <li>About</li>
-      </a>
-      <a href="/#projects">
-        <li>Projects</li>
-      </a>
-      <a href="/#photography">
-        <li>Photography</li>
-      </a>
-      <a href="/#contact">
-        <li>Contact</li>
-      </a>
+      <a href="#"><li>{% include iconset/cross.svg %}</li></a>
+      <a href="#"><li>{% include iconset/cross.svg %}</li></a>
+      <a href="#"><li>{% include iconset/cross.svg %}</li></a>
     </ul>
-  </div>
-  <div id="mobile">
-    <a href="javascript:void(0)"><i class="fa fa-bars"></i></a>
   </div>
 </nav>
 <header id="parallax">
   <div class="header__image--background"></div>
-  {% include title.svg %}
+  {% include al_logo-large-white.svg %}
   <p>Web Designer &amp; Developer</p>
   <div class="header__image--foreground"></div>
 </header>

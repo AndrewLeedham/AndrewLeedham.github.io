@@ -36,10 +36,16 @@ function png(){
     .pipe(gulp.dest("./source/img/"));
 };
 
-var img = gulp.parallel(jpg, png/*, svg*/);
+function svg(){
+    return gulp.src("./source/_img/**/*.svg")
+    .pipe(plugins.imagemin([ plugins.imagemin.svgo() ]))
+    .pipe(gulp.dest("./source/img/"));
+}
+
+var img = gulp.parallel(jpg, png, svg);
 
 function favicons(){
-    return gulp.src("./source/_img/logo.svg")
+    return gulp.src("./source/_includes/al_logo-small-black.svg")
     .pipe(plugins.favicons({
         appName: "Andrew Leedham's Portfolio",
         appDescription: "Andrew Leedham: Web Developer and Designer",
@@ -120,6 +126,7 @@ var watch = gulp.parallel(jekyll, function(){
     gulp.watch("./source/_sass/**/*.{sass,scss}", sass);
     gulp.watch("./source/_img/**/*.jpg", jpg);
     gulp.watch("./source/_img/**/*.png", png);
+    gulp.watch("./source/_img/**/*.svg", svg);
     gulp.watch("./source/_js/**/*.js", js);
 });
 
