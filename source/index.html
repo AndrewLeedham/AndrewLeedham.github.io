@@ -68,16 +68,29 @@ layout: default
       {% for project in sorted %}
         {% assign id = project.title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
         {% assign background = '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' %}
-        <figure style="background-image: url({{ background }});">
+        {% assign photoshoot = (project.type == "project") %}
+        <figure style="background-image: url({{ background }});" class="{{ project.class }}{% if project.featured %} featured{% endif %}">
           <div class="blur" style="background-image: url({{ background }});"></div>
-            <figcaption style="background-color: rgba({{ project.colour }}, 0.7); ">
-              <h2>{{ project.title }}</h2>
-              <p>
-                {{ project.description }}
-              </p>
+          <figcaption style="background-color: rgba({{ project.colour }}, 0.7); ">
+            <h2>{{ project.title }}</h2>
+            <p>
+              {{ project.description }}
+            </p>
+            {% if photoshoot %}
+              <a class="button button-hollow" href="{{ project.link }}">Check it out...</a>
+            {% endif %}
+            {% unless photoshoot %}
               <label class="button button-hollow" for="{{ id }}">Learn More...</label>
-            </figcaption>
-          
+            {% endunless %}
+          </figcaption>
+          <div class="type">
+            {% if photoshoot %}
+              {% include iconset/camera.svg %}
+            {% endif %}
+            {% unless photoshoot %}
+              {% include iconset/code.svg %}
+            {% endunless %}
+          </div>
         </figure>
       {% endfor %}
       <input type="radio" id="toggle-modal-close" name="toggle-modal" checked>
@@ -89,6 +102,8 @@ layout: default
         {% endif %}
         {% for project in site.projects %}
           {% assign id = project.title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
+          {% assign photoshoot = (project.type == "project") %}
+          {% unless photoshoot %}
           <input type="radio" id="{{ id }}" name="toggle-modal">
           <div class="modal">
             <div class="full content">
@@ -98,6 +113,7 @@ layout: default
               {{ project.content | markdownify }}
             </div>
           </div>
+          {% endunless %}
         {% endfor %}
         <label class="close" for="toggle-modal-close">{% include iconset/cross.svg %}</label>
         {% if total_projects > 1 %}
@@ -109,7 +125,7 @@ layout: default
     </div>
   </div>
 </section>
-<div class="seperator"></div>
+<!--<div class="seperator"></div>
 <section id="blog" class="full-bleed">
   <div class="section__title">
     <h1>Photography</h1>
@@ -118,7 +134,7 @@ layout: default
     <div class="tile-grid">
       {% for photoshoot in site.data.photoshoots %}
        {% assign background = '/thumbnail.jpg' | prepend: photoshoot.title | prepend: '/img/photoshoots/' | prepend: site.baseurl | replace, ' ', '%20' %}
-        <figure style="background-image: url({{ background }});" class="{{ photoshoot.class }}">
+        <figure style="background-image: url({{ background }});" class="{{ photoshoot.class }}{% if photoshoot.featured %} featured{% endif %}">
           <div class="blur" style="background-image: url({{ background }});"></div>
           <figcaption style="background-color: rgba({{ photoshoot.colour }}, 0.7); ">
             <h2>{{ photoshoot.title }}</h2>
@@ -129,7 +145,7 @@ layout: default
       {% endfor %}
     </div>
   </div>
-</section>
+</section>-->
 <!--<div class="full-background" id="hello">
   <section>
     <div class="full center">

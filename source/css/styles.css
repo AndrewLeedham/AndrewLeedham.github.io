@@ -386,22 +386,39 @@ header#parallax {
 .tile-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
+  flex-direction: column;
+  max-height: 1600px;
+  height: auto;
+  border: 5px solid white;
+  align-items: flex-start;
+  justify-content: flex-start; }
   .tile-grid figure {
     position: relative;
-    min-width: 100%;
+    width: 100%;
     min-height: 400px;
     overflow: hidden;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    flex-grow: 1; }
+    border: 5px solid white;
+    box-sizing: border-box; }
+    .tile-grid figure .type {
+      position: relative;
+      padding: 20px;
+      background: white;
+      width: 32px;
+      height: 32px;
+      z-index: 1; }
+    .tile-grid figure.featured {
+      min-height: 100vh; }
     @media (min-width: 769px) {
       .tile-grid figure {
-        min-width: 50%; } }
+        width: 50%; }
+        .tile-grid figure.featured {
+          min-height: 800px; } }
     @media (min-width: 1200px) {
       .tile-grid figure {
-        min-width: 33.3%; } }
+        width: 33.3%; } }
     .tile-grid figure img {
       position: relative;
       top: 50%;
