@@ -13,8 +13,8 @@ layout: default
         <div class="title-container" style="border-color: #4BBFBD;">
           <h2>Me Myself, and I</h2>
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+        <p>
+          I am a Computer Scientest with a passion for web. I've been tinkering with all things technology from a young age, like most developers. I grew up in Nottingham, where I studied Computing, Photography and Maths at College. I am currently working as a Web/Multimedia Front end Developer at Xerox, as part of my Computer Science degree at the University of Hull.
         </p>
       </div>
     </article>
@@ -25,8 +25,10 @@ layout: default
           <h2>Working at Xerox</h2>
         </div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+          I am currently Working at Xerox as a Web/Multimedia Front End Developer, as part of my University Course. My role is very hands on, and varied. I am very fortunate to work in a very skilled agile web team, and to be treated as a core member and not an intern.
+        </p>
+        <p>
+          So far, I have built several custom interactive components including those on the xerox about page. I also built the landing page for a fortune 500 company from the ground up, which was live on their primary domain(conduent.com) and viewed by key stakeholders. I have also worked on lots of smaller projects for various email campaigns and product launches.
         </p>
       </div>
     </article>
@@ -37,8 +39,7 @@ layout: default
             <h2>University of Hull</h2>
           </div>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+            I have been a student at the University of Hull for the past 3 years, studying Computer Science. I have made life long friends, experienced THE NORTH and broadened my knowledge on the wide variety of fields within the Computer Science domain. I already felt web development was the topic I wanted to focus on, but the '2D Graphics and User Interface Design' module really reinforced that. Comparing the various fields in Computer Science gave me a lot of confidence in the industry I chose, allowing me to compare and contrast across modules.
           </p>
         </div>
     </article>
@@ -49,14 +50,13 @@ layout: default
           <h2>Working at TNS</h2>
         </div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sed provident amet accusamus odio officiis, rerum, earum quasi ipsum laborum molestiae, rem ab sapiente obcaecati, quia aliquam vel? Porro, laudantium!
+          During my studies in Hull, I worked as a 'Phone Interviewer' in Hull's TNS call-center. I developed a distinct telephone voice, and learnt a lot about the views of the UK population. This gave me great insight in to working life, and taught me many life lessons. I also gained a lot of confidence and vocal ability from the experience.
         </p>
       </div>
     </article>
   </div>
 </section>
-<div class="seperator"></div>
+<!--<div class="seperator"></div>-->
 <section id="projects" class="full-bleed">
   <div class="section__title">
     <h1>Projects</h1>
@@ -67,7 +67,12 @@ layout: default
       {% assign sorted = site.projects | sort: 'date' | reverse %}
       {% for project in sorted %}
         {% assign id = project.title | replace: '.' , '' | replace: ' ', '' | replace: ',', '' | lowercase %}
-        {% assign background = '/thumbnail.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' %}
+        {% if project.featured %}
+          {% assign background = '/650x800.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' %}
+        {% endif %}
+        {% unless project.featured %}
+          {% assign background = '/650x400.jpg' | prepend: project.title | prepend: '/img/projects/' | prepend: site.baseurl | replace, ' ', '%20' %}
+        {% endunless %}
         {% assign photoshoot = (project.type == "project") %}
         <figure style="background-image: url({{ background }});" class="{{ project.class }}{% if project.featured %} featured{% endif %}">
           <div class="blur" style="background-image: url({{ background }});"></div>

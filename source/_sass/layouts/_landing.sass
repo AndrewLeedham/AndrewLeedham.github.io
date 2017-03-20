@@ -1,6 +1,8 @@
 header#parallax
   width: 100%
   height: 100vh
+  box-sizing: border-box
+  max-width: 100%
   // background: linear-gradient(0deg, #c8dace, #749ac9)
   background-attachment: fixed
   display: flex
@@ -12,12 +14,14 @@ header#parallax
   svg
     filter: drop-shadow(0.0625rem 0.0625rem 0.5rem rgba($black, 0.5))
     width: 300px
+    z-index: 1
   p
     filter: drop-shadow(0.0625rem 0.0625rem 0.2rem rgba($black, 0.5))
     color: white
     font-size: 1.6rem
     margin-bottom: 0
     margin-top: 5px
+    z-index: 1
 
 .header__image--background, .header__image--foreground
   content: ""
@@ -28,6 +32,7 @@ header#parallax
   background-repeat: no-repeat
   background-size: cover
   pointer-events: none
+  
 
 .header__image--background
   background-image: url(../img/header-background.jpg)
@@ -35,11 +40,13 @@ header#parallax
   min-height: 1230px
   width: 100%
   height: 100%
-  transform: translate(-50%, calc(-50% + 75px))
+  transform: translateX(-50%) translateY(-50%) translateY(75px)
+  z-index: 0
 .header__image--foreground
   background-image: url(../img/header-foreground.png)
   min-width: 1920px
   min-height: 1080px
   width: 100%
   height: 100%
-  transform: translate(-50%, calc(-50%))
+  transform: translateX(-50%) translateY(-50%)
+  z-index: 2

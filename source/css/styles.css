@@ -122,7 +122,7 @@ section {
   width: 300px;
   text-align: center;
   background: white;
-  z-index: 1;
+  z-index: 2;
   padding: 20px 0;
   border-top-right-radius: 0.625rem;
   border-bottom-left-radius: 0.625rem;
@@ -237,50 +237,71 @@ button, a.button, input[type=submit], label.button {
   background: url(../img/pattern.jpg);
   background-attachment: fixed; }
 
-nav {
-  box-sizing: border-box;
-  z-index: 5;
+#toggle-menu:checked ~ ul {
+  transform: translateX(0); }
+
+#toggle-menu:checked ~ .menu-toggle {
+  right: 100%; }
+  #toggle-menu:checked ~ .menu-toggle svg {
+    transform: rotate(180deg); }
+
+nav#social {
   position: fixed;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0;
-  width: auto;
-  padding: 30px;
-  border: 0;
-  background: white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-  border-top-left-radius: 0.625rem;
-  border-bottom-right-radius: 0.625rem; }
-  nav:hover #links, nav:focus #links {
-    width: 255px; }
-  nav #logo {
-    float: right; }
-    nav #logo svg {
+  z-index: 3; }
+  nav#social input[type="checkbox"] {
+    display: none; }
+  nav#social .menu-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 20px;
+    height: 40px;
+    line-height: 50px;
+    margin-top: -20px;
+    cursor: pointer;
+    background: white;
+    padding: 5px;
+    transition: right 0.25s ease-in-out;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25); }
+    nav#social .menu-toggle svg {
+      transition: transform 0.25s ease-in-out; }
+  nav#social ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    transform: translateX(100%);
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: transform 0.25s ease-in-out; }
+    nav#social ul li {
       width: 40px;
-      height: 40px; }
-  nav #links {
-    float: right;
-    overflow: hidden;
-    width: 0px;
-    transition: width 0.25s ease-in-out; }
-    nav #links ul {
-      margin: 0;
-      padding: 0;
-      overflow: visible;
-      height: 40px;
-      width: 255px;
-      box-sizing: border-box; }
-      nav #links ul a li {
-        padding: 0;
-        margin: 0;
-        display: inline;
-        margin-right: 45px; }
-        nav #links ul a li svg {
-          width: 40px;
-          height: 40px; }
+      height: auto;
+      padding: 10px; }
+      nav#social ul li span {
+        line-height: 40px;
+        writing-mode: vertical-lr;
+        writing-mode: tb-lr; }
+      nav#social ul li svg polygon, nav#social ul li svg path {
+        transition: fill 0.25s ease-in-out; }
+      nav#social ul li:hover #github path {
+        fill: purple; }
+      nav#social ul li:hover #linkedin path {
+        fill: #0077B5; }
+      nav#social ul li:hover #stackoverflow #base {
+        fill: #bcbbbb; }
+      nav#social ul li:hover #stackoverflow #stack {
+        fill: #f48023; }
 
 header#parallax {
   width: 100%;
   height: 100vh;
+  box-sizing: border-box;
+  max-width: 100%;
   background-attachment: fixed;
   display: flex;
   justify-content: center;
@@ -290,13 +311,15 @@ header#parallax {
   overflow: hidden; }
   header#parallax svg {
     filter: drop-shadow(0.0625rem 0.0625rem 0.5rem rgba(0, 0, 0, 0.5));
-    width: 300px; }
+    width: 300px;
+    z-index: 1; }
   header#parallax p {
     filter: drop-shadow(0.0625rem 0.0625rem 0.2rem rgba(0, 0, 0, 0.5));
     color: white;
     font-size: 1.6rem;
     margin-bottom: 0;
-    margin-top: 5px; }
+    margin-top: 5px;
+    z-index: 1; }
 
 .header__image--background, .header__image--foreground {
   content: "";
@@ -314,7 +337,8 @@ header#parallax {
   min-height: 1230px;
   width: 100%;
   height: 100%;
-  transform: translate(-50%, calc(-50% + 75px)); }
+  transform: translateX(-50%) translateY(-50%) translateY(75px);
+  z-index: 0; }
 
 .header__image--foreground {
   background-image: url(../img/header-foreground.png);
@@ -322,76 +346,89 @@ header#parallax {
   min-height: 1080px;
   width: 100%;
   height: 100%;
-  transform: translate(-50%, calc(-50%)); }
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2; }
 
-#about article {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh; }
-  #about article:nth-child(odd) {
-    border-left: 10px solid; }
-  #about article:nth-child(even) {
-    border-right: 10px solid; }
-  #about article .text {
-    box-sizing: border-box;
-    padding: 20px; }
-    #about article .text p {
-      margin-bottom: 0; }
-  #about article .text, #about article .image {
-    width: 100%; }
+#about {
+  border: 10px solid white;
+  border-bottom: 0;
+  background: white; }
+  #about article {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: white; }
+    #about article:nth-child(odd) {
+      border-left: 10px solid; }
+    #about article:nth-child(even) {
+      border-right: 10px solid; }
+    #about article .text {
+      box-sizing: border-box;
+      padding: 20px; }
+      #about article .text p:last-child {
+        margin-bottom: 0; }
+    #about article .text, #about article .image {
+      width: 100%; }
+      @media (min-width: 769px) {
+        #about article .text, #about article .image {
+          width: 50%; } }
+    #about article .image {
+      flex-grow: 1;
+      display: block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center; }
+      @media (min-width: 769px) {
+        #about article .image {
+          height: 540px; } }
     @media (min-width: 769px) {
-      #about article .text, #about article .image {
-        width: 50%; } }
-  #about article .image {
-    flex-grow: 1;
-    display: block;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; }
-    @media (min-width: 769px) {
-      #about article .image {
-        height: 540px; } }
-  @media (min-width: 769px) {
-    #about article {
-      border: 0 !important;
-      flex-direction: row;
-      height: auto; }
-      #about article .text {
-        position: relative;
-        padding: 30px 30px 30px 90px; }
-        #about article .text .title-container {
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          min-height: 100%;
-          height: auto;
-          width: 60px;
-          border-right: 10px solid;
-          box-sizing: border-box; }
-          #about article .text .title-container h2 {
-            font-size: 24px;
-            white-space: nowrap;
-            width: auto;
+      #about article {
+        border: 0 !important;
+        flex-direction: row;
+        height: auto; }
+        #about article .text {
+          position: relative;
+          padding: 30px 30px 30px 90px; }
+          #about article .text .title-container {
             position: absolute;
-            left: 30px;
+            left: 0;
             bottom: 0;
-            margin: 0;
-            transform-origin: bottom left;
-            transform: rotate(-90deg) translate(0, 50%); }
-      #about article:nth-child(even) .text {
-        order: -1; } }
+            min-height: 100%;
+            height: auto;
+            width: 60px;
+            border-right: 10px solid;
+            box-sizing: border-box; }
+            #about article .text .title-container h2 {
+              font-size: 24px;
+              white-space: nowrap;
+              width: auto;
+              position: absolute;
+              left: 30px;
+              bottom: 0;
+              margin: 0;
+              transform-origin: bottom left;
+              transform: rotate(-90deg) translate(0, 50%);
+              color: black; }
+        #about article:nth-child(even) .text {
+          order: -1; } }
 
 .tile-grid {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  max-height: 1600px;
+  max-height: initial;
   height: auto;
   border: 5px solid white;
   align-items: flex-start;
   justify-content: flex-start; }
+  @media (min-width: 769px) {
+    .tile-grid {
+      max-height: 2000px; } }
+  @media (min-width: 1200px) {
+    .tile-grid {
+      max-height: 1200px; } }
   .tile-grid figure {
     position: relative;
     width: 100%;
@@ -401,14 +438,16 @@ header#parallax {
     background-repeat: no-repeat;
     background-position: center center;
     border: 5px solid white;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25); }
     .tile-grid figure .type {
       position: relative;
       padding: 20px;
       background: white;
       width: 32px;
       height: 32px;
-      z-index: 1; }
+      z-index: 1;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25); }
     .tile-grid figure.featured {
       min-height: 100vh; }
     @media (min-width: 769px) {
@@ -734,7 +773,7 @@ footer {
     @media (min-width: 1200px) {
       .modal-container .close {
         padding: 30px 30px 0 0; } }
-    .modal-container .close svg.is {
+    .modal-container .close svg {
       width: 48px;
       height: 48px;
       fill: #bfbfbf;
@@ -743,10 +782,10 @@ footer {
       transform-origin: center center;
       transform: rotate(0deg); }
       @media (min-width: 1200px) {
-        .modal-container .close svg.is {
+        .modal-container .close svg {
           width: 64px;
           height: 64px; } }
-      html.no-touch .modal-container .close svg.is:hover {
+      html.no-touch .modal-container .close svg:hover {
         transform: rotate(90deg); }
   .modal-container .left-control, .modal-container .right-control {
     z-index: 21;
@@ -757,13 +796,13 @@ footer {
     transform: translate(0, -50%); }
     .no-js .modal-container .left-control, .no-js .modal-container .right-control {
       display: none; }
-    .modal-container .left-control svg.is, .modal-container .right-control svg.is {
+    .modal-container .left-control svg, .modal-container .right-control svg {
       width: 48px;
       height: 48px;
       fill: #bfbfbf;
       cursor: pointer; }
       @media (min-width: 1200px) {
-        .modal-container .left-control svg.is, .modal-container .right-control svg.is {
+        .modal-container .left-control svg, .modal-container .right-control svg {
           width: 100px;
           height: 100px; } }
   .modal-container .left-control {

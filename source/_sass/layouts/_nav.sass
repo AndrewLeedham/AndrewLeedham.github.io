@@ -1,44 +1,115 @@
-nav
-  box-sizing: border-box
-  z-index: 5
-  position: fixed
-  top: 0
-  right: 0
-  width: auto
-  padding: 30px
-  border: 0
-  background: white
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25)
-  border-top-left-radius: 0.625rem
-  border-bottom-right-radius: 0.625rem
-  
-  &:hover, &:focus
-    #links
-      width: 255px
+#toggle-menu:checked ~ ul
+  transform: translateX(0)
 
-  #logo
-    float: right
+#toggle-menu:checked ~ .menu-toggle
+  right: 100%
+  svg
+    transform: rotate(180deg)
+
+nav#social
+  position: fixed
+  top: 50%
+  transform: translateY(-50%)
+  right: 0
+  z-index: 3
+  input[type="checkbox"]
+    display: none
+  .menu-toggle
+    position: absolute
+    top: 50%
+    right: 0
+    width: 20px
+    height: 40px
+    line-height: 50px
+    margin-top: -20px
+    cursor: pointer
+    background: white
+    padding: 5px
+    transition: right 0.25s ease-in-out
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25)
     svg
+      transition: transform 0.25s ease-in-out
+
+  ul
+    list-style-type: none
+    margin: 0
+    padding: 10px
+    transform: translateX(100%)
+    background: white
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25)
+    border-top-left-radius: 10px
+    border-bottom-right-radius: 10px
+    transition: transform 0.25s ease-in-out
+    li
       width: 40px
-      height: 40px
-  #links
-    float: right
-    overflow: hidden
-    width: 0px
-    transition: width 0.25s ease-in-out
-    ul
-      margin: 0
-      padding: 0
-      overflow: visible
-      height: 40px
-      width: 255px
-      box-sizing: border-box
-      a
-        li
-          padding: 0
-          margin: 0
-          display: inline
-          margin-right: 45px
-          svg
-            width: 40px
-            height: 40px
+      height: auto
+      padding: 10px
+      span
+        line-height: 40px
+        writing-mode: vertical-lr
+        writing-mode: tb-lr
+      svg polygon, svg path
+        transition: fill 0.25s ease-in-out
+      &:hover #github path
+        fill: purple
+      &:hover #linkedin path
+        fill: #0077B5
+      &:hover #stackoverflow
+        #base
+          fill: #bcbbbb
+        #stack
+          fill: #f48023
+
+// nav
+//   box-sizing: border-box
+//   z-index: 5
+//   position: fixed
+//   top: 0
+//   right: 0
+//   width: auto
+//   padding: 30px
+//   border: 0
+//   background: white
+//   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25)
+//   border-top-left-radius: 0.625rem
+//   border-bottom-right-radius: 0.625rem
+  
+//   &:hover, &:focus
+//     #links
+//       height: 255px
+
+//   #logo
+//     svg
+//       width: 40px
+//       height: 40px
+//   #links
+//     overflow: hidden
+//     height: 0px
+//     transition: height 0.25s ease-in-out
+//     ul
+//       padding: 0
+//       overflow: visible
+//       width: 40px
+//       height: 255px
+//       box-sizing: border-box
+//       a
+//         li
+//           padding: 0
+//           margin: 0
+//           margin-top: 45px
+//           svg
+//             width: 40px
+//             height: 40px
+//             transition: fill 0.25s ease-in-out
+//             &#github:hover
+//               fill: purple
+//             &#linkedin:hover
+//               fill: #0077B5
+//             &#stackoverflow:hover
+//               #base
+//                 fill: #bcbbbb
+//               #stack
+//                 fill: #f48023
+//         &:first-child li
+//           margin-top: 25px
+

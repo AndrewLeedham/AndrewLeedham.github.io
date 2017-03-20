@@ -1,10 +1,14 @@
 #about
+  border: 10px solid white
+  border-bottom: 0
+  background: white
   article
     position: relative
     display: flex
     align-items: center
     flex-direction: column
     height: 100vh
+    background: white
     &:nth-child(odd)
       border-left: 10px solid
     &:nth-child(even)
@@ -12,7 +16,7 @@
     .text
       box-sizing: border-box
       padding: 20px
-      p
+      p:last-child
         margin-bottom: 0
     .text, .image
       width: 100%
@@ -53,6 +57,7 @@
             margin: 0
             transform-origin: bottom left
             transform: rotate(-90deg) translate(0, 50%)
+            color: black
       &:nth-child(even)
         .text
           order: -1

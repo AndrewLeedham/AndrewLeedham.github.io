@@ -1,15 +1,18 @@
-<nav>
-  <div id="logo">
+<nav id="social" class="hide">
+  <!--<div id="logo">
     {% include al_logo-small-black.svg %}
 
-  </div>
-  <div id="links">
+  </div>-->
+    <input id="toggle-menu" type="checkbox" name="toggle-menu">
+    <label class="menu-toggle" for="toggle-menu">{% include iconset/caret-left.svg %}</label>
     <ul>
-      <a href="#"><li>{% include iconset/cross.svg %}</li></a>
-      <a href="#"><li>{% include iconset/cross.svg %}</li></a>
-      <a href="#"><li>{% include iconset/cross.svg %}</li></a>
+      <a href="#about"><li><span>About</span></li></a>
+      <a href="#projects"><li><span>Projects</span></li></a>
+      <a href="https://github.com/AndrewLeedham"><li>{% include iconset/github.svg %}</li></a>
+      <a href="https://stackoverflow.com/users/2386508/andrew-leedham"><li>{% include iconset/stackoverflow.svg %}</li></a>
+      <a href="https://www.linkedin.com/in/andrew-leedham-ba864b112/"><li>{% include iconset/linked-in.svg %}</li></a>
+      <a href="https://www.instagram.com/andrew_leedham/"><li>{% include iconset/instagram.svg %}</li></a>
     </ul>
-  </div>
 </nav>
 <header id="parallax">
   <div class="header__image--background"></div>

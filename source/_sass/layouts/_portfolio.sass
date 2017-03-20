@@ -2,11 +2,15 @@
   display: flex
   flex-wrap: wrap
   flex-direction: column
-  max-height: 1600px
+  max-height: initial
   height: auto
   border: 5px solid white
   align-items: flex-start
   justify-content: flex-start
+  +tablet
+    max-height: 2000px
+  +desktop
+    max-height: 1200px
   figure
     position: relative
     width: 100%
@@ -18,6 +22,7 @@
     // flex-grow: 1
     border: 5px solid white
     box-sizing: border-box
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25)
     .type
       position: relative
       padding: 20px
@@ -25,6 +30,7 @@
       width: 32px
       height: 32px
       z-index: 1
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25)
     &.featured
       min-height: 100vh
     +tablet
