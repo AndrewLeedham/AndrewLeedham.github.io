@@ -1,9 +1,0 @@
----
-layout: photoshoot
-title:  "Cassette Shoot"
-date:   2013-04-28 16:00:00 +0000
-categories: photoshoots alevel
-gallery: "Cassette"
-thumbnail: "Cassette (1).jpg"
----
-This photoshoot was for my A-Level photography course, the theme for the shoot was Macro photography of technology. I decided to shoot some cassette tapes, since they are very dull objects, and I wanted to see if I can make it look more abstract by playing with lighting.
