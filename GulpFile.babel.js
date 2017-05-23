@@ -14,19 +14,23 @@ const settings = JSON.parse(fs.readFileSync("./settings.json"));
 export function compile(){
     return gulp.src(['source/templates/**/*.hbs', '!source/templates/_partials/**/*'])
         .pipe(flatmap((templateStream, template) => {
-            console.log("test");
             return gulp.src('source/content/**/*.md')
                 .pipe(flatmap((markdownStream, markdownFile) => {
-                    // console.log(String(markdownFile.contents));
-                    var content = markdown(String(markdownFile.contents));
-                    var json = {};
+                    let content = markdown(String(markdownFile.contents)),
+                        json = {},
+                        temp = {};
                     json[markdownFile.stem] = content;
+                    markdownFile.relative.substring(0, markdownFile.relative.lastIndexOf('\\')).split('\\').forEach(function(element) {
+                        if(element != ''){
+                            temp[element] = json;
+                            json = Object.assign({}, temp);
+                        }
+                    }, this);
                     markdownFile.contents = new Buffer(JSON.stringify(json));
                     return markdownStream;
                 }))
                 .pipe(merge({}))
                 .pipe(flatmap((jsonStream, jsonFile) => {
-                    console.log(String(jsonFile.contents));
                     return templateStream.pipe(hbs(JSON.parse(jsonFile.contents)));;
                 }));
         }))
