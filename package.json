@@ -1,0 +1,34 @@
+{
+  "name": "andrewleedham.me",
+  "version": "3.0.0",
+  "description": "Andrew Leedham's Portfolio: Web Developer, Photography and Student",
+  "scripts": {
+    "watch": "gulp watch",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewLeedham/AndrewLeedham.github.io.git"
+  },
+  "author": "Andrew Leedham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AndrewLeedham/AndrewLeedham.github.io/issues"
+  },
+  "homepage": "https://github.com/AndrewLeedham/AndrewLeedham.github.io#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "del": "^2.2.2",
+    "fs": "^0.0.1-security",
+    "gulp": "gulpjs/gulp.git#4.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-compile-handlebars": "^0.6.1",
+    "gulp-data": "^1.2.1",
+    "gulp-flatmap": "^1.0.0",
+    "gulp-merge-json": "^1.0.0",
+    "gulp-mustache": "^2.3.0",
+    "gulp-rename": "^1.2.2",
+    "marked": "^0.3.6"
+  }
+}
