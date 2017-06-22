@@ -1,0 +1,21 @@
+<header>
+    <div class="header__container">
+        <img src="{{{path/image}}}al.jpg" alt=""/>
+        <ul>
+            {{#each social}}
+                <li><a href="{{{this}}}">{{> (icon @key) }}</a></li>
+            {{/each}}
+        </ul>
+        <div class="logo--large">
+            {{> (icon "logo")}}
+        </div>
+        <ul>
+            {{#each titles}}
+                <li>{{{this}}}</li>
+            {{/each}}
+        </ul>
+    </div>
+</header>
+<section>
+    <span><em>Available</em> for freelance work</span><a class="button--icon--purple" href="{{{social.email}}}">{{> (icon "email")}} Drop me a line</a>
+</section>

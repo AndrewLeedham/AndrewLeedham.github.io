@@ -1,5 +1,8 @@
 {
     "paths": {
         
+    },
+    "hbs": {
+        "batch": "./source/templates/_partials"
     }
 }

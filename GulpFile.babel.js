@@ -11,6 +11,14 @@ import del from 'del';
 
 const settings = JSON.parse(fs.readFileSync("./settings.json"));
 
+settings.hbs.helpers = {
+    icon: function (name) {
+        return "icons/" + name;
+    }
+};
+
+const hbsGlobals = JSON.parse(fs.readFileSync("./globals.json"));
+
 export function compile(){
     return gulp.src(['source/templates/**/*.hbs', '!source/templates/_partials/**/*'])
         .pipe(flatmap((templateStream, template) => {
@@ -29,9 +37,9 @@ export function compile(){
                     markdownFile.contents = new Buffer(JSON.stringify(json));
                     return markdownStream;
                 }))
-                .pipe(merge({}))
+                .pipe(merge({"endObj": hbsGlobals}))
                 .pipe(flatmap((jsonStream, jsonFile) => {
-                    return templateStream.pipe(hbs(JSON.parse(jsonFile.contents)));;
+                    return templateStream.pipe(hbs(JSON.parse(jsonFile.contents), settings.hbs));;
                 }));
         }))
         .pipe(rename({
