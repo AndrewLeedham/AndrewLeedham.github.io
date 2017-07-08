@@ -37,16 +37,17 @@
 </script>
 {% endif %}
 
-<footer id="links">
-  <section>
-    <div>
+<footer>
+  <section class="full-background">
+    <div id="links">
       <div>
         <h4>Get Social</h4>
         <ul>
-          <li><a href="https://github.com/{{ site.github }}"><i class="fa fa-github"></i> {{ site.github }}</a></li>
-          <li><a href="http://{{ site.tumblr }}.tumblr.com"><i class="fa fa-tumblr"></i> {{ site.tumblr }}</a></li>
-          <li><a href="https://twitter.com/{{ site.twitter }}"><i class="fa fa-twitter"></i> @{{ site.twitter }}</a></li>
-          <li><a href="mailto:{{ site.email }}"><i class="fa fa-envelope"></i> {{ site.email }}</a></li>
+          <li><a href="{{ site.instagram }}"><i class="fa fa-instagram"></i> Instagram</a></li>
+          <li><a href="{{ site.stackoverflow }}"><i class="fa fa-stack-overflow"></i> StackOverflow</a></li>
+          <li><a href="mailto:{{ site.email }}"><i class="fa fa-envelope"></i> Email</a></li>
+          <li><a href="{{ site.linkedin }}"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="{{ site.github }}"><i class="fa fa-github"></i> GitHub</a></li>
         </ul>
       </div>
       <div>
@@ -67,13 +68,13 @@
         </ul>
       </div>
     </div>
-  </section>
-</footer>
-<footer id="desc">
-  <section>
-    <div class="full center">
-      <p>Andrew Leedham’s Portfolio. Web Design, Web Developement, Game Development, Photography and much more...</p>
-      <p>&copy; Andrew Leedham 2016 &copy;</p>
+    <div id="desc">
+      <div class="center">
+        <span>Andrew Leedham’s Portfolio. Web Design, Web Developement, Game Development, Photography and much more...</span>
+      </div>
+      <div class="center">
+        <span>&copy; Andrew Leedham 2016 &copy;</span>
+      </div>
     </div>
   </section>
 </footer>

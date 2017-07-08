@@ -1,17 +1,17 @@
 footer
   section
     margin: 0 auto
-  width: 100%
-  color: white
-  &#links
+    width: 100%
+    color: white
     background: $darkest-turquoise
-    section > div
-      +display(flex)
-      +justify-content(space-around)
     h4
       font-size: 1.5rem
       margin: 1em 0
       text-align: center
+  #links
+    +display(flex)
+    +justify-content(space-around)
+    margin: 0 0 3em 0
     ul
       margin: 1em 0
       li
@@ -20,16 +20,16 @@ footer
           color: white
           &:hover
             color: $lightest-turquoise
-  &#desc
-    background: $dark-turquoise
-    p
-      font-size: 100%
+  #desc
+    .center
+      width: 100%
+      margin-bottom: 1em
+      color: $light_grey
 
 +media(max-width 650px)
-  footer#links
+  footer #links
     ul
       display: block
       margin: auto
       text-align: center
-    section > div
-      +flex-direction(column)
+    +flex-direction(column)

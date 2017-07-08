@@ -4,18 +4,10 @@
   {% include head.html %}
 
   <body>
-    {% if page.landing %}
-      {% include landing.html landing=true %}
-    {% else %}
-      {% include header.html landing=false %}
-    {% endif %}
+    {% include landing.html landing=true %}
     <section id="offset"></section>
     {{ content }}
-    {% if page.landing %}
-      {% include footer.html landing=true %}
-    {% else %}
-      {% include footer.html landing=false %}
-    {% endif %}
+    {% include footer.html landing=true %}
   </body>
 
 </html>

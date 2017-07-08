@@ -10,11 +10,10 @@ imagepath: "/img"
 jspath: "/js"
 
 # Social
-twitter: "AndrewJLeedham"
-github:  "AndrewLeedham"
-tumblr: "andrew-leedham"
-twitch: "Formulayeti"
-youtube: "HowNot2Play"
+github:  https://github.com/AndrewLeedham
+instagram: https://instagram.com/andrew_leedham/
+stackoverflow: http://stackoverflow.com/users/2386508/andrew-leedham
+linkedin: https://linkedin.com/in/andrew-leedham-ba864b112/
 
 # Build settings
 markdown: kramdown

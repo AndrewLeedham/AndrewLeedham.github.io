@@ -1,6 +1,19 @@
 section
   padding: 1.875rem
-  margin-bottom: 2rem
+  &.title
+    margin-bottom: 1em
+    border-width: 0 0 1em 0
+    border-style: solid
+    &:nth-of-type(1)
+      border-color: $darkest_turquoise
+    &:nth-of-type(2)
+      border-color: $dark_turquoise
+    &:nth-of-type(3)
+      border-color: $light_turquoise
+    &:nth-of-type(4)
+      border-color: $lightest_turquoise
+  &:not(.full-background):not(#offset)
+    background: white
   p
     font-size: 1.2rem
     padding: 1rem
@@ -8,7 +21,7 @@ section
 
   h2
     font-size: 3rem
-    margin: 2rem
+    margin: 0
 
 a
   color: $darkest-turquoise
