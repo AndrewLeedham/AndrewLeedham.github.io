@@ -4,20 +4,17 @@ section
     margin-bottom: 1em
     border-width: 0 0 1em 0
     border-style: solid
-    &:nth-of-type(1)
-      border-color: $darkest_turquoise
-    &:nth-of-type(2)
-      border-color: $dark_turquoise
-    &:nth-of-type(3)
-      border-color: $light_turquoise
-    &:nth-of-type(4)
-      border-color: $lightest_turquoise
+    border-color: $darkest_turquoise
+
   &:not(.full-background):not(#offset)
     background: white
   p
     font-size: 1.2rem
     padding: 1rem
     line-height: 1.5rem
+  &.full-background
+    p
+      color: white
 
   h2
     font-size: 3rem
