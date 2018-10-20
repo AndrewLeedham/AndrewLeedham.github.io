@@ -1,15 +1,15 @@
 {
-  "title": "Your Blog Name",
-  "url": "https://myurl.com/",
+  "title": "Andrew Leedham",
+  "url": "https://andrewleedham.me/",
   "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "subtitle": "A front-end web developer's 'structured' ramblings.",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
-    "url": "https://myurl.com/feed/feed.xml",
-    "id": "https://myurl.com/"
+    "url": "https://andrewleedham.me/feed/feed.xml",
+    "id": "https://andrewleedham.me/"
   },
   "author": {
-    "name": "Your Name Here",
-    "email": "youremailaddress@example.com"
+    "name": "AndrewLeedham",
+    "email": "AndrewLeedham@Outlook.com"
   }
 }
