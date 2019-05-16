@@ -1,0 +1,13 @@
+---
+layout: layouts/landing.njk
+title: Projects
+tags:
+  - nav
+navtitle: Projects
+navorder: 2
+---
+
+<h1>Projects</h1>
+
+{% set postslist = collections.projects %}
+{% include "components/postslist.njk" %}

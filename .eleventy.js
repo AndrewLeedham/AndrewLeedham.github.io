@@ -35,6 +35,10 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
+  eleventyConfig.addCollection("nav", function(collection){
+    return collection.getFilteredByTag("nav").sort((a, b) => a.data.navorder - b.data.navorder);
+  });
+
   eleventyConfig.addPassthroughCopy("img");
 
   /* Markdown Plugins */

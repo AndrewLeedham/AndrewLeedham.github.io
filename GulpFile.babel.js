@@ -30,7 +30,7 @@ gulp.task('watch', () => {
     }
   });
 
-  gulp.watch(['./**/*.{md,njk,html}', '!_*/**'], gulp.series('generate', 'reload'));
+  gulp.watch(['**/*.{md,njk,html}', '_includes/**/*.{md,njk,html}', '!node_modules/**.*', '!_site/**/*'], gulp.series('generate', 'reload'));
   gulp.watch('./_css/**/*.css', gulp.series('css'));
 });
 
