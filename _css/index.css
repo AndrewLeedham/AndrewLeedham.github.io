@@ -6,6 +6,7 @@
 /* Layouts */
 @import 'layouts/base.css';
 @import 'layouts/post.css';
+@import 'layouts/about.css';
 
 /* Components */
 @import 'components/code.css';

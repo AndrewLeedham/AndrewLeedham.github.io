@@ -7,4 +7,11 @@
   --navy: #17050F;
   --blue: #082840;
   --white: #fff;
+  --primary: #008C7E;
+  --text: #000;
+  --text-inverted: #FFF;
+
+  --breakpoint-mobile: 600px;
+  --breakpoint-tablet: 900px;
+  --breakpoint-desktop: 1200px;
 }

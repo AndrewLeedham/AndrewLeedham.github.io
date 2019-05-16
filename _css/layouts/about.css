@@ -1,0 +1,7 @@
+.template--about .portrait {
+  display: block;
+  margin: 1rem auto 2rem auto;
+  width: 15rem;
+  text-align: center;
+  border-radius: 50%;
+}

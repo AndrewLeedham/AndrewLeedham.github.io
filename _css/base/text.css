@@ -1,7 +1,15 @@
 a[href] {
-  color: var(--blue);
+  color: var(--text);
+}
+
+.inverted a[href] {
+  color: var(--text-inverted);
 }
 
 a[href]:visited {
-  color: var(--navy);
+  color: var(--text);
+}
+
+.inverted a[href]:visited {
+  color: var(--text-inverted);
 }

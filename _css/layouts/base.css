@@ -5,3 +5,9 @@ main {
 main :first-child {
   margin-top: 0;
 }
+
+main, .wrapper {
+  width: 100%;
+  max-width: var(--breakpoint-desktop);
+  margin: 0 auto;
+}
