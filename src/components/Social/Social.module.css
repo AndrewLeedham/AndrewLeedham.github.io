@@ -1,0 +1,39 @@
+.social {
+  margin: 0;
+  width: 100%;
+  max-width: 250px;
+  padding: 0 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2vw;
+}
+
+.social li {
+  position: relative;
+  display: inline-block;
+  width: 7.5vw;
+}
+
+.social li a {
+  display: block;
+  padding-top: 100%;
+}
+
+.social li a svg {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 275px) {
+  .social {
+    padding: 0 40px;
+    margin-top: 5.45px;
+  }
+
+  .social li {
+    width: 20px;
+  }
+}

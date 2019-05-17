@@ -1,0 +1,30 @@
+.split {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 6vw 3vw;
+}
+
+.panel:last-child {
+  background: turquoise;
+}
+
+@media (min-width: 375px) {
+  .panel {
+    padding: 22px 11px;
+  }
+}
+
+@media (min-width: 575px) {
+  .split {
+    flex-direction: row;
+  }
+}
