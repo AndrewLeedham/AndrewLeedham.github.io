@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Andrew Leedham: Front-end Web Developer`,
+    description: `Andrew Leedham's personal blog.`,
+    author: `Andrew Leedham`,
     social: [
       {
         name: 'Email',
@@ -55,13 +55,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Andrew Leedham's Blog`,
+        short_name: `ALBlog`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`
-        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        background_color: `#2c7d6b`,
+        theme_color: `#2c7d6b`,
+        display: `minimal-ui`,
+        icon: `src/images/al_logo-small.svg`
       }
     },
     {
