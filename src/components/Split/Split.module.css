@@ -5,16 +5,18 @@
   flex-direction: column;
 }
 
-.panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  padding: 6vw 3vw;
+@media (min-width: 575px) {
+  .split {
+    flex-direction: row;
+  }
 }
 
-.panel:last-child {
-  background: turquoise;
+.panel {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 6vw 3vw;
 }
 
 @media (min-width: 375px) {
@@ -24,7 +26,22 @@
 }
 
 @media (min-width: 575px) {
-  .split {
-    flex-direction: row;
+  .panel {
+    width: 50%;
+    flex-grow: 1;
+  }
+}
+
+.panel:first-child {
+  align-items: center;
+}
+
+.panel:last-child {
+  background: #2c7d6b;
+}
+
+@media (min-width: 575px) {
+  .panel:last-child {
+    align-items: center;
   }
 }

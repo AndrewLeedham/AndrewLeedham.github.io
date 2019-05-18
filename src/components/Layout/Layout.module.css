@@ -8,3 +8,13 @@
 :global(*) {
   box-sizing: border-box;
 }
+
+:global(html) {
+  font-size: 20px;
+}
+
+@media (min-width: 575px) {
+  :global(html) {
+    font-size: 16px;
+  }
+}
