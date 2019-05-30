@@ -28,6 +28,11 @@ module.exports = {
         name: 'Stack Overflow',
         icon: 'stackoverflow',
         url: 'http://stackoverflow.com/users/2386508/andrew-leedham'
+      },
+      {
+        name: 'Twitter',
+        icon: 'twitter',
+        url: 'https://twitter.com/AndrewJLeedham'
       }
     ]
   },

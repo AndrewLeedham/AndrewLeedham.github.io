@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import blogStyles from './Blog.module.css';
 import useDebounce from '../../library/useDebounce';
 import fuzzysearch from 'fuzzysearch';
-import Close from '../../images/icons/close.svg';
+import iconStyles from '../Icons/Icons.module.css';
 import { useStaticQuery, graphql } from 'gatsby';
+import classNames from '../../library/classNames';
+import CloseIcon from '../../images/icons/close.svg';
 
 // const posts = [
 //   {
@@ -126,6 +128,8 @@ const Blog = () => {
   const debouncedFilter = useDebounce(filter, 100);
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
+  const searchRef = React.createRef();
+
   useEffect(() => {
     if (debouncedFilter) {
       const filtered = filterPosts(posts, debouncedFilter);
@@ -134,6 +138,13 @@ const Blog = () => {
       setFilteredPosts(posts);
     }
   });
+
+  function close(e) {
+    if (!e.target.classList.contains(iconStyles.disabled)) {
+      setFilter('');
+      setTimeout((elm) => elm.focus(), 0, searchRef.current);
+    }
+  }
   return (
     <div className={blogStyles.blog}>
       <h2 className={blogStyles.subtitle}>Blog</h2>
@@ -141,10 +152,27 @@ const Blog = () => {
         <input
           type="text"
           placeholder="Search/filter"
+          aria-label="Search/filter"
+          ref={searchRef}
           onChange={(e) => setFilter(e.target.value)}
           value={filter}
         />
-        <Close onClick={() => setFilter('')} />
+        <CloseIcon
+          tabIndex={filter === '' ? -1 : 0}
+          aria-label="Clear search/filter"
+          role="button"
+          onClick={close}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              return close(e);
+            }
+          }}
+          className={classNames({
+            [blogStyles.close]: true,
+            [iconStyles.icon]: true,
+            [blogStyles.disabled]: filter === ''
+          })}
+        />
       </div>
       <ul className={blogStyles.posts}>
         {filteredPosts.map(
@@ -154,14 +182,14 @@ const Blog = () => {
               fields: { slug: url }
             }
           }) => (
-            <li className={blogStyles.post}>
+            <li className={blogStyles.post} key={url}>
               <div>
-                <a className={blogStyles.post__title} href={url}>
+                <a className={blogStyles.post__title} href={url} tabIndex={0}>
                   {post.title}
                 </a>
                 {post.tags &&
                   post.tags.map((tag) => (
-                    <>
+                    <React.Fragment key={tag}>
                       {' '}
                       <span
                         className={blogStyles.post__tag}
@@ -171,10 +199,18 @@ const Blog = () => {
                         onClick={(e) =>
                           setFilter(addTag(filter, e.target.innerText.trim()))
                         }
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            return setFilter(
+                              addTag(filter, e.target.innerText.trim())
+                            );
+                          }
+                        }}
+                        tabIndex={0}
                       >
                         {tag}
                       </span>
-                    </>
+                    </React.Fragment>
                   ))}
               </div>
               <time className={blogStyles.post__date} dateTime={post.datetime}>

@@ -36,6 +36,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "mobile": "gatsby develop --host=$(ipconfig getifaddr en0)",
     "prettier": "prettier ./**/*.{js,jsx,json,module.css}",
     "lint": "yarn run prettier --check",
     "format": "yarn run prettier --write",

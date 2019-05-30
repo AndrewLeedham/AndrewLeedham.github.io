@@ -1,0 +1,19 @@
+.icon {
+  transition: fill 0.25s ease-in-out, stroke 0.25s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon {
+    transition: none;
+  }
+}
+
+.social {
+  fill: black;
+}
+
+a:hover > .social,
+a:active > .social,
+a:focus > .social {
+  fill: var(--secondary);
+}

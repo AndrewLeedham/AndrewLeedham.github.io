@@ -2,7 +2,7 @@
   margin: 0;
   width: 100%;
   max-width: 250px;
-  padding: 0 15vw;
+  padding: 0 8vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,7 +12,7 @@
 .social li {
   position: relative;
   display: inline-block;
-  width: 7.5vw;
+  width: 11vw;
 }
 
 .social li a {
@@ -23,17 +23,17 @@
 .social li a svg {
   position: absolute;
   top: 50%;
-  width: 100%;
+  width: 90%;
   transform: translateY(-50%);
 }
 
 @media (min-width: 275px) {
   .social {
-    padding: 0 40px;
+    padding: 0 20px;
     margin-top: 5.45px;
   }
 
   .social li {
-    width: 20px;
+    width: 30px;
   }
 }

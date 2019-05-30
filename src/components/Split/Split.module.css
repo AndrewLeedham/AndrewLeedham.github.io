@@ -34,14 +34,22 @@
 
 .panel:first-child {
   align-items: center;
+  border-bottom: 0.25rem solid black;
 }
 
 .panel:last-child {
-  background: #2c7d6b;
+  background: var(--primary);
+  border-top: 0.25rem solid black;
 }
 
 @media (min-width: 575px) {
+  .panel:first-child {
+    border-bottom: 0;
+    border-right: 0.25rem solid black;
+  }
   .panel:last-child {
     align-items: center;
+    border-top: 0;
+    border-left: 0.25rem solid black;
   }
 }
