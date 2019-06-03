@@ -66,7 +66,7 @@ module.exports = {
         background_color: `#2c7d6b`,
         theme_color: `#2c7d6b`,
         display: `minimal-ui`,
-        icon: `src/images/al_logo-small.svg`
+        icon: `src/images/favicon.svg`
       }
     },
     {
@@ -89,7 +89,18 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 750
+            }
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              inlineCodeMarker: '±'
+            }
+          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`
         ]

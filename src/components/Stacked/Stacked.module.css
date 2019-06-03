@@ -1,0 +1,12 @@
+.stacked {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stacked > * {
+  width: 100%;
+  max-width: 750px;
+  padding: 0 1rem;
+}

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Portrait from '../Portrait';
-import Logo from '../../images/al_logo-large.svg';
+import Logo from '../../images/logo-large.svg';
 import headerStyles from './Header.module.css';
 import Social from '../Social';
 

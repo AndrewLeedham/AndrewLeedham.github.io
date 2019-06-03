@@ -1,0 +1,53 @@
+.logo {
+  width: 4rem;
+  height: 3rem;
+  padding-top: 1rem;
+  align-self: flex-start;
+}
+
+@media (min-width: 846px) {
+  .logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
+.title {
+  color: var(--primary);
+  margin-bottom: 0;
+}
+
+.date {
+  color: var(--dark-grey);
+}
+
+.post blockquote {
+  margin: 1rem;
+  padding: 0 1rem;
+  border-left: 0.5rem solid var(--secondary);
+}
+
+.post ul,
+.post ol {
+  padding-left: 2rem;
+}
+
+.post table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 1rem 0;
+}
+
+.post table tr:nth-child(2n) {
+  background: var(--light-grey);
+}
+
+.post table td,
+.post table th {
+  border: 1px solid var(--dark-grey);
+  padding: 0.625rem 1rem;
+}
