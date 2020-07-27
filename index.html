@@ -7,17 +7,13 @@
         <title>Andrew Leedham: Full-Stack Web Developer</title>
         <meta name="description" content="Andrew Leedham's personal home page, with links to his social media.">
         <link rel="icon" href="./favicon.png">
-        <link rel="preload" href="./fonts/work-sans-v8-latin-regular-subset.woff" as="font" type="font/woff" crossorigin>
         <link rel="preload" href="./fonts/work-sans-v8-latin-regular-subset.woff2" as="font" type="font/woff2" crossorigin>
         <style>
             @font-face {
-            font-family: 'Work Sans';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: local(''),
-                url('./fonts/work-sans-v8-latin-regular-subset.woff2') format('woff2'),
-                url('./fonts/work-sans-v8-latin-regular-subset.woff') format('woff');
+                font-family: Work Sans;
+                src: url(fonts/work-sans-v8-latin-regular-subset.woff2) format("woff2"), url(fonts/work-sans-v8-latin-regular-subset.woff) format("woff");
+                unicode-range: U+20,U+2D,U+44,U+46,U+53,U+57,U+61-63,U+65,U+6B,U+6C,U+6F,U+70,U+72,U+74-76;
+                font-display: swap;
             }
              html, body{
                 overflow: hidden;
