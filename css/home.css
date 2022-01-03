@@ -22,10 +22,14 @@
     background: linear-gradient(to right, var(--primary), var(--secondary))
 }
 
-.home__headline img {
+.home__headline picture {
     align-self: end;
     width: 250px;
     height: auto;
+}
+
+.home__headline picture img {
+    display: block;
 }
 
 @media (max-width: 500px) {
@@ -33,7 +37,7 @@
         min-height: 0;
         flex-direction: column;
     }
-    .home__headline img {
+    .home__headline picture {
         align-self: center;
         justify-self: end;
         width: 150px;
