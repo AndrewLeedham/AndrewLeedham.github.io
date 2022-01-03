@@ -24,12 +24,12 @@
 
 .home__headline picture {
     align-self: end;
-    width: 250px;
-    height: auto;
 }
 
 .home__headline picture img {
     display: block;
+    width: 250px;
+    height: 224px;
 }
 
 @media (max-width: 500px) {
@@ -40,8 +40,11 @@
     .home__headline picture {
         align-self: center;
         justify-self: end;
+    }
+    
+    .home__headline picture img {
         width: 150px;
-        height: auto;
+        height: 134px;
     }
 }
 

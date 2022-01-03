@@ -48,7 +48,7 @@
     </script>
     {% if not noHeader %}
       <header class="header">
-          <a id="logoLink" href="{{ '/' | url }}">{% include '../../img/logo--animated.svg' %}{% include '../../img/logo--small.svg' %}</a>
+          <a id="logoLink" href="{{ '/' | url }}" aria-label="Go to the Andrew Leedham homepage">{% include '../../img/logo--animated.svg' %}{% include '../../img/logo--small.svg' %}</a>
           <script type="application/javascript">
             const logoLink = document.getElementById('logoLink');
             const animations = Array.from(logoLink.getElementsByTagName('animate'));
