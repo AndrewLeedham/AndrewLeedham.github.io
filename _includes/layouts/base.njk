@@ -54,10 +54,22 @@
             const animations = Array.from(logoLink.getElementsByTagName('animate'));
             if (animations.length) {
               logoLink.addEventListener('focus', () => {
-                animations.forEach((animation, index) => index % 2 !== 0 && animation.beginElement());
+                const svg = logoLink.querySelector('svg');
+                if (!logoLink.matches(':hover')) {
+                  if (svg) {
+                    svg.id = '';
+                  }
+                  animations.forEach((animation, index) => index % 2 !== 0 && animation.beginElement());
+                }
               })
               logoLink.addEventListener('blur', () => {
-                animations.forEach((animation, index) => index % 2 === 0 && animation.beginElement());
+                const svg = logoLink.querySelector('svg');
+                if (!logoLink.matches(':hover')) {
+                  if (svg) {
+                    svg.id = 'logoAnimated';
+                  }
+                  animations.forEach((animation, index) => index % 2 === 0 && animation.beginElement());
+                }
               })
             }
           </script>
