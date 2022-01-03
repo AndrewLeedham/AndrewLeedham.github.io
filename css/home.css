@@ -23,7 +23,7 @@
 }
 
 .home__headline picture {
-    align-self: end;
+    align-self: flex-end;
 }
 
 .home__headline picture img {
