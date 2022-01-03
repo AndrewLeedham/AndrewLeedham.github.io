@@ -147,7 +147,7 @@ main > section {
   padding: 1rem;
 }
 
-main :first-child {
+main > :first-child {
   margin-top: 0;
 }
 
