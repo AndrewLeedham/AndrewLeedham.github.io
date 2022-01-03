@@ -1,21 +1,21 @@
 {
-  "title": "Andrew Leedham's Blog",
-  "url": "https://andrewleedham.com/blog/",
+  "title": "Andrew Leedham",
+  "url": "https://www.andrewleedham.me",
   "language": "en",
   "description": "Mostly web development stuff.",
   "feed": {
     "subtitle": "Mostly web development stuff.",
     "filename": "feed.xml",
-    "path": "/feed/feed.xml",
-    "id": "https://andrewleedham.com/blog/"
+    "path": "/blog/feed/feed.xml",
+    "id": "https://andrewleedham.me"
   },
   "jsonfeed": {
-    "path": "/feed/feed.json",
-    "url": "https://andrewleedham.com/blog/feed/feed.json"
+    "path": "/blog/feed/feed.json",
+    "url": "https://andrewleedham.me/blog/feed/feed.json"
   },
   "author": {
     "name": "Andrew Leedham",
     "email": "AndrewLeedham@Outlook.com",
-    "url": "https://andrewleedham.com/"
+    "url": "https://www.andrewleedham.me"
   }
 }
