@@ -1,0 +1,21 @@
+{
+  "title": "Andrew Leedham's Blog",
+  "url": "https://andrewleedham.com/blog/",
+  "language": "en",
+  "description": "Mostly web development stuff.",
+  "feed": {
+    "subtitle": "Mostly web development stuff.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://andrewleedham.com/blog/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://andrewleedham.com/blog/feed/feed.json"
+  },
+  "author": {
+    "name": "Andrew Leedham",
+    "email": "AndrewLeedham@Outlook.com",
+    "url": "https://andrewleedham.com/"
+  }
+}
