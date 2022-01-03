@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Experimental Browser Features Helped Me Verify a Hypothesis</title>
+    <meta name="description" content="A look at how I solved an issue with scrollbars and an accordion animation using experimental browser features.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/shiki.css">
+    <link rel="alternate" href="/blog/feed/feed.xml" type="application/atom+xml" title="Andrew Leedham">
+    <link rel="alternate" href="/blog/feed/feed.json" type="application/json" title="Andrew Leedham">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+  </head>
+  <body>
+   <script type="application/javascript">
+      const currentMode = localStorage.getItem('mode');
+      const colorSchemeTag = document.querySelector('meta[name="color-scheme"]');
+
+      if (currentMode === 'dark') {
+        document.body.classList.toggle('dark-mode');
+        colorSchemeTag.setAttribute('content', 'dark')
+      } else if (currentMode === 'light') {
+        document.body.classList.toggle('light-mode');
+        colorSchemeTag.setAttribute('content', 'light')
+      }
+
+      window.toggleMode = () => {
+        const systemLevelDark = window.matchMedia('(prefers-color-scheme: dark)');
+        const colorSchemeTag = document.querySelector('meta[name="color-scheme"]');
+        let mode;
+        if (systemLevelDark.matches) {
+          document.body.classList.toggle('light-mode');
+          mode = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+        } else {
+          document.body.classList.toggle('dark-mode');
+          mode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+        }
+        localStorage.setItem('mode', mode);
+        colorSchemeTag.setAttribute('content', mode)
+      }
+    </script>
+    
+      <header class="header">
+          <a id="logoLink" href="/"><svg id="logoAnimated" class="logo--animated" height="48px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 362 108.04">
+        <title>Andrew Leedham</title>
+        <path id="a-andrew" fill="currentColor" d="M61.59 108l-3.7-20H36.64l-3.39 20H15.54L35.1 11.9h23.87L79.46 108ZM38.95 74.83h16.48l-8.47-46Z">
+            <animate id="aStart" attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M61.59 108l-3.7-20H36.64l-3.39 20H15.54L35.1 11.9h23.87L79.46 108ZM38.95 74.83h16.48l-8.47-46Z"/>
+            <animate id="aEnd" attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M47.09,37.56l-1.35-7.39H38l-1.24,7.39H30.23L37.39,2h8.74l7.5,35.59ZM38.8,25.26h6l-3.1-17Z"/>
+        </path>
+        <path id="n-andrew" fill="currentColor" d="M53.51 19h.53q1.8 0 1.8 3.74V37.56h-2V23.35a2.07 2.07 0 00-.11-.81.39.39 0 00-.39-.21h-.53q-.54 0-.54 1.25v14h-2V19h2v1.7Q52.51 19 53.51 19Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M53.51 19h.53q1.8 0 1.8 3.74V37.56h-2V23.35a2.07 2.07 0 00-.11-.81.39.39 0 00-.39-.21h-.53q-.54 0-.54 1.25v14h-2V19h2v1.7Q52.51 19 53.51 19Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M66.83,9.86h1.69q5.81,0,5.81,5.58V37.56H67.9V16.35a1.64,1.64,0,0,0-.34-1.21,1.87,1.87,0,0,0-1.24-.31H64.63q-1.75,0-1.75,1.86V37.56H56.51V9.86h6.32V12.4Q63.62,9.86,66.83,9.86Z"/>
+        </path>
+        <path id="d-andrew" fill="currentColor" d="M53.84 12.4h2V37.56h-2V35.71q-.21 1.85-1.24 1.85h-.54q-1.79 0-1.79-3.74V22.71q0-3.74 1.79-3.74h.54q.95 0 1.21 1.59ZM52.74 34.23h.53q.54 0 .54-1.25V23.58a2.82 2.82 0 00-.12-1 .43.43 0 00-.42-.28H52.74a.39.39 0 00-.39.21 2.07 2.07 0 00-.11.81v9.9a2.07 2.07 0 00.11.81A.39.39 0 0052.74 34.23Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M53.84 12.4h2V37.56h-2V35.71q-.21 1.85-1.24 1.85h-.54q-1.79 0-1.79-3.74V22.71q0-3.74 1.79-3.74h.54q.95 0 1.21 1.59ZM52.74 34.23h.53q.54 0 .54-1.25V23.58a2.82 2.82 0 00-.12-1 .43.43 0 00-.42-.28H52.74a.39.39 0 00-.39.21 2.07 2.07 0 00-.11.81v9.9a2.07 2.07 0 00.11.81A.39.39 0 0052.74 34.23Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M90,0h6.43V37.56H90.13V34.79q-.68,2.76-4,2.76H84.37q-5.75,0-5.75-5.58V15.39q0-5.58,5.75-5.58h1.75q3,0,3.89,2.37ZM86.57,32.59h1.69q1.75,0,1.75-1.86v-14a2.2,2.2,0,0,0-.4-1.49,1.8,1.8,0,0,0-1.35-.42H86.57a1.87,1.87,0,0,0-1.24.31A1.64,1.64,0,0,0,85,16.29V31.07a1.64,1.64,0,0,0,.34,1.21A1.86,1.86,0,0,0,86.57,32.59Z"/>
+        </path>
+        <path id="r-andrew" fill="currentColor" d="M53.81 18.93h.32v3.7h-.74q-1.1 0-1.1 2.72v12.2h-2V19h2v2.38a4.63 4.63 0 01.54-1.78A1.16 1.16 0 0153.81 18.93Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M53.81 18.93h.32v3.7h-.74q-1.1 0-1.1 2.72v12.2h-2V19h2v2.38a4.63 4.63 0 01.54-1.78A1.16 1.16 0 0153.81 18.93Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M112.52,9.75h1v5.53h-2.37q-3.55,0-3.55,4.06V37.56h-6.37V9.86h6.32v3.55a4.94,4.94,0,0,1,1.75-2.65A5.06,5.06,0,0,1,112.52,9.75Z"/>
+        </path>
+        <path id="e-andrew" fill="currentColor" d="M52.15 19h1.86q1.89 0 1.89 3.74v6.76h-3.73v3.82a2.24 2.24 0 00.1.81.39.39 0 00.39.21h.81a.39.39 0 00.39-.21 2.07 2.07 0 00.11-.81v-1.4h1.93v1.89q0 3.74-1.91 3.74h-1.82q-1.91 0-1.91-3.74V22.75Q50.24 19 52.15 19Zm0 7.75h1.82V23.2a2.07 2.07 0 00-.11-.81.39.39 0 00-.39-.21h-.84a.39.39 0 00-.39.21 2.07 2.07 0 00-.11.81Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M52.15 19h1.86q1.89 0 1.89 3.74v6.76h-3.73v3.82a2.24 2.24 0 00.1.81.39.39 0 00.39.21h.81a.39.39 0 00.39-.21 2.07 2.07 0 00.11-.81v-1.4h1.93v1.89q0 3.74-1.91 3.74h-1.82q-1.91 0-1.91-3.74V22.75Q50.24 19 52.15 19Zm0 7.75h1.82V23.2a2.07 2.07 0 00-.11-.81.39.39 0 00-.39-.21h-.84a.39.39 0 00-.39.21 2.07 2.07 0 00-.11.81Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M122.11,9.86h6q6.09,0,6.09,5.58v10.1h-12v5.7a1.74,1.74,0,0,0,.31,1.21,1.85,1.85,0,0,0,1.27.31h2.59a1.86,1.86,0,0,0,1.24-.31,1.64,1.64,0,0,0,.34-1.21V29.15h6.2V32q0,5.58-6.15,5.58h-5.87Q116,37.56,116,32V15.45Q116,9.86,122.11,9.86Zm.06,11.56H128v-5.3a1.64,1.64,0,0,0-.34-1.21,1.87,1.87,0,0,0-1.24-.31h-2.71a1.87,1.87,0,0,0-1.24.31,1.64,1.64,0,0,0-.34,1.21Z"/>
+        </path>
+        <path id="w-andrew" fill="currentColor" d="M58.4 19h1.86l-1.68 18.55H56.24l-1-13.11-1 13.11h-2.33L50.22 19h1.86l1 14.47L54.2 19h2.08l1.05 14.43Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M58.4 19h1.86l-1.68 18.55H56.24l-1-13.11-1 13.11h-2.33L50.22 19h1.86l1 14.47L54.2 19h2.08l1.05 14.43Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M162.55,9.86h6l-5.42,27.7h-7.5L152.29,18,149,37.56h-7.5l-5.25-27.7h6l3.21,21.6L149,9.86h6.71l3.38,21.55Z"/>
+        </path>
+        <path id="l-leedham" fill="currentColor" d="M65.04 106.51h4.83V108H61.74V97.36h3.31Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M65.04 106.51h4.83V108H61.74V97.36h3.31Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M27.9,85.76H47.73V96.14H14.33V23.8H27.9Z"/>
+        </path>
+        <path id="e-leedham" fill="currentColor" d="M64.87 99.8h3q3.11 0 3.11 1.72v3.12h-6.13v1.45a.4.4 0 00.16.37 1.43 1.43 0 00.65.1h1.32a1.44 1.44 0 00.63-.1.39.39 0 00.17-.37v-.64h3.17v.87q0 1.72-3.14 1.72h-3q-3.14 0-3.14-1.72v-4.79Q61.74 99.8 64.87 99.8Zm0 3.57h3v-1.64a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1H65.74a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M64.87 99.8h3q3.11 0 3.11 1.72v3.12h-6.13v1.45a.4.4 0 00.16.37 1.43 1.43 0 00.65.1h1.32a1.44 1.44 0 00.63-.1.39.39 0 00.17-.37v-.64h3.17v.87q0 1.72-3.14 1.72h-3q-3.14 0-3.14-1.72v-4.79Q61.74 99.8 64.87 99.8Zm0 3.57h3v-1.64a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1H65.74a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M65.43,40.32H77.94q12.75,0,12.75,11.68V73.13H65.55v9.79a3.64,3.64,0,0,0,.65,2.54,3.87,3.87,0,0,0,2.66.65h5.43a3.9,3.9,0,0,0,2.6-.65,3.43,3.43,0,0,0,.71-2.54V78.56h13v5.9q0,11.68-12.86,11.68H65.43q-12.86,0-12.86-11.68V52Q52.57,40.32,65.43,40.32Zm.12,24.19H77.82V53.42a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65H68.85a3.9,3.9,0,0,0-2.6.65,3.43,3.43,0,0,0-.71,2.54Z"/>
+        </path>
+        <path id="e2-leedham" fill="currentColor" d="M64.87 99.8h3q3.11 0 3.11 1.72v3.12h-6.13v1.45a.4.4 0 00.16.37 1.43 1.43 0 00.65.1h1.32a1.44 1.44 0 00.63-.1.39.39 0 00.17-.37v-.64h3.17v.87q0 1.72-3.14 1.72h-3q-3.14 0-3.14-1.72v-4.79Q61.74 99.8 64.87 99.8Zm0 3.57h3v-1.64a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1H65.74a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M64.87 99.8h3q3.11 0 3.11 1.72v3.12h-6.13v1.45a.4.4 0 00.16.37 1.43 1.43 0 00.65.1h1.32a1.44 1.44 0 00.63-.1.39.39 0 00.17-.37v-.64h3.17v.87q0 1.72-3.14 1.72h-3q-3.14 0-3.14-1.72v-4.79Q61.74 99.8 64.87 99.8Zm0 3.57h3v-1.64a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1H65.74a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M111.69,40.32H124.2q12.75,0,12.75,11.68V73.13H111.81v9.79a3.64,3.64,0,0,0,.65,2.54,3.87,3.87,0,0,0,2.66.65h5.43a3.9,3.9,0,0,0,2.6-.65,3.43,3.43,0,0,0,.71-2.54V78.56h13v5.9q0,11.68-12.86,11.68H111.69q-12.86,0-12.86-11.68V52Q98.83,40.32,111.69,40.32Zm.12,24.19h12.27V53.42a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65h-5.67a3.9,3.9,0,0,0-2.6.65,3.43,3.43,0,0,0-.71,2.54Z"/>
+        </path>
+        <path id="d-leedham" fill="currentColor" d="M67.65 97.36h3.28V108H67.74v-.85q-.35.85-2 .85H64.74q-2.93 0-2.93-1.72v-4.81q0-1.72 2.93-1.72h.89q1.55 0 2 .73Zm-1.76 9.15H66.74q.89 0 .89-.57v-4a.51.51 0 00-.2-.46 1.34 1.34 0 00-.69-.13h-.86a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37V106a.39.39 0 00.17.37A1.44 1.44 0 0065.89 106.51Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M67.65 97.36h3.28V108H67.74v-.85q-.35.85-2 .85H64.74q-2.93 0-2.93-1.72v-4.81q0-1.72 2.93-1.72h.89q1.55 0 2 .73Zm-1.76 9.15H66.74q.89 0 .89-.57v-4a.51.51 0 00-.2-.46 1.34 1.34 0 00-.69-.13h-.86a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37V106a.39.39 0 00.17.37A1.44 1.44 0 0065.89 106.51Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M168.7,23.8h13.45V96.14H168.93V90.36q-1.42,5.78-8.38,5.78h-3.66q-12,0-12-11.68V51.89q0-11.68,12-11.68h3.66q6.37,0,8.14,5Zm-7.2,62H165q3.66,0,3.66-3.89V54.6a4.6,4.6,0,0,0-.83-3.13,3.76,3.76,0,0,0-2.83-.89H161.5a3.9,3.9,0,0,0-2.6.65,3.43,3.43,0,0,0-.71,2.54v28.8a3.43,3.43,0,0,0,.71,2.54A3.9,3.9,0,0,0,161.5,85.76Z"/>
+        </path>
+        <path id="h-leedham" fill="currentColor" d="M67.1 99.8h.86q3 0 3 1.72V108h-3.28V101.8a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1h-.86q-.89 0-.89.58V108H61.84V97.36h3.25v3.17Q65.52 99.8 67.1 99.8Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M67.1 99.8h.86q3 0 3 1.72V108h-3.28V101.8a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1h-.86q-.89 0-.89.58V108H61.84V97.36h3.25v3.17Q65.52 99.8 67.1 99.8Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M213.78,40.32h3.54q12.15,0,12.16,11.68V96.14H216V53.89a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65h-3.54q-3.66,0-3.66,3.9V96.14H192.18V23.8h13.34V45.28Q207.29,40.32,213.78,40.32Z"/>
+        </path>
+        <path id="a-leedham" fill="currentColor" d="M67.74 99.8h3.22V108h-3.28v-.73q-.43.73-2 .73H64.74q-2.93 0-2.93-1.72v-4.79q0-1.72 2.93-1.72h.89q1.7 0 2 .84Zm-1.81 6.71H66.74q.89 0 .89-.57v-4q0-.58-.89-.58h-.86a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37V106a.39.39 0 00.17.37A1.44 1.44 0 0065.89 106.51Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M67.74 99.8h3.22V108h-3.28v-.73q-.43.73-2 .73H64.74q-2.93 0-2.93-1.72v-4.79q0-1.72 2.93-1.72h.89q1.7 0 2 .84Zm-1.81 6.71H66.74q.89 0 .89-.57v-4q0-.58-.89-.58h-.86a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37V106a.39.39 0 00.17.37A1.44 1.44 0 0065.89 106.51Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M262.52,40.32h13.22V96.14H262.28v-5q-1.77,5-8.14,5h-3.66q-12,0-12-11.68V52q0-11.68,12-11.68h3.66q7,0,8.38,5.66Zm-7.43,45.44h3.54q3.66,0,3.66-3.89V54.6q0-3.9-3.66-3.9h-3.54a3.9,3.9,0,0,0-2.6.65,3.43,3.43,0,0,0-.71,2.54V82.57a3.43,3.43,0,0,0,.71,2.54A3.9,3.9,0,0,0,255.08,85.76Z"/>
+        </path>
+        <path id="m-leedham" fill="currentColor" d="M72.91 99.8h.89q2.93 0 2.93 1.72V108h-3.25V101.8a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1h-.86q-.89 0-.89.58V108h-3.28V101.8a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1h-.86q-.89 0-.89.58V108H61.84V99.8h3.22v.78q.4-.78 2-.78h.86q2.13 0 2.7.87Q71.07 99.8 72.91 99.8Z">
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="M72.91 99.8h.89q2.93 0 2.93 1.72V108h-3.25V101.8a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1h-.86q-.89 0-.89.58V108h-3.28V101.8a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1h-.86q-.89 0-.89.58V108H61.84V99.8h3.22v.78q.4-.78 2-.78h.86q2.13 0 2.7.87Q71.07 99.8 72.91 99.8Z"/>
+            <animate attributeName="d" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="M331.2,40.32h3.66q12,0,12,11.68V96.14H333.56V53.89a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65h-3.54q-3.66,0-3.66,3.9V96.14H309.61V53.89a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65h-3.54q-3.66,0-3.66,3.9V96.14H285.77V40.32H299v5.31q1.65-5.31,8.38-5.31h3.54q8.73,0,11.09,5.9Q323.65,40.32,331.2,40.32Z"/>
+        </path>
+        <polygon id="right" fill="currentColor" points="87.75 11.94 63.13 11.94 64.72 19.52 87.75 19.52 87.75 100.46 81.81 100.46 83.38 108.04 95.78 108.04 95.78 107.96 95.78 100.46 95.78 19.52 95.78 11.94 87.75 11.94">
+            <animate attributeName="points" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="87.75 11.94 63.13 11.94 64.72 19.52 87.75 19.52 87.75 100.46 81.81 100.46 83.38 108.04 95.78 108.04 95.78 107.96 95.78 100.46 95.78 19.52 95.78 11.94 87.75 11.94"/>
+            <animate attributeName="points" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="353.98 11.94 172.44 11.94 171.02 19.52 353.98 19.52 353.98 100.46 348.03 100.46 349.6 108.04 362 108.04 362 107.96 362 100.46 362 19.52 362 11.94 353.98 11.94"/>
+        </polygon>
+        <polygon id="bottom" fill="currentColor" points="55.82 100.46 57.22 108 37.72 108.04 38.97 100.46 55.82 100.46">
+            <animate attributeName="points" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="55.82 100.46 57.22 108 37.72 108.04 38.97 100.46 55.82 100.46"/>
+            <animate attributeName="points" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="353.98 100.46 353.98 108.04 7.83 108.04 8 100.46 353.98 100.46"/>
+        </polygon>
+        <polygon id="left" fill="currentColor" points="29.52 19.55 31.09 11.97 8.03 11.95 8.03 11.94 0 11.94 0 19.52 0 100.38 0 107.96 8.03 107.96 11.72 107.96 13.21 100.38 8.03 100.38 8.03 19.52 29.52 19.55">
+            <animate attributeName="points" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseleave" to="29.52 19.55 31.09 11.97 8.03 11.95 8.03 11.94 0 11.94 0 19.52 0 100.38 0 107.96 8.03 107.96 11.72 107.96 13.21 100.38 8.03 100.38 8.03 19.52 29.52 19.55"/>
+            <animate attributeName="points" dur="100ms" fill="freeze" repeatCount="1" begin="logoAnimated.mouseenter;" to="29.52 19.55 31.08 11.97 8.02 11.95 8.02 11.94 0 11.94 0 19.52 0 100.38 0 107.96 8.02 107.96 11.72 107.96 13.21 100.38 8.02 100.38 8.02 19.52 29.52 19.55"/>
+        </polygon>
+    </svg><svg class="logo--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="48px" height="48px"><path fill="currentColor" d="m41.12 64-2.43-13.29h-14L22.45 64H10.78L23.67 0H39.4l13.49 64ZM26.21 41.88h10.85l-5.58-30.64ZM58.42-.02H42.29l1.04 5.05h15.09v53.92h-3.96L55.51 64h8.26V-.02h-5.35z"/><path fill="currentColor" d="m37.41 58.95.94 5.05H25.36l.83-5.05h11.22zM19.9 5.05 20.94 0 5.58-.01v-.01H.23V63.94h7.81l.99-5.04H5.58V5.03l14.32.02z"/></svg></a>
+          <script type="application/javascript">
+            const logoLink = document.getElementById('logoLink');
+            const animations = Array.from(logoLink.getElementsByTagName('animate'));
+            if (animations.length) {
+              logoLink.addEventListener('focus', () => {
+                animations.forEach((animation, index) => index % 2 !== 0 && animation.beginElement());
+              })
+              logoLink.addEventListener('blur', () => {
+                animations.forEach((animation, index) => index % 2 === 0 && animation.beginElement());
+              })
+            }
+          </script>
+          <ul class="nav">
+              <li class="nav-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="/blog/posts/">Blog</a>
+              </li>
+          </ul>
+          <button class="button button--mode-toggle" onclick="window.toggleMode()">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M3.55,18.54L4.96,19.95L6.76,18.16L5.34,16.74M11,22.45C11.32,22.45 13,22.45 13,22.45V19.5H11M12,5.5A6,6 0 0,0 6,11.5A6,6 0 0,0 12,17.5A6,6 0 0,0 18,11.5C18,8.18 15.31,5.5 12,5.5M20,12.5H23V10.5H20M17.24,18.16L19.04,19.95L20.45,18.54L18.66,16.74M20.45,4.46L19.04,3.05L17.24,4.84L18.66,6.26M13,0.55H11V3.5H13M4,10.5H1V12.5H4M6.76,4.84L4.96,3.05L3.55,4.46L5.34,6.26L6.76,4.84Z" />
+            </svg>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z" />
+            </svg>
+          </button>
+      </header>
+    
+
+    <main class="tmpl-post">
+      <section>
+  <h1>How Experimental Browser Features Helped Me Verify a Hypothesis</h1>
+
+  <time datetime="2021-10-07">07 Oct 2021</time><a href="/tags/web/" class="post-tag">web</a><a href="/tags/javascript/" class="post-tag">javascript</a><a href="/tags/debugging/" class="post-tag">debugging</a>
+
+  <p>An issue was recently reported to me that an accordion component I work on had a scrollbar in some circumstances when it should not. For a bit of context, the accordion shows scrollbars when the content height is more than 50% of the viewport, and this content was not.</p>
+<p>Thankfully, the error report had a link to a few affected pages, and I could recreate the issue, so it was a good starting place. I wrote a lot of the code for this component and reviewed the rest of it, so again a fortunate position which is rare.</p>
+<p>When opening and closing the accordion it animates the <code>max-height</code> and toggles between an <code>overflow-y</code> of <code>none</code> and <code>auto</code> as to hide the scrollbar during the animation. This is a common technique as <code>max-height</code> is animatable and does not cause a reflow like height would. In order to add the <code>overflow-y</code> we hook into the <code>transitionend</code> event in JavaScript, so my initial thought was that this was not firing and thus leaving the <code>max-height</code> or not changing the <code>overflow-y</code>, but that was not the case. Then I noticed something, after toggling the accordion what seemed 1000 times, the text content was flowing onto an additional line at the end of the animation when the <code>overflow-y</code> was being added! To me, this instantly rang alarms in my head! The height I am calculating for the <code>max-height</code> is not taking the scrollbar into account, as it removes ~15px from the width of the content potentially making it flow onto another line. I quickly scrambled to prove this hypothesis and remembered reading about a new property that was intended to stop layout shift from scrollbars. After googling and trawling through creators past tweets, I found it <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter"><code>scrollbar-gutter</code></a>, it is an experimental feature in Chrome but it was easy to enable and using it with my accordion resolved the issue. So all I needed was a fix that was not an experimental feature. In the end, I had to rely on setting <code>overflow-y</code> to <code>auto</code> triggering layout, calculating the height, and then setting it back to <code>none</code>. Triggering an additional layout step is not really what I wanted to do, but after mulling on it for a while, I could not think of a better solution with the tools I had.</p>
+<p>This perhaps gives you insight into how I go about solving problems. It was satisfying to realise the cause and verify it quickly with a new browser feature!</p>
+
+  <hr>
+  <ul><li>Next: <a href="/blog/posts/how-to-quickly-find-mdn-articles/">How to Quickly Find MDN Articles</a></li><li>Previous: <a href="/blog/posts/you-might-want-pick-not-partial-in-typescript/">You might want Pick not Partial in TypeScript</a></li>
+  </ul>
+</section>
+
+    </main>
+
+    
+      <footer>
+        <ul class="icons">
+          <li>
+            <a aria-labelledby="twitter__title" href="https://twitter.com/AndrewJLeedham">
+              <svg role="img" width="24px" height="24px" fill="#000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title id="twitter__title">See Andrew Leedham's Twitter</title>
+                <path fill="currentColor" d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a aria-labelledby="linkedin__title" href="https://www.linkedin.com/in/andrew-leedham-ba864b112/">
+              <svg role="img" width="24px" height="24px" fill="#000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title id="linkedin__title">See Andrew Leedham's Linked In</title>
+                <path fill="currentColor" d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a aria-labelledby="github__title" href="https://github.com/AndrewLeedham">
+              <svg role="img" width="24px" height="24px" fill="#000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title id="github__title">Andrew Leedham's GitHub</title>
+                <path fill="currentColor" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a aria-labelledby="stack-overflow__title" href="http://stackoverflow.com/users/2386508/andrew-leedham">
+              <svg role="img" width="24px" height="24px" fill="#000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title id="stack-overflow__title">See Andrew Leedham's Stack Overflow</title>
+                <path fill="currentColor" d="M17.36,20.2V14.82H19.15V22H3V14.82H4.8V20.2H17.36M6.77,14.32L7.14,12.56L15.93,14.41L15.56,16.17L6.77,14.32M7.93,10.11L8.69,8.5L16.83,12.28L16.07,13.9L7.93,10.11M10.19,6.12L11.34,4.74L18.24,10.5L17.09,11.87L10.19,6.12M14.64,1.87L20,9.08L18.56,10.15L13.2,2.94L14.64,1.87M6.59,18.41V16.61H15.57V18.41H6.59Z"></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </footer>
+    
+
+    <!-- Current page: /blog/posts/how-experimental-browser-features-helped-me-verify-a-hypothesis/ -->
+  </body>
+</html>
