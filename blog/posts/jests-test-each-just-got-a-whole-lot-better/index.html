@@ -150,7 +150,7 @@
       <section>
   <h1>Jest&#39;s test.each just got a whole lot better</h1>
 
-  <time datetime="2021-09-10">10 Sep 2021</time><a href="/tags/web/" class="post-tag">web</a><a href="/tags/javascript/" class="post-tag">javascript</a><a href="/tags/testing/" class="post-tag">testing</a>
+  <time datetime="2021-09-10">10 Sep 2021</time><a href="/blog/tags/web/" class="post-tag">web</a><a href="/blog/tags/javascript/" class="post-tag">javascript</a><a href="/blog/tags/testing/" class="post-tag">testing</a>
 
   <p><a href="https://jestjs.io/">Jest</a> the javascript testing framework recently (4 months ago) upgraded the <code>test.each</code> global function in <a href="https://github.com/facebook/jest/releases#:~:text=Add%20support%20for%20interpolation%20with%20object%20properties">version 27</a> and seems to have gone under the radar. Well, I only just found it in <a href="https://jestjs.io/docs/api#1-testeachtablename-fn-timeout">the documentation</a>...</p>
 <p>The feature in question is the ability to insert named properties of an object into a tests title. Previously we could only insert a single value or items from an array using <code>%s</code> to indicate a string and <code>%d</code> for a number etc. Aside from not supporting object properties at all, you could not control the order items would be replaced when using multiple insertions, for example <code>test.each([['foo', 'bar']])('%s %s', () =&gt; {})</code> would have a test name of &quot;foo bar&quot; and there was no way to do &quot;bar foo&quot;.</p>
