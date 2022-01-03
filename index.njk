@@ -1,0 +1,32 @@
+---
+layout: layouts/blank.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+
+<link rel="stylesheet" href="{{ '/css/home.css' | url }}">
+
+<div class="fullbleed fullbleed--teal fullbleed--home">
+  <section class="home__headline">
+    <h1 class="home__headline__heading">{% include "./img/logo--large.svg" %}<br/><span class="home__headline__heading__subtitle">Full Stack Web Developer</span></h1>
+    <img src="{{ '/img/portrait-transparent.png' | url }}" />
+  </section>
+</div>
+
+<section>
+  <h2>About Me</h2>
+  <p>Hey I'm Andrew. A Full Stack Web Developer based in the U.K. I currently work for Xerox on all things web.</p>
+</section>
+
+
+<section>
+  {% set maxPosts = collections.posts.length | min(3) %}
+  <h2>Latest Blog Posts</h2>
+
+  {% set postslist = collections.posts | head(-3) %}
+  {% set postslistCounter = collections.posts | length %}
+  {% include "postslist.njk" %}
+
+  <p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>
+</section>

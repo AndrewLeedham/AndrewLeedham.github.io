@@ -1,2 +1,3 @@
 # AndrewLeedham.me
-Andrew Leedham's Portfolio: Full-Stack Web Developer
+
+Andrew Leedham: Full-Stack Web Developer
