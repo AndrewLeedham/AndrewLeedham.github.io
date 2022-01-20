@@ -19,7 +19,7 @@ body {
 .button.button--mode-toggle {
   all: unset;
   margin-left: 125px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .button.button--mode-toggle:focus {
@@ -196,6 +196,7 @@ table th {
 .header #logoLink {
   height: 48px;
   padding: 0 5px 5px 5px;
+  margin: 5px 0 5px 5px;
   outline-offset: -2px;
 }
 
