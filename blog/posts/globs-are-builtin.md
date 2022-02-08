@@ -28,3 +28,5 @@ The important thing to note here is that the echo command is called as `echo ./e
 Using built-in path expansion is useful even if a CLI supports native globs for 2 reasons:
 1. Globbing libraries often have slightly different syntax, meaning you need to figure out which is in use and adapt your muscle memory per CLI. Per here you are always using the same system with the same syntax.
 2. You can dry-run your glob outside of the CLI using `echo`, meaning you are sure it is processing the correct files without running some potentially destructive process.
+
+> __Bonus Tip__ use `echo ./example/**/*.js | tr ' ' '\n'` to print each file path on a newline. Making it much easier to digest large sets of files.
