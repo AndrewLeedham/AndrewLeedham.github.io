@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrew Leedham</title>
-    <meta name="description" content="Mostly web development stuff.">
+    <title>Globs are built-in!</title>
+    <meta name="description" content="Did you know globs are built in to Unix and therefore macOS.">
     <meta name="color-scheme" content="light dark">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,102 +158,34 @@
       </header>
     
 
-    <main class="tmpl-home">
+    <main class="tmpl-post">
       <section>
-    <section>
-  <table>
-    <thead>
-      <tr>
-        <th>URL</th>
-        <th>Page Title</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td><a href="/blog/posts/better-late-than-never/"><code>/blog/posts/better-late-than-never/</code></a></td>
-      <td>Better Late than Never</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/extracting-twitter-bookmarks/"><code>/blog/posts/extracting-twitter-bookmarks/</code></a></td>
-      <td>Extracting Twitter Bookmarks</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/jests-test-each-just-got-a-whole-lot-better/"><code>/blog/posts/jests-test-each-just-got-a-whole-lot-better/</code></a></td>
-      <td>Jest&#39;s test.each just got a whole lot better</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/you-might-want-pick-not-partial-in-typescript/"><code>/blog/posts/you-might-want-pick-not-partial-in-typescript/</code></a></td>
-      <td>You might want Pick not Partial in TypeScript</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/how-experimental-browser-features-helped-me-verify-a-hypothesis/"><code>/blog/posts/how-experimental-browser-features-helped-me-verify-a-hypothesis/</code></a></td>
-      <td>How Experimental Browser Features Helped Me Verify a Hypothesis</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/how-to-quickly-find-mdn-articles/"><code>/blog/posts/how-to-quickly-find-mdn-articles/</code></a></td>
-      <td>How to Quickly Find MDN Articles</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/thoughts-on-simplifying-long-if-statements/"><code>/blog/posts/thoughts-on-simplifying-long-if-statements/</code></a></td>
-      <td>Thoughts on simplifying long if statements</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/the-two-ways-to-test-errors-jest/"><code>/blog/posts/the-two-ways-to-test-errors-jest/</code></a></td>
-      <td>The two ways to test errors in Jest</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/the-lesser-known-comment/"><code>/blog/posts/the-lesser-known-comment/</code></a></td>
-      <td>The lesser-known ^? comment</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/invariant-what-is-it/"><code>/blog/posts/invariant-what-is-it/</code></a></td>
-      <td>Invariant what is it?</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/globs-are-builtin/"><code>/blog/posts/globs-are-builtin/</code></a></td>
-      <td>Globs are built-in!</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/posts/"><code>/blog/posts/</code></a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><a href="/blog/tags/"><code>/blog/tags/</code></a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><a href="/blog/tags/updates/"><code>/blog/tags/updates/</code></a></td>
-      <td>Tagged “updates”</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/tags/scraping/"><code>/blog/tags/scraping/</code></a></td>
-      <td>Tagged “scraping”</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/tags/organisation/"><code>/blog/tags/organisation/</code></a></td>
-      <td>Tagged “organisation”</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/tags/unix/"><code>/blog/tags/unix/</code></a></td>
-      <td>Tagged “unix”</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/tags/macos/"><code>/blog/tags/macos/</code></a></td>
-      <td>Tagged “macos”</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/tags/web/"><code>/blog/tags/web/</code></a></td>
-      <td>Tagged “web”</td>
-    </tr>
-    <tr>
-      <td><a href="/blog/tags/javascript/"><code>/blog/tags/javascript/</code></a></td>
-      <td>Tagged “javascript”</td>
-    </tr>
-    </tbody>
-  </table>
-</section>
+  <h1>Globs are built-in!</h1>
 
-</scrtion>
+  <time datetime="2022-02-08">08 Feb 2022</time><a href="/blog/tags/unix/" class="post-tag">unix</a><a href="/blog/tags/macos/" class="post-tag">macos</a>
+
+  <p>I have recently been converting some large repos to Ecmascript Modules (ESM). As part of that process, I have been using <a href="https://github.com/facebook/jscodeshift">jscodeshift</a> to convert en masse. To specify which files to convert the <code>jscodeshift</code> CLI accepts any number of paths separated by spaces (positional arguments). A perfect case for Unix path expansion (globs), since <code>jscodeshift</code> does not support globs via a library like <a href="https://www.npmjs.com/package/glob">glob</a> or <a href="https://www.npmjs.com/package/globby">globby</a>. So, I pulled out my faded Unix knowledge.</p>
+<p>Globs just work in the shell! Path expansion takes a glob with wildcards and replaces it with matching paths. So say we have a directory structure like this:</p>
+<pre class="shiki dark-plus" style="background-color: #1E1E1E; color: #D4D4D4"><div class='code-container'><code><div class='line'><span style="color: undefined">example
+├── file.css
+├── file.js
+├── other.js
+└── sub
+    └── file.js</span></div></code></div></pre>
+<p>Say we wanted to select all the JavaScript files in this structure, we could use the following glob <code>echo ./example/**/*.js</code> which would output:</p>
+<pre class="shiki dark-plus" style="background-color: #1E1E1E; color: #D4D4D4"><div class='code-container'><code><div class='line'><span style="color: undefined">./example/file.js ./example/other.js ./example/sub/file.js</span></div></code></div></pre>
+<p>The important thing to note here is that the echo command is called as <code>echo ./example/file.js ./example/other.js ./example/sub/file.js</code> because the path expansion is executed first then passed to the command as arguments. Meaning we can use built-in globs for any CLI that does not natively support globs.</p>
+<p>Using built-in path expansion is useful even if a CLI supports native globs for two reasons:</p>
+<ol>
+<li>Globbing libraries often have slightly different syntax, meaning you need to figure out which is in use and adapt your muscle memory per CLI. But with Unix path expansion, you are always using the same system with the same syntax.</li>
+<li>You can dry-run your glob outside of the CLI using <code>echo</code> meaning, you are sure it is processing the correct files without running some potentially destructive process.</li>
+</ol>
+<p><strong>Bonus Tip</strong> use <code>echo ./example/**/*.js | tr ' ' '\n'</code> to print each file path on a newline. Making it much easier to digest large sets of files.</p>
+
+  <hr>
+  <ul><li>Previous: <a href="/blog/posts/invariant-what-is-it/">Invariant what is it?</a></li>
+  </ul>
+</section>
 
     </main>
 
@@ -296,6 +228,6 @@
       </footer>
     
 
-    <!-- Current page: /page-list/ -->
+    <!-- Current page: /blog/posts/globs-are-builtin/ -->
   </body>
 </html>

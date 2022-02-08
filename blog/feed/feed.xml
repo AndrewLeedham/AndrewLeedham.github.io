@@ -5,12 +5,37 @@
 	
 	<link href="https://www.andrewleedham.me/blog/feed/feed.xml" rel="self"/>
 	<link href="https://www.andrewleedham.me"/>
-	<updated>2022-01-20T00:00:00Z</updated>
+	<updated>2022-02-08T00:00:00Z</updated>
 	<id>https://andrewleedham.me</id>
 	<author>
 		<name>Andrew Leedham</name>
 		<email>AndrewLeedham@Outlook.com</email>
 	</author>
+	
+	<entry>
+		<title>Globs are built-in!</title>
+		<link href="https://www.andrewleedham.me/blog/posts/globs-are-builtin/"/>
+		<updated>2022-02-08T00:00:00Z</updated>
+		<id>https://www.andrewleedham.me/blog/posts/globs-are-builtin/</id>
+		<content type="html">&lt;p&gt;I have recently been converting some large repos to Ecmascript Modules (ESM). As part of that process, I have been using &lt;a href=&quot;https://github.com/facebook/jscodeshift&quot;&gt;jscodeshift&lt;/a&gt; to convert en masse. To specify which files to convert the &lt;code&gt;jscodeshift&lt;/code&gt; CLI accepts any number of paths separated by spaces (positional arguments). A perfect case for Unix path expansion (globs), since &lt;code&gt;jscodeshift&lt;/code&gt; does not support globs via a library like &lt;a href=&quot;https://www.npmjs.com/package/glob&quot;&gt;glob&lt;/a&gt; or &lt;a href=&quot;https://www.npmjs.com/package/globby&quot;&gt;globby&lt;/a&gt;. So, I pulled out my faded Unix knowledge.&lt;/p&gt;
+&lt;p&gt;Globs just work in the shell! Path expansion takes a glob with wildcards and replaces it with matching paths. So say we have a directory structure like this:&lt;/p&gt;
+&lt;pre class=&quot;shiki dark-plus&quot; style=&quot;background-color: #1E1E1E; color: #D4D4D4&quot;&gt;&lt;div class=&quot;code-container&quot;&gt;&lt;code&gt;&lt;div class=&quot;line&quot;&gt;&lt;span style=&quot;color: undefined&quot;&gt;example
+├── file.css
+├── file.js
+├── other.js
+└── sub
+    └── file.js&lt;/span&gt;&lt;/div&gt;&lt;/code&gt;&lt;/div&gt;&lt;/pre&gt;
+&lt;p&gt;Say we wanted to select all the JavaScript files in this structure, we could use the following glob &lt;code&gt;echo ./example/**/*.js&lt;/code&gt; which would output:&lt;/p&gt;
+&lt;pre class=&quot;shiki dark-plus&quot; style=&quot;background-color: #1E1E1E; color: #D4D4D4&quot;&gt;&lt;div class=&quot;code-container&quot;&gt;&lt;code&gt;&lt;div class=&quot;line&quot;&gt;&lt;span style=&quot;color: undefined&quot;&gt;./example/file.js ./example/other.js ./example/sub/file.js&lt;/span&gt;&lt;/div&gt;&lt;/code&gt;&lt;/div&gt;&lt;/pre&gt;
+&lt;p&gt;The important thing to note here is that the echo command is called as &lt;code&gt;echo ./example/file.js ./example/other.js ./example/sub/file.js&lt;/code&gt; because the path expansion is executed first then passed to the command as arguments. Meaning we can use built-in globs for any CLI that does not natively support globs.&lt;/p&gt;
+&lt;p&gt;Using built-in path expansion is useful even if a CLI supports native globs for two reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Globbing libraries often have slightly different syntax, meaning you need to figure out which is in use and adapt your muscle memory per CLI. But with Unix path expansion, you are always using the same system with the same syntax.&lt;/li&gt;
+&lt;li&gt;You can dry-run your glob outside of the CLI using &lt;code&gt;echo&lt;/code&gt; meaning, you are sure it is processing the correct files without running some potentially destructive process.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Bonus Tip&lt;/strong&gt; use &lt;code&gt;echo ./example/**/*.js | tr &#39; &#39; &#39;\n&#39;&lt;/code&gt; to print each file path on a newline. Making it much easier to digest large sets of files.&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>Invariant what is it?</title>
