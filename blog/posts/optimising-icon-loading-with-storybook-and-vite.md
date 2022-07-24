@@ -78,7 +78,7 @@ function getIconPathFromName(iconName: string): string {
   return iconName;
 }
 // ---cut---
-import React from "React";
+import React from "react";
 import IconBase from "./IconBase";
 
 const icons = import.meta.glob<{ default: typeof IconBase }>("./icons/*.tsx");
