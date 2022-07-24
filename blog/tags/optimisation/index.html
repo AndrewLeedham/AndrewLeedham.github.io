@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Globs are built-in!</title>
-    <meta name="description" content="Did you know globs are built in to Unix and therefore macOS.">
+    <title>Tagged “optimisation”</title>
+    <meta name="description" content="Mostly web development stuff.">
     <meta name="color-scheme" content="light dark">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,34 +158,42 @@
       </header>
     
 
-    <main class="tmpl-post">
+    <main class="tmpl-home">
       <section>
-  <h1>Globs are built-in!</h1>
+    <section>
+  <h1>Tagged “optimisation”</h1>
 
-  <time datetime="2022-02-08">08 Feb 2022</time><a href="/blog/tags/unix/" class="post-tag">unix</a><a href="/blog/tags/macos/" class="post-tag">macos</a>
+  
+  <ul reversed class="postlist">
 
-  <p>I have recently been converting some large repos to Ecmascript Modules (ESM). As part of that process, I have been using <a href="https://github.com/facebook/jscodeshift">jscodeshift</a> to convert en masse. To specify which files to convert the <code>jscodeshift</code> CLI accepts any number of paths separated by spaces (positional arguments). A perfect case for Unix path expansion (globs), since <code>jscodeshift</code> does not support globs via a library like <a href="https://www.npmjs.com/package/glob">glob</a> or <a href="https://www.npmjs.com/package/globby">globby</a>. So, I pulled out my faded Unix knowledge.</p>
-<p>Globs just work in the shell! Path expansion takes a glob with wildcards and replaces it with matching paths. So say we have a directory structure like this:</p>
-<pre class="shiki dark-plus" style="background-color: #1E1E1E; color: #D4D4D4"><div class='code-container'><code><div class='line'><span style="color: undefined">example
-├── file.css
-├── file.js
-├── other.js
-└── sub
-    └── file.js</span></div></code></div></pre>
-<p>Say we wanted to select all the JavaScript files in this structure, we could use the following glob <code>echo ./example/**/*.js</code> which would output:</p>
-<pre class="shiki dark-plus" style="background-color: #1E1E1E; color: #D4D4D4"><div class='code-container'><code><div class='line'><span style="color: undefined">./example/file.js ./example/other.js ./example/sub/file.js</span></div></code></div></pre>
-<p>The important thing to note here is that the echo command is called as <code>echo ./example/file.js ./example/other.js ./example/sub/file.js</code> because the path expansion is executed first then passed to the command as arguments. Meaning we can use built-in globs for any CLI that does not natively support globs.</p>
-<p>Using built-in path expansion is useful even if a CLI supports native globs for two reasons:</p>
-<ol>
-<li>Globbing libraries often have slightly different syntax, meaning you need to figure out which is in use and adapt your muscle memory per CLI. But with Unix path expansion, you are always using the same system with the same syntax.</li>
-<li>You can dry-run your glob outside of the CLI using <code>echo</code> meaning, you are sure it is processing the correct files without running some potentially destructive process.</li>
-</ol>
-<p><strong>Bonus Tip</strong> use <code>echo ./example/**/*.js | tr ' ' '\n'</code> to print each file path on a newline. Making it much easier to digest large sets of files.</p>
+  <li class="postlist-item">
+    <a href="/blog/posts/optimising-icon-loading-with-storybook-and-vite/" class="postlist-link">How I optimised icon loading in Storybook and Vite</a>
+    <time class="postlist-date" datetime="2022-07-24">24 Jul 2022</time>
+    
+      
+      <a href="/blog/tags/web/" class="post-tag">web</a>
+    
+      
+      <a href="/blog/tags/javascript/" class="post-tag">javascript</a>
+    
+      
+      <a href="/blog/tags/storybook/" class="post-tag">storybook</a>
+    
+      
+      <a href="/blog/tags/vite/" class="post-tag">vite</a>
+    
+      
+      <a href="/blog/tags/optimisation/" class="post-tag">optimisation</a>
+    
+  </li>
 
-  <hr>
-  <ul><li>Next: <a href="/blog/posts/optimising-icon-loading-with-storybook-and-vite/">How I optimised icon loading in Storybook and Vite</a></li><li>Previous: <a href="/blog/posts/invariant-what-is-it/">Invariant what is it?</a></li>
-  </ul>
+</ul>
+
+
+  <p>See <a href="/blog/tags/">all tags</a>.</p>
 </section>
+
+</scrtion>
 
     </main>
 
@@ -228,6 +236,6 @@
       </footer>
     
 
-    <!-- Current page: /blog/posts/globs-are-builtin/ -->
+    <!-- Current page: /blog/tags/optimisation/ -->
   </body>
 </html>
