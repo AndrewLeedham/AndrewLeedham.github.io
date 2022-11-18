@@ -5,12 +5,27 @@
 	
 	<link href="https://www.andrewleedham.me/blog/feed/feed.xml" rel="self"/>
 	<link href="https://www.andrewleedham.me"/>
-	<updated>2022-07-24T00:00:00Z</updated>
+	<updated>2022-11-18T00:00:00Z</updated>
 	<id>https://andrewleedham.me</id>
 	<author>
 		<name>Andrew Leedham</name>
 		<email>AndrewLeedham@Outlook.com</email>
 	</author>
+	
+	<entry>
+		<title>Did you know about native macOS tabs in vscode?</title>
+		<link href="https://www.andrewleedham.me/blog/posts/native-macos-vscode-tabs/"/>
+		<updated>2022-11-18T00:00:00Z</updated>
+		<id>https://www.andrewleedham.me/blog/posts/native-macos-vscode-tabs/</id>
+		<content type="html">&lt;p&gt;I was trawling through the vscode options the other day looking for some window resizing stuff, and found an option entitled &amp;quot;Native Tabs&amp;quot;. Being a curious sort I enabled it and was suprised to see that all my seperate open windows were now combined into 1 with native tabs across the top to navigate between them. This in my opinion is a much better way of displaying multiple projects than workspace folders. You even get a nice little + icon for opening new projects.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.andrewleedham.me/img/native-macos-vscode-tabs.webp&quot; alt=&quot;A screenshot of vscode&#39;s menu bar with native macOS tabs enabled&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;enabling-native-tabs&quot; tabindex=&quot;-1&quot;&gt;Enabling Native Tabs &lt;a class=&quot;direct-link&quot; href=&quot;https://www.andrewleedham.me/blog/posts/native-macos-vscode-tabs/#enabling-native-tabs&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Just like any other option it is available in the GUI settings or the JSON file settings. Accessible by pressing &lt;kbd&gt;cmd + ,&lt;/kbd&gt; or via the menu with &#39;Code -&amp;gt; Preferences -&amp;gt; Settings&#39;. The option you are looking for is under &amp;quot;Window&amp;quot; entitled &amp;quot;Native Tabs&amp;quot;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.andrewleedham.me/img/native-macos-vscode-tabs-options.webp&quot; alt=&quot;A screenshot of vscode&#39;s native tabs option in the settings menu&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;If you prefer you could just add the following to your &lt;code&gt;settings.json&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre class=&quot;shiki dark-plus&quot; style=&quot;background-color: #1E1E1E; color: #D4D4D4&quot;&gt;&lt;div class=&quot;code-container&quot;&gt;&lt;code&gt;&lt;div class=&quot;line&quot;&gt;&lt;span style=&quot;color: undefined&quot;&gt;  &quot;window.nativeTabs&quot;: true&lt;/span&gt;&lt;/div&gt;&lt;/code&gt;&lt;/div&gt;&lt;/pre&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>How I optimised icon loading in Storybook and Vite</title>
