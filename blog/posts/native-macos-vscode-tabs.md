@@ -8,7 +8,7 @@ tags:
 layout: layouts/post.njk
 ---
 
-I was trawling through the vscode options the other day looking for some window resizing stuff, and found an option entitled "Native Tabs". Being a curious sort I enabled it and was suprised to see that all my seperate open windows were now combined into 1 with native tabs across the top to navigate between them. This in my opinion is a much better way of displaying multiple projects than workspace folders. You even get a nice little + icon for opening new projects.
+I was trawling through the vscode options the other day looking for some window resizing stuff, and found an option entitled "Native Tabs". Being a curious sort I enabled it and was surprised to see that all my separate open windows were now combined into 1 with native tabs across the top to navigate between them. This in my opinion is a much better way of displaying multiple projects than workspace folders. You even get a nice little + icon for opening new projects.
 
 ![A screenshot of vscode's menu bar with native macOS tabs enabled]({{ '/img/native-macos-vscode-tabs.webp' | url }})
 
