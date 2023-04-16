@@ -22,7 +22,7 @@
   "license": "MIT",
   "homepage": "https://github.com/AndrewLeedham/AndrewLeedham.github.io#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.3.2",
     "@11ty/eleventy-plugin-rss": "^1.1.1",
     "@storybook/react": "^6.5.9",
