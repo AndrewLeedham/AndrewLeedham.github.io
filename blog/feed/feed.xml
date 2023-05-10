@@ -156,7 +156,7 @@ export const iconNames = Object.keys(icons);
 &lt;li&gt;Globbing libraries often have slightly different syntax, meaning you need to figure out which is in use and adapt your muscle memory per CLI. But with Unix path expansion, you are always using the same system with the same syntax.&lt;/li&gt;
 &lt;li&gt;You can dry-run your glob outside of the CLI using &lt;code&gt;echo&lt;/code&gt; meaning, you are sure it is processing the correct files without running some potentially destructive process.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Bonus Tip&lt;/strong&gt; use &lt;code&gt;echo ./example/**/*.js | tr &#39; &#39; &#39;\n&#39;&lt;/code&gt; to print each file path on a newline. Making it much easier to digest large sets of files.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bonus Tip&lt;/strong&gt; use &lt;code&gt;echo ./example/**/*.js | tr &#39; &#39; &#39;&#92;n&#39;&lt;/code&gt; to print each file path on a newline. Making it much easier to digest large sets of files.&lt;/p&gt;
 </content>
 	</entry>
 	
