@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tagged “web”</title>
-    <meta name="description" content="Mostly web development stuff.">
+    <title>Dynamic Placeholder Images for Testing</title>
+    <meta name="description" content="An approach for generating dynamic placeholder images for visual regression testing.">
     <meta name="color-scheme" content="light dark">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,129 +158,21 @@
       </header>
     
 
-    <main class="tmpl-home">
+    <main class="tmpl-post">
       <section>
-    <section>
-  <h1>Tagged “web”</h1>
+  <h1>Dynamic Placeholder Images for Testing</h1>
 
-  
-  <ul reversed class="postlist">
+  <time datetime="2023-09-17">17 Sep 2023</time><a href="/blog/tags/javascript/" class="post-tag">javascript</a><a href="/blog/tags/web/" class="post-tag">web</a><a href="/blog/tags/testing/" class="post-tag">testing</a><a href="/blog/tags/typescript/" class="post-tag">typescript</a>
 
-  <li class="postlist-item">
-    <a href="/blog/posts/dynamic-placeholder-images-for-testing/" class="postlist-link">Dynamic Placeholder Images for Testing</a>
-    <time class="postlist-date" datetime="2023-09-17">17 Sep 2023</time>
-    
-      
-      <a href="/blog/tags/javascript/" class="post-tag">javascript</a>
-    
-      
-      <a href="/blog/tags/web/" class="post-tag">web</a>
-    
-      
-      <a href="/blog/tags/testing/" class="post-tag">testing</a>
-    
-      
-      <a href="/blog/tags/typescript/" class="post-tag">typescript</a>
-    
-  </li>
+  <p>Placeholder images are crucial when building out design systems. Whether it is a card, a hero or just an image component you will need actual images to use while developing. I have typically seen 2 approaches for this in the wild: a folder full of images of various sizes that are referenced directly, or using a service like <a href="https://placehold.co/">https://placehold.co/</a> where you can just pass an arbitrary size. The former soon bubbles out of control, having various similar aspect ratios and having a mix of colours and fonts depending on who created them. The latter is better as you can manage the images where they are used, and it does not balloon the size of your repo, and all of them are styled the same. However, placeholder services aren't perfect as for one they can be paid services or like <a href="http://placeholder.com">placeholder.com</a> might be bought out, and additionally they require a network request, which for visual regression specifically is one more thing to wait for before a screenshot can be taken.</p>
+<p>So, is there a better way. I came up with a solution that somewhat mimics the placeholder services but dynamically generates the image locally. You may be thinking this is akin to hosting a placeholder service in a local docker image, but it is much simpler than that. It uses the <code>data:</code> format which can be used inline in an images src in both HTML and CSS. So, how does it work? Well it is a simple case of generating an SVG and inlining it with <code>image/svg+xml</code>. We can do a bit of optimisation to stop the length getting out of control. Before we get into the implementation it is worth noting that this is written in JavaScript, meaning you would need to be using a component library of some-sort that renders your components HTML via JavaScript, and similarly CSS-in-JS or a pre-processor for CSS.</p>
+<p>Below is a simplified implementation with inline comments, you can <a href="https://stackblitz.com/edit/stackblitz-starters-bjrx9u?file=src%2FplaceholderImage.ts">see a live demo of it in use here</a>.</p>
+<pre class="shiki dark-plus twoslash lsp" style="background-color: #1E1E1E; color: #D4D4D4"><div class="language-id">typescript</div><div class='code-container'><code><div class='line'><span style="color: #6A9955">/**</span></div><div class='line'><span style="color: #6A9955"> * Generates a placholder image as an inline image data string.</span></div><div class='line'><span style="color: #6A9955"> *</span></div><div class='line'><span style="color: #6A9955"> * </span><span style="color: #569CD6">@param</span><span style="color: #6A9955"> </span><span style="color: #9CDCFE">width</span><span style="color: #6A9955"> - Width of the placeholder image.</span></div><div class='line'><span style="color: #6A9955"> * </span><span style="color: #569CD6">@param</span><span style="color: #6A9955"> </span><span style="color: #9CDCFE">height</span><span style="color: #6A9955"> - Height of the placeholder image.</span></div><div class='line'><span style="color: #6A9955"> * </span><span style="color: #569CD6">@param</span><span style="color: #6A9955"> </span><span style="color: #9CDCFE">colour</span><span style="color: #6A9955"> - The background colour of the image.</span></div><div class='line'><span style="color: #6A9955"> * </span><span style="color: #569CD6">@returns</span><span style="color: #6A9955"> Image data string.</span></div><div class='line'><span style="color: #6A9955"> */</span></div><div class='line'><span style="color: #C586C0">export</span><span style="color: #D4D4D4"> </span><span style="color: #569CD6">function</span><span style="color: #D4D4D4"> </span><span style="color: #DCDCAA"><data-lsp lsp='function placeholderImage(width: number, height: number, colour: string): string' >placeholderImage</data-lsp></span><span style="color: #D4D4D4">(</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) width: number' >width</data-lsp></span><span style="color: #D4D4D4">: </span><span style="color: #4EC9B0">number</span><span style="color: #D4D4D4">,</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) height: number' >height</data-lsp></span><span style="color: #D4D4D4">: </span><span style="color: #4EC9B0">number</span><span style="color: #D4D4D4">,</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) colour: string' >colour</data-lsp></span><span style="color: #D4D4D4">: </span><span style="color: #4EC9B0">string</span></div><div class='line'><span style="color: #D4D4D4">): </span><span style="color: #4EC9B0">string</span><span style="color: #D4D4D4"> {</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// Generate the viewbox size, this is an aspect ratio where the larger</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// dimension is 100.</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF"><data-lsp lsp='const viewboxWidth: number' >viewboxWidth</data-lsp></span><span style="color: #D4D4D4"> = </span><span style="color: #4EC9B0"><data-lsp lsp='var Math: Math' >Math</data-lsp></span><span style="color: #D4D4D4">.</span><span style="color: #DCDCAA"><data-lsp lsp='(method) Math.min(...values: number[]): number' >min</data-lsp></span><span style="color: #D4D4D4">(</span><span style="color: #B5CEA8">100</span><span style="color: #D4D4D4">, (</span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) width: number' >width</data-lsp></span><span style="color: #D4D4D4"> / </span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) height: number' >height</data-lsp></span><span style="color: #D4D4D4">) * </span><span style="color: #B5CEA8">100</span><span style="color: #D4D4D4">);</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF"><data-lsp lsp='const viewboxHeight: number' >viewboxHeight</data-lsp></span><span style="color: #D4D4D4"> = </span><span style="color: #4EC9B0"><data-lsp lsp='var Math: Math' >Math</data-lsp></span><span style="color: #D4D4D4">.</span><span style="color: #DCDCAA"><data-lsp lsp='(method) Math.min(...values: number[]): number' >min</data-lsp></span><span style="color: #D4D4D4">(</span><span style="color: #B5CEA8">100</span><span style="color: #D4D4D4">, (</span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) height: number' >height</data-lsp></span><span style="color: #D4D4D4"> / </span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) width: number' >width</data-lsp></span><span style="color: #D4D4D4">) * </span><span style="color: #B5CEA8">100</span><span style="color: #D4D4D4">);</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// You could use something like https://polished.js.org/docs/#readablecolor here</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// to generate an appropriate colour from the background colour. But for</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// simplicity we are just using black.</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF"><data-lsp lsp='const textColor: "#000"' >textColor</data-lsp></span><span style="color: #D4D4D4"> = </span><span style="color: #CE9178">&apos;#000&apos;</span><span style="color: #D4D4D4">;</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// Here is the meat and potatoes, we create an appropriately sized svg with a</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// full size rectangle in the provided colour and some text centered in the</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// middle.</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #569CD6">let</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE"><data-lsp lsp='let svg: string' >svg</data-lsp></span><span style="color: #D4D4D4"> = </span><span style="color: #CE9178">`&lt;svg</span></div><div class='line'><span style="color: #CE9178">              xmlns="http://www.w3.org/2000/svg"</span></div><div class='line'><span style="color: #CE9178">              viewBox="0 0 </span><span style="color: #569CD6">${</span><span style="color: #9CDCFE"><data-lsp lsp='const viewboxWidth: number' >viewboxWidth</data-lsp></span><span style="color: #569CD6">}</span><span style="color: #CE9178"> </span><span style="color: #569CD6">${</span><span style="color: #9CDCFE"><data-lsp lsp='const viewboxHeight: number' >viewboxHeight</data-lsp></span><span style="color: #569CD6">}</span><span style="color: #CE9178">"</span></div><div class='line'><span style="color: #CE9178">              width="</span><span style="color: #569CD6">${</span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) width: number' >width</data-lsp></span><span style="color: #569CD6">}</span><span style="color: #CE9178">"</span></div><div class='line'><span style="color: #CE9178">              height="</span><span style="color: #569CD6">${</span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) height: number' >height</data-lsp></span><span style="color: #569CD6">}</span><span style="color: #CE9178">"&gt;</span></div><div class='line'><span style="color: #CE9178">              &lt;style&gt;*{font:400 16px sans-serif;}&lt;/style&gt;</span></div><div class='line'><span style="color: #CE9178">              &lt;rect width="100%" height="100%" fill="</span><span style="color: #569CD6">${</span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) colour: string' >colour</data-lsp></span><span style="color: #569CD6">}</span><span style="color: #CE9178">" /&gt;</span></div><div class='line'><span style="color: #CE9178">                &lt;text</span></div><div class='line'><span style="color: #CE9178">                x="50%"</span></div><div class='line'><span style="color: #CE9178">                y="50%"</span></div><div class='line'><span style="color: #CE9178">                dominant-baseline="middle"</span></div><div class='line'><span style="color: #CE9178">                text-anchor="middle"</span></div><div class='line'><span style="color: #CE9178">                fill="</span><span style="color: #569CD6">${</span><span style="color: #9CDCFE"><data-lsp lsp='const textColor: "#000"' >textColor</data-lsp></span><span style="color: #569CD6">}</span><span style="color: #CE9178">"&gt;</span></div><div class='line'><span style="color: #CE9178">              </span><span style="color: #569CD6">${</span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) width: number' >width</data-lsp></span><span style="color: #569CD6">}</span><span style="color: #CE9178">x</span><span style="color: #569CD6">${</span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) height: number' >height</data-lsp></span><span style="color: #569CD6">}</span></div><div class='line'><span style="color: #CE9178">              &lt;/text&gt;</span></div><div class='line'><span style="color: #CE9178">            &lt;/svg&gt;`</span><span style="color: #D4D4D4">;</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// You could probably remove the spacing above, or even use a library to minify</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// the html. But you want the svg code to be a single line, so I have done a</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// very simple remapping below.</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #9CDCFE"><data-lsp lsp='let svg: string' >svg</data-lsp></span><span style="color: #D4D4D4"> = </span><span style="color: #9CDCFE"><data-lsp lsp='let svg: string' >svg</data-lsp></span></div><div class='line'><span style="color: #D4D4D4">    .</span><span style="color: #DCDCAA"><data-lsp lsp='(method) String.split(separator: string | RegExp, limit?: number | undefined): string[] (+1 overload)' >split</data-lsp></span><span style="color: #D4D4D4">(</span><span style="color: #CE9178">&apos;</span><span style="color: #D7BA7D">\n</span><span style="color: #CE9178">&apos;</span><span style="color: #D4D4D4">)</span></div><div class='line'><span style="color: #D4D4D4">    .</span><span style="color: #DCDCAA"><data-lsp lsp='(method) Array&lt;string>.map&lt;string>(callbackfn: (value: string, index: number, array: string[]) => string, thisArg?: any): string[]' >map</data-lsp></span><span style="color: #D4D4D4">((</span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) line: string' >line</data-lsp></span><span style="color: #D4D4D4">) </span><span style="color: #569CD6">=&gt;</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE"><data-lsp lsp='(parameter) line: string' >line</data-lsp></span><span style="color: #D4D4D4">.</span><span style="color: #DCDCAA"><data-lsp lsp='(method) String.trim(): string' >trim</data-lsp></span><span style="color: #D4D4D4">())</span></div><div class='line'><span style="color: #D4D4D4">    .</span><span style="color: #DCDCAA"><data-lsp lsp='(method) Array&lt;string>.join(separator?: string | undefined): string' >join</data-lsp></span><span style="color: #D4D4D4">(</span><span style="color: #CE9178">&apos; &apos;</span><span style="color: #D4D4D4">);</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF"><data-lsp lsp='const base64: string' >base64</data-lsp></span><span style="color: #D4D4D4"> = </span><span style="color: #DCDCAA"><data-lsp lsp='function btoa(data: string): string' >btoa</data-lsp></span><span style="color: #D4D4D4">(</span><span style="color: #9CDCFE"><data-lsp lsp='let svg: string' >svg</data-lsp></span><span style="color: #D4D4D4">);</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF"><data-lsp lsp='const utf8: string' >utf8</data-lsp></span><span style="color: #D4D4D4"> = </span><span style="color: #DCDCAA"><data-lsp lsp='function encodeURIComponent(uriComponent: string | number | boolean): string' >encodeURIComponent</data-lsp></span><span style="color: #D4D4D4">(</span><span style="color: #9CDCFE"><data-lsp lsp='let svg: string' >svg</data-lsp></span><span style="color: #D4D4D4">);</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// This is the extra optimisation I eluded to. Essentially we compare the full</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// text length (encoded) to the base64 representation and use the smaller</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// version.</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF"><data-lsp lsp='const unicode: boolean' >unicode</data-lsp></span><span style="color: #D4D4D4"> = !</span><span style="color: #9CDCFE"><data-lsp lsp='const base64: string' >base64</data-lsp></span><span style="color: #D4D4D4"> || </span><span style="color: #9CDCFE"><data-lsp lsp='const utf8: string' >utf8</data-lsp></span><span style="color: #D4D4D4">.</span><span style="color: #9CDCFE"><data-lsp lsp='(property) String.length: number' >length</data-lsp></span><span style="color: #D4D4D4"> &lt; </span><span style="color: #9CDCFE"><data-lsp lsp='const base64: string' >base64</data-lsp></span><span style="color: #D4D4D4">.</span><span style="color: #9CDCFE"><data-lsp lsp='(property) String.length: number' >length</data-lsp></span><span style="color: #D4D4D4">;</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #6A9955">// Finally we return the data string with the relevant encoding.</span></div><div class='line'><span style="color: #D4D4D4">  </span><span style="color: #C586C0">return</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">`data:image/svg+xml;</span><span style="color: #569CD6">${</span><span style="color: #9CDCFE"><data-lsp lsp='const unicode: boolean' >unicode</data-lsp></span><span style="color: #D4D4D4"> ? </span><span style="color: #CE9178">&apos;utf8,&apos;</span><span style="color: #D4D4D4"> + </span><span style="color: #9CDCFE"><data-lsp lsp='const utf8: string' >utf8</data-lsp></span><span style="color: #D4D4D4"> : </span><span style="color: #CE9178">&apos;base64,&apos;</span><span style="color: #D4D4D4"> + </span><span style="color: #9CDCFE"><data-lsp lsp='const base64: string' >base64</data-lsp></span><span style="color: #569CD6">}</span><span style="color: #CE9178">`</span><span style="color: #D4D4D4">;</span></div><div class='line'><span style="color: #D4D4D4">}</span></div></code></div></pre>
 
-  <li class="postlist-item">
-    <a href="/blog/posts/optimising-icon-loading-with-storybook-and-vite/" class="postlist-link">How I optimised icon loading in Storybook and Vite</a>
-    <time class="postlist-date" datetime="2022-07-24">24 Jul 2022</time>
-    
-      
-      <a href="/blog/tags/web/" class="post-tag">web</a>
-    
-      
-      <a href="/blog/tags/javascript/" class="post-tag">javascript</a>
-    
-      
-      <a href="/blog/tags/storybook/" class="post-tag">storybook</a>
-    
-      
-      <a href="/blog/tags/vite/" class="post-tag">vite</a>
-    
-      
-      <a href="/blog/tags/optimisation/" class="post-tag">optimisation</a>
-    
-  </li>
-
-  <li class="postlist-item">
-    <a href="/blog/posts/the-two-ways-to-test-errors-jest/" class="postlist-link">The two ways to test errors in Jest</a>
-    <time class="postlist-date" datetime="2021-10-23">23 Oct 2021</time>
-    
-      
-      <a href="/blog/tags/web/" class="post-tag">web</a>
-    
-      
-      <a href="/blog/tags/javascript/" class="post-tag">javascript</a>
-    
-      
-      <a href="/blog/tags/testing/" class="post-tag">testing</a>
-    
-  </li>
-
-  <li class="postlist-item">
-    <a href="/blog/posts/thoughts-on-simplifying-long-if-statements/" class="postlist-link">Thoughts on simplifying long if statements</a>
-    <time class="postlist-date" datetime="2021-10-12">12 Oct 2021</time>
-    
-      
-      <a href="/blog/tags/web/" class="post-tag">web</a>
-    
-      
-      <a href="/blog/tags/javascript/" class="post-tag">javascript</a>
-    
-  </li>
-
-  <li class="postlist-item">
-    <a href="/blog/posts/how-to-quickly-find-mdn-articles/" class="postlist-link">How to Quickly Find MDN Articles</a>
-    <time class="postlist-date" datetime="2021-10-08">08 Oct 2021</time>
-    
-      
-      <a href="/blog/tags/web/" class="post-tag">web</a>
-    
-      
-      <a href="/blog/tags/tips/" class="post-tag">tips</a>
-    
-  </li>
-
-  <li class="postlist-item">
-    <a href="/blog/posts/how-experimental-browser-features-helped-me-verify-a-hypothesis/" class="postlist-link">How Experimental Browser Features Helped Me Verify a Hypothesis</a>
-    <time class="postlist-date" datetime="2021-10-07">07 Oct 2021</time>
-    
-      
-      <a href="/blog/tags/web/" class="post-tag">web</a>
-    
-      
-      <a href="/blog/tags/javascript/" class="post-tag">javascript</a>
-    
-      
-      <a href="/blog/tags/debugging/" class="post-tag">debugging</a>
-    
-  </li>
-
-  <li class="postlist-item">
-    <a href="/blog/posts/jests-test-each-just-got-a-whole-lot-better/" class="postlist-link">Jest&#39;s test.each just got a whole lot better</a>
-    <time class="postlist-date" datetime="2021-09-10">10 Sep 2021</time>
-    
-      
-      <a href="/blog/tags/web/" class="post-tag">web</a>
-    
-      
-      <a href="/blog/tags/javascript/" class="post-tag">javascript</a>
-    
-      
-      <a href="/blog/tags/testing/" class="post-tag">testing</a>
-    
-  </li>
-
-</ul>
-
-
-  <p>See <a href="/blog/tags/">all tags</a>.</p>
+  <hr>
+  <ul><li>Previous: <a href="/blog/posts/native-macos-vscode-tabs/">Did you know about native macOS tabs in vscode?</a></li>
+  </ul>
 </section>
-
-</scrtion>
 
     </main>
 
@@ -323,6 +215,6 @@
       </footer>
     
 
-    <!-- Current page: /blog/tags/web/ -->
+    <!-- Current page: /blog/posts/dynamic-placeholder-images-for-testing/ -->
   </body>
 </html>
