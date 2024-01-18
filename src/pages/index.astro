@@ -1,0 +1,110 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import IconDisplay from "../components/IconDisplay";
+import { Image } from "astro:assets";
+import me from "../me.png";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 6);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      .me {
+        position: relative;
+        display: block;
+        width: 240px;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+      }
+
+      .me img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .me span {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 64px;
+      }
+
+      .posts {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .posts li {
+        display: flex;
+        flex-direction: row;
+        gap: 0.1rem;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        margin-inline-start: 1rem;
+      }
+      .posts time {
+        margin-top: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <section>
+        <div class="me">
+          <Image src={me} alt="Black and white portrait of Andrew Leedham" />
+          <span>👋</span>
+        </div>
+        <p>
+          Hey I'm Andrew. A Full Stack Web Developer based in the U.K. I
+          currently work at Onyx Insight on all things web. I spend my free time
+          renovating my house and bouldering and manage to squeeze in a bit of
+          skiing and snowboarding now and again.
+        </p>
+      </section>
+      <br />
+      <section>
+        <h2>Latest Blog Posts <a href="/blog">(See all)</a></h2>
+        <ul class="posts">
+          {
+            posts.map((post) => (
+              <li>
+                <IconDisplay
+                  size="small"
+                  icon={post.data.icon}
+                  bgColor={post.data.bgColor}
+                  fgColor={post.data.fgColor}
+                />
+                <div class="content">
+                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                  <time class="date" datetime={post.data.pubDate.toISOString()}>
+                    <FormattedDate date={post.data.pubDate} />
+                  </time>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
