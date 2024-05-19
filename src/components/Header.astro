@@ -1,0 +1,157 @@
+---
+import { MoonIcon, SunIcon } from "lucide-react";
+import HeaderLink from "./HeaderLink.astro";
+import Logo from "./Logo.astro";
+---
+
+<header>
+  <nav>
+    <Logo />
+    <div class="internal-links">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+    </div>
+    <script is:inline>
+      const currentMode = localStorage.getItem("mode");
+      const colorSchemeTag = document.querySelector(
+        'meta[name="color-scheme"]'
+      );
+
+      if (currentMode === "dark") {
+        document.body.classList.toggle("dark-mode");
+        colorSchemeTag.setAttribute("content", "dark");
+      } else if (currentMode === "light") {
+        document.body.classList.toggle("light-mode");
+        colorSchemeTag.setAttribute("content", "light");
+      }
+
+      window.toggleMode = () => {
+        const systemLevelDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        );
+        const colorSchemeTag = document.querySelector(
+          'meta[name="color-scheme"]'
+        );
+        let mode;
+        if (systemLevelDark.matches) {
+          document.body.classList.toggle("light-mode");
+          mode = document.body.classList.contains("light-mode")
+            ? "light"
+            : "dark";
+        } else {
+          document.body.classList.toggle("dark-mode");
+          mode = document.body.classList.contains("dark-mode")
+            ? "dark"
+            : "light";
+        }
+        localStorage.setItem("mode", mode);
+        colorSchemeTag.setAttribute("content", mode);
+      };
+    </script>
+    <button
+      aria-label="Toggle Colour Mode"
+      class="button button--mode-toggle"
+      onclick="window.toggleMode()"
+    >
+      <SunIcon size={24} color="currentColor" className="light-icon" />
+      <MoonIcon size={24} color="currentColor" className="dark-icon" />
+    </button>
+  </nav>
+</header>
+<style>
+  header {
+    margin: 0;
+    padding: 0 1em;
+    background: var(--background);
+  }
+  h2 {
+    margin: 0;
+    font-size: 1em;
+  }
+
+  h2 a,
+  h2 a.active {
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav a {
+    padding: 1em 0.5em;
+    color: var(--black);
+    border-bottom: 4px solid transparent;
+    text-decoration: none;
+  }
+  nav a.active {
+    text-decoration: none;
+    border-bottom-color: var(--secondary);
+  }
+  .social-links,
+  .social-links a {
+    display: flex;
+  }
+  @media (max-width: 720px) {
+    .social-links {
+      display: none;
+    }
+  }
+
+  .button.button--mode-toggle {
+    all: unset;
+    margin-inline-start: calc(160px - 24px);
+  }
+
+  @media (max-width: 500px) {
+    .button.button--mode-toggle {
+      margin-inline-start: 0;
+    }
+  }
+
+  .button.button--mode-toggle:focus {
+    outline: 2px solid var(--highlight);
+    outline-offset: 3px;
+  }
+
+  .button.button--mode-toggle .light-icon {
+    display: none;
+  }
+
+  .button.button--mode-toggle .dark-icon {
+    display: block;
+  }
+
+  :global(body.light-mode) .button.button--mode-toggle .light-icon {
+    display: block;
+  }
+
+  :global(body.light-mode) .button.button--mode-toggle .dark-icon {
+    display: none;
+  }
+
+  :global(body.dark-mode) .button.button--mode-toggle svg:nth-child(1) {
+    display: none;
+  }
+
+  :global(body.dark-mode) .button.button--mode-toggle svg:nth-child(2) {
+    display: block;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .button.button--mode-toggle svg:nth-child(1) {
+      display: none;
+    }
+
+    .button.button--mode-toggle svg:nth-child(2) {
+      display: block;
+    }
+    :global(body.light-mode) .button.button--mode-toggle svg:nth-child(1) {
+      display: block;
+    }
+
+    :global(body.light-mode) .button.button--mode-toggle svg:nth-child(2) {
+      display: none;
+    }
+  }
+</style>
