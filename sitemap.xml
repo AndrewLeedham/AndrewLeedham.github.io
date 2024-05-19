@@ -82,21 +82,6 @@
   </url>
   
   <url>
-    <loc>https://www.andrewleedham.me/blog/tags/updates/</loc>
-    <lastmod>2024-05-19</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andrewleedham.me/blog/tags/scraping/</loc>
-    <lastmod>2024-05-19</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andrewleedham.me/blog/tags/organisation/</loc>
-    <lastmod>2024-05-19</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.andrewleedham.me/blog/tags/javascript/</loc>
     <lastmod>2024-05-19</lastmod>
   </url>
@@ -117,6 +102,21 @@
   </url>
   
   <url>
+    <loc>https://www.andrewleedham.me/blog/tags/updates/</loc>
+    <lastmod>2024-05-19</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.andrewleedham.me/blog/tags/scraping/</loc>
+    <lastmod>2024-05-19</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.andrewleedham.me/blog/tags/organisation/</loc>
+    <lastmod>2024-05-19</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.andrewleedham.me/blog/tags/unix/</loc>
     <lastmod>2024-05-19</lastmod>
   </url>
@@ -127,12 +127,12 @@
   </url>
   
   <url>
-    <loc>https://www.andrewleedham.me/blog/tags/tips/</loc>
+    <loc>https://www.andrewleedham.me/blog/tags/debugging/</loc>
     <lastmod>2024-05-19</lastmod>
   </url>
   
   <url>
-    <loc>https://www.andrewleedham.me/blog/tags/debugging/</loc>
+    <loc>https://www.andrewleedham.me/blog/tags/tips/</loc>
     <lastmod>2024-05-19</lastmod>
   </url>
   
