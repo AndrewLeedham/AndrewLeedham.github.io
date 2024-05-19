@@ -2,8 +2,6 @@ import { defineCollection, z } from "astro:content";
 import { iconNames } from "../../icons";
 import { readableColor } from "polished";
 
-const colours = ["#F71735", "#41EAD4", "#FF9F1C"];
-
 const blog = defineCollection({
   type: "content",
   // Type-check frontmatter using a schema
