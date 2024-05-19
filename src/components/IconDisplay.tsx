@@ -42,6 +42,7 @@ export default function IconDisplay({
         display: "grid",
         placeItems: "center",
         borderRadius: "10px",
+        flexShrink: 0,
       }}
     >
       <LucideIcon size={sizes[size]} />
