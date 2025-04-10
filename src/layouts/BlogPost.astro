@@ -4,99 +4,45 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import IconDisplay from "../components/IconDisplay";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & { slug: string };
 
-const {
-  title,
-  description,
-  pubDate,
-  updatedDate,
-  heroImage,
-  icon,
-  bgColor,
-  fgColor,
-} = Astro.props;
+const { title, description, pubDate, updatedDate, slug } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <BaseHead title={title} description={description} />
-    <style>
-      main {
-        width: calc(100% - 2em);
-        max-width: 100%;
-        margin: 0;
-      }
-      .hero-image {
-        width: 100%;
-      }
-      .hero-image img {
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
-        box-shadow: var(--box-shadow);
-      }
-      .prose {
-        width: 720px;
-        max-width: calc(100% - 2em);
-        margin: auto;
-        padding: 1em;
-        color: rgb(var(--gray-dark));
-      }
-      .title {
-        margin-bottom: 1em;
-        padding: 1em 0;
-        text-align: center;
-        line-height: 1;
-      }
-      .title h1 {
-        margin: 0 0 0.5em 0;
-      }
-      .date {
-        margin-bottom: 0.5em;
-        color: rgb(var(--gray));
-      }
-      .last-updated-on {
-        font-style: italic;
-      }
-    </style>
   </head>
-
-  <body>
+  <body class="flex flex-col min-h-full">
     <Header />
-    <main>
+    <main
+      class="grow flex flex-col gap-10 max-w-prose mx-auto py-4 px-4 box-content"
+    >
       <article>
-        <div class="hero-image">
+        <div class="flex flex-row gap-2 divide-x divide-border mb-1">
+          <FormattedDate
+            date={pubDate}
+            style={`view-transition-name: blog-date-${slug};`}
+          />
           {
-            heroImage && (
-              <img width={1020} height={510} src={heroImage} alt="" />
+            updatedDate && (
+              <span class="text-text-subtle italic">
+                Last updated on <FormattedDate date={updatedDate} />
+              </span>
             )
           }
         </div>
         <div class="prose">
-          <div class="title">
-            <div class="date">
-              <FormattedDate date={pubDate} />
-              {
-                updatedDate && (
-                  <div class="last-updated-on">
-                    Last updated on <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
-            </div>
-            <IconDisplay
-              icon={icon}
-              size="large"
-              bgColor={bgColor}
-              fgColor={fgColor}
-            />
-            <br />
-            <h1>{title}</h1>
-            <hr />
-          </div>
+          <hgroup role="group">
+            <h1 style={`view-transition-name: blog-title-${slug};`}>{title}</h1>
+            <p
+              class="text-2xl mb-[0.5em_0.25em] leading-[1.2]"
+              style={`view-transition-name: blog-desc-${slug};`}
+            >
+              {description}
+            </p>
+          </hgroup>
           <slot />
         </div>
       </article>

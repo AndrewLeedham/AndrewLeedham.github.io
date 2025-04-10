@@ -1,7 +1,24 @@
-<a id="logoLink" href="/" aria-label="Go to the Andrew Leedham homepage">
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<a
+  class:list={[
+    className,
+    "box-content w-10 transition-[width,_margin-inline-start] lg:hover:w-[148px] lg:hover:-ms-[109px] lg:focus:w-[148px] lg:focus:-ms-[109px] px-1",
+  ]}
+  id="logoLink"
+  href="/"
+  aria-label="Go to the Andrew Leedham homepage"
+  {...props}
+>
   <svg
     id="logoAnimated"
-    class="logo--animated"
+    class="not-lg:hidden pb-1"
     height="48px"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 362 108.04"
@@ -18,7 +35,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M61.59 108l-3.7-20H36.64l-3.39 20H15.54L35.1 11.9h23.87L79.46 108ZM38.95 74.83h16.48l-8.47-46Z"
       ></animate>
       <animate
@@ -27,7 +44,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M47.09,37.56l-1.35-7.39H38l-1.24,7.39H30.23L37.39,2h8.74l7.5,35.59ZM38.8,25.26h6l-3.1-17Z"
       ></animate>
     </path>
@@ -41,7 +58,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M53.51 19h.53q1.8 0 1.8 3.74V37.56h-2V23.35a2.07 2.07 0 00-.11-.81.39.39 0 00-.39-.21h-.53q-.54 0-.54 1.25v14h-2V19h2v1.7Q52.51 19 53.51 19Z"
       ></animate>
       <animate
@@ -49,7 +66,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M66.83,9.86h1.69q5.81,0,5.81,5.58V37.56H67.9V16.35a1.64,1.64,0,0,0-.34-1.21,1.87,1.87,0,0,0-1.24-.31H64.63q-1.75,0-1.75,1.86V37.56H56.51V9.86h6.32V12.4Q63.62,9.86,66.83,9.86Z"
       ></animate>
     </path>
@@ -63,7 +80,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M53.84 12.4h2V37.56h-2V35.71q-.21 1.85-1.24 1.85h-.54q-1.79 0-1.79-3.74V22.71q0-3.74 1.79-3.74h.54q.95 0 1.21 1.59ZM52.74 34.23h.53q.54 0 .54-1.25V23.58a2.82 2.82 0 00-.12-1 .43.43 0 00-.42-.28H52.74a.39.39 0 00-.39.21 2.07 2.07 0 00-.11.81v9.9a2.07 2.07 0 00.11.81A.39.39 0 0052.74 34.23Z"
       ></animate>
       <animate
@@ -71,7 +88,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M90,0h6.43V37.56H90.13V34.79q-.68,2.76-4,2.76H84.37q-5.75,0-5.75-5.58V15.39q0-5.58,5.75-5.58h1.75q3,0,3.89,2.37ZM86.57,32.59h1.69q1.75,0,1.75-1.86v-14a2.2,2.2,0,0,0-.4-1.49,1.8,1.8,0,0,0-1.35-.42H86.57a1.87,1.87,0,0,0-1.24.31A1.64,1.64,0,0,0,85,16.29V31.07a1.64,1.64,0,0,0,.34,1.21A1.86,1.86,0,0,0,86.57,32.59Z"
       ></animate>
     </path>
@@ -85,7 +102,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M53.81 18.93h.32v3.7h-.74q-1.1 0-1.1 2.72v12.2h-2V19h2v2.38a4.63 4.63 0 01.54-1.78A1.16 1.16 0 0153.81 18.93Z"
       ></animate>
       <animate
@@ -93,7 +110,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M112.52,9.75h1v5.53h-2.37q-3.55,0-3.55,4.06V37.56h-6.37V9.86h6.32v3.55a4.94,4.94,0,0,1,1.75-2.65A5.06,5.06,0,0,1,112.52,9.75Z"
       ></animate>
     </path>
@@ -107,7 +124,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M52.15 19h1.86q1.89 0 1.89 3.74v6.76h-3.73v3.82a2.24 2.24 0 00.1.81.39.39 0 00.39.21h.81a.39.39 0 00.39-.21 2.07 2.07 0 00.11-.81v-1.4h1.93v1.89q0 3.74-1.91 3.74h-1.82q-1.91 0-1.91-3.74V22.75Q50.24 19 52.15 19Zm0 7.75h1.82V23.2a2.07 2.07 0 00-.11-.81.39.39 0 00-.39-.21h-.84a.39.39 0 00-.39.21 2.07 2.07 0 00-.11.81Z"
       ></animate>
       <animate
@@ -115,7 +132,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M122.11,9.86h6q6.09,0,6.09,5.58v10.1h-12v5.7a1.74,1.74,0,0,0,.31,1.21,1.85,1.85,0,0,0,1.27.31h2.59a1.86,1.86,0,0,0,1.24-.31,1.64,1.64,0,0,0,.34-1.21V29.15h6.2V32q0,5.58-6.15,5.58h-5.87Q116,37.56,116,32V15.45Q116,9.86,122.11,9.86Zm.06,11.56H128v-5.3a1.64,1.64,0,0,0-.34-1.21,1.87,1.87,0,0,0-1.24-.31h-2.71a1.87,1.87,0,0,0-1.24.31,1.64,1.64,0,0,0-.34,1.21Z"
       ></animate>
     </path>
@@ -129,7 +146,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M58.4 19h1.86l-1.68 18.55H56.24l-1-13.11-1 13.11h-2.33L50.22 19h1.86l1 14.47L54.2 19h2.08l1.05 14.43Z"
       ></animate>
       <animate
@@ -137,7 +154,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M162.55,9.86h6l-5.42,27.7h-7.5L152.29,18,149,37.56h-7.5l-5.25-27.7h6l3.21,21.6L149,9.86h6.71l3.38,21.55Z"
       ></animate>
     </path>
@@ -151,14 +168,14 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M65.04 106.51h4.83V108H61.74V97.36h3.31Z"></animate>
       <animate
         attributeName="d"
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M27.9,85.76H47.73V96.14H14.33V23.8H27.9Z"></animate>
     </path>
     <path
@@ -171,7 +188,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M64.87 99.8h3q3.11 0 3.11 1.72v3.12h-6.13v1.45a.4.4 0 00.16.37 1.43 1.43 0 00.65.1h1.32a1.44 1.44 0 00.63-.1.39.39 0 00.17-.37v-.64h3.17v.87q0 1.72-3.14 1.72h-3q-3.14 0-3.14-1.72v-4.79Q61.74 99.8 64.87 99.8Zm0 3.57h3v-1.64a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1H65.74a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37Z"
       ></animate>
       <animate
@@ -179,7 +196,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M65.43,40.32H77.94q12.75,0,12.75,11.68V73.13H65.55v9.79a3.64,3.64,0,0,0,.65,2.54,3.87,3.87,0,0,0,2.66.65h5.43a3.9,3.9,0,0,0,2.6-.65,3.43,3.43,0,0,0,.71-2.54V78.56h13v5.9q0,11.68-12.86,11.68H65.43q-12.86,0-12.86-11.68V52Q52.57,40.32,65.43,40.32Zm.12,24.19H77.82V53.42a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65H68.85a3.9,3.9,0,0,0-2.6.65,3.43,3.43,0,0,0-.71,2.54Z"
       ></animate>
     </path>
@@ -193,7 +210,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M64.87 99.8h3q3.11 0 3.11 1.72v3.12h-6.13v1.45a.4.4 0 00.16.37 1.43 1.43 0 00.65.1h1.32a1.44 1.44 0 00.63-.1.39.39 0 00.17-.37v-.64h3.17v.87q0 1.72-3.14 1.72h-3q-3.14 0-3.14-1.72v-4.79Q61.74 99.8 64.87 99.8Zm0 3.57h3v-1.64a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1H65.74a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37Z"
       ></animate>
       <animate
@@ -201,7 +218,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M111.69,40.32H124.2q12.75,0,12.75,11.68V73.13H111.81v9.79a3.64,3.64,0,0,0,.65,2.54,3.87,3.87,0,0,0,2.66.65h5.43a3.9,3.9,0,0,0,2.6-.65,3.43,3.43,0,0,0,.71-2.54V78.56h13v5.9q0,11.68-12.86,11.68H111.69q-12.86,0-12.86-11.68V52Q98.83,40.32,111.69,40.32Zm.12,24.19h12.27V53.42a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65h-5.67a3.9,3.9,0,0,0-2.6.65,3.43,3.43,0,0,0-.71,2.54Z"
       ></animate>
     </path>
@@ -215,7 +232,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M67.65 97.36h3.28V108H67.74v-.85q-.35.85-2 .85H64.74q-2.93 0-2.93-1.72v-4.81q0-1.72 2.93-1.72h.89q1.55 0 2 .73Zm-1.76 9.15H66.74q.89 0 .89-.57v-4a.51.51 0 00-.2-.46 1.34 1.34 0 00-.69-.13h-.86a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37V106a.39.39 0 00.17.37A1.44 1.44 0 0065.89 106.51Z"
       ></animate>
       <animate
@@ -223,7 +240,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M168.7,23.8h13.45V96.14H168.93V90.36q-1.42,5.78-8.38,5.78h-3.66q-12,0-12-11.68V51.89q0-11.68,12-11.68h3.66q6.37,0,8.14,5Zm-7.2,62H165q3.66,0,3.66-3.89V54.6a4.6,4.6,0,0,0-.83-3.13,3.76,3.76,0,0,0-2.83-.89H161.5a3.9,3.9,0,0,0-2.6.65,3.43,3.43,0,0,0-.71,2.54v28.8a3.43,3.43,0,0,0,.71,2.54A3.9,3.9,0,0,0,161.5,85.76Z"
       ></animate>
     </path>
@@ -237,7 +254,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M67.1 99.8h.86q3 0 3 1.72V108h-3.28V101.8a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1h-.86q-.89 0-.89.58V108H61.84V97.36h3.25v3.17Q65.52 99.8 67.1 99.8Z"
       ></animate>
       <animate
@@ -245,7 +262,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M213.78,40.32h3.54q12.15,0,12.16,11.68V96.14H216V53.89a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65h-3.54q-3.66,0-3.66,3.9V96.14H192.18V23.8h13.34V45.28Q207.29,40.32,213.78,40.32Z"
       ></animate>
     </path>
@@ -259,7 +276,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M67.74 99.8h3.22V108h-3.28v-.73q-.43.73-2 .73H64.74q-2.93 0-2.93-1.72v-4.79q0-1.72 2.93-1.72h.89q1.7 0 2 .84Zm-1.81 6.71H66.74q.89 0 .89-.57v-4q0-.58-.89-.58h-.86a1.44 1.44 0 00-.63.1.39.39 0 00-.17.37V106a.39.39 0 00.17.37A1.44 1.44 0 0065.89 106.51Z"
       ></animate>
       <animate
@@ -267,7 +284,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M262.52,40.32h13.22V96.14H262.28v-5q-1.77,5-8.14,5h-3.66q-12,0-12-11.68V52q0-11.68,12-11.68h3.66q7,0,8.38,5.66Zm-7.43,45.44h3.54q3.66,0,3.66-3.89V54.6q0-3.9-3.66-3.9h-3.54a3.9,3.9,0,0,0-2.6.65,3.43,3.43,0,0,0-.71,2.54V82.57a3.43,3.43,0,0,0,.71,2.54A3.9,3.9,0,0,0,255.08,85.76Z"
       ></animate>
     </path>
@@ -281,7 +298,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="M72.91 99.8h.89q2.93 0 2.93 1.72V108h-3.25V101.8a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1h-.86q-.89 0-.89.58V108h-3.28V101.8a.39.39 0 00-.17-.37 1.44 1.44 0 00-.63-.1h-.86q-.89 0-.89.58V108H61.84V99.8h3.22v.78q.4-.78 2-.78h.86q2.13 0 2.7.87Q71.07 99.8 72.91 99.8Z"
       ></animate>
       <animate
@@ -289,7 +306,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="M331.2,40.32h3.66q12,0,12,11.68V96.14H333.56V53.89a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65h-3.54q-3.66,0-3.66,3.9V96.14H309.61V53.89a3.43,3.43,0,0,0-.71-2.54,3.91,3.91,0,0,0-2.6-.65h-3.54q-3.66,0-3.66,3.9V96.14H285.77V40.32H299v5.31q1.65-5.31,8.38-5.31h3.54q8.73,0,11.09,5.9Q323.65,40.32,331.2,40.32Z"
       ></animate>
     </path>
@@ -303,7 +320,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="87.75 11.94 63.13 11.94 64.72 19.52 87.75 19.52 87.75 100.46 81.81 100.46 83.38 108.04 95.78 108.04 95.78 107.96 95.78 100.46 95.78 19.52 95.78 11.94 87.75 11.94"
       ></animate>
       <animate
@@ -311,7 +328,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="353.98 11.94 172.44 11.94 171.02 19.52 353.98 19.52 353.98 100.46 348.03 100.46 349.6 108.04 362 108.04 362 107.96 362 100.46 362 19.52 362 11.94 353.98 11.94"
       ></animate>
     </polygon>
@@ -325,7 +342,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="55.82 100.46 57.22 108 37.72 108.04 38.97 100.46 55.82 100.46"
       ></animate>
       <animate
@@ -333,7 +350,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="353.98 100.46 353.98 108.04 7.83 108.04 8 100.46 353.98 100.46"
       ></animate>
     </polygon>
@@ -347,7 +364,7 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseleave"
+        begin="logoLink.mouseleave"
         to="29.52 19.55 31.09 11.97 8.03 11.95 8.03 11.94 0 11.94 0 19.52 0 100.38 0 107.96 8.03 107.96 11.72 107.96 13.21 100.38 8.03 100.38 8.03 19.52 29.52 19.55"
       ></animate>
       <animate
@@ -355,16 +372,16 @@
         dur="100ms"
         fill="freeze"
         repeatCount="1"
-        begin="logoAnimated.mouseenter;"
+        begin="logoLink.mouseenter;"
         to="29.52 19.55 31.08 11.97 8.02 11.95 8.02 11.94 0 11.94 0 19.52 0 100.38 0 107.96 8.02 107.96 11.72 107.96 13.21 100.38 8.02 100.38 8.02 19.52 29.52 19.55"
       ></animate>
     </polygon>
   </svg>
   <svg
-    class="logo--small"
+    class="lg:hidden py-1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 64 64"
-    width="48px"
+    width="40px"
     height="48px"
     ><path
       fill="currentColor"
@@ -375,37 +392,6 @@
     ></path></svg
   >
 </a>
-<style>
-  #logoLink {
-    height: 48px;
-    outline-offset: -2px;
-  }
-
-  .logo--animated {
-    padding-bottom: 5px;
-  }
-
-  .logo--small {
-    display: none;
-  }
-
-  @media (max-width: 500px) {
-    .logo--small {
-      display: block;
-      width: 38px;
-      height: 48px;
-      padding: 5px 0;
-    }
-
-    .logo--animated {
-      display: none;
-    }
-
-    .button.button--mode-toggle {
-      margin-left: 19px;
-    }
-  }
-</style>
 <script type="application/javascript">
   const logoLink = document.getElementById("logoLink");
   const animations = Array.from(logoLink.getElementsByTagName("animate"));
@@ -421,16 +407,16 @@
         );
       }
     });
-    logoLink.addEventListener("blur", () => {
-      const svg = logoLink.querySelector("svg");
-      if (!logoLink.matches(":hover")) {
-        if (svg) {
-          svg.id = "logoAnimated";
-        }
-        animations.forEach(
-          (animation, index) => index % 2 === 0 && animation.beginElement()
-        );
-      }
-    });
+    // logoLink.addEventListener("blur", () => {
+    //   const svg = logoLink.querySelector("svg");
+    //   if (!logoLink.matches(":hover")) {
+    //     if (svg) {
+    //       svg.id = "logoAnimated";
+    //     }
+    //     animations.forEach(
+    //       (animation, index) => index % 2 === 0 && animation.beginElement()
+    //     );
+    //   }
+    // });
   }
 </script>

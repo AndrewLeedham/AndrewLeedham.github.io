@@ -10,7 +10,7 @@ pubDate: 2023-09-17
 icon: image
 ---
 
-<p style="color: var(--text-subtle)">I have now released this concept as its own <a href="https://www.npmjs.com/package/placeholder-image-data-url-svg">npm package</a>.</p>
+<p class="text-text-subtle">I have now released this concept as its own <a href="https://www.npmjs.com/package/placeholder-image-data-url-svg">npm package</a>.</p>
 
 Placeholder images are crucial when building out design systems. Whether it is a card, a hero or just an image component you will need actual images to use while developing. I have typically seen 2 approaches for this in the wild: a folder full of images of various sizes that are referenced directly, or using a service like https://placehold.co/ where you can just pass an arbitrary size. The former soon bubbles out of control, having various similar aspect ratios and having a mix of colours and fonts depending on who created them. The latter is better as you can manage the images where they are used, and it does not balloon the size of your repo, and all of them are styled the same. However, placeholder services aren't perfect as for one they can be paid services or like placeholder.com might be bought out, and additionally they require a network request, which for visual regression specifically is one more thing to wait for before a screenshot can be taken.
 
