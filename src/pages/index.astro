@@ -8,7 +8,7 @@ import FormattedDate from "../components/FormattedDate.astro";
 import { Image } from "astro:assets";
 import me from "../me.jpg";
 
-const posts = (await getCollection("blog"))
+const posts = (await getCollection("articles"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 6);
 ---
@@ -51,27 +51,28 @@ const posts = (await getCollection("blog"))
               <li class="flex flex-col gap-1">
                 <h3
                   class="text-lg font-medium"
-                  style={`view-transition-name: blog-title-${post.slug};`}
+                  style={`view-transition-name: article-title-${post.slug};`}
                 >
                   <a
                     class="underline underline-offset-2"
-                    href={`/blog/${post.slug}/`}
+                    href={`/articles/${post.slug}/`}
                   >
                     {post.data.title}
                   </a>
                 </h3>
-                <p style={`view-transition-name: blog-desc-${post.slug};`}>
+                <p style={`view-transition-name: article-desc-${post.slug};`}>
                   {post.data.description}
                 </p>
                 <FormattedDate
                   date={post.data.pubDate}
-                  style={`view-transition-name: blog-date-${post.slug};`}
+                  style={`view-transition-name: article-date-${post.slug};`}
                 />
               </li>
             ))
           }
         </ul>
-        <a class="text-lg underline underline-offset-2" href="/blog">See more</a
+        <a class="text-lg underline underline-offset-2" href="/articles"
+          >See more</a
         >
       </section>
     </main>

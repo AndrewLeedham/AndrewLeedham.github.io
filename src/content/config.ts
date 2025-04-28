@@ -2,7 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { iconNames } from "../../icons";
 import { readableColor } from "polished";
 
-const blog = defineCollection({
+const articles = defineCollection({
   type: "content",
   // Type-check frontmatter using a schema
   schema: z
@@ -27,4 +27,4 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+export const collections = { articles };
