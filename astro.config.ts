@@ -2,6 +2,7 @@ import { defineConfig, passthroughImageService } from "astro/config";
 import mdx from "@astrojs/mdx";
 import { transformerTwoslash } from "@shikijs/twoslash";
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 
 import react from "@astrojs/react";
 
@@ -25,5 +26,12 @@ export default defineConfig({
         }),
       ],
     },
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  redirects: {
+    "/blog": "/articles",
+    "/blog/[...slug]": "/articles/[...slug]",
   },
 });

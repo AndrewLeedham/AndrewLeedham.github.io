@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+type Props = CollectionEntry<"articles">["data"] & { slug: string };
+
+const { title, description, pubDate, updatedDate, slug } = Astro.props;
+---
+
+<html lang="en" class="h-full">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="flex flex-col min-h-full">
+    <Header />
+    <main
+      class="grow flex flex-col gap-10 max-w-prose mx-auto py-4 px-4 box-content"
+    >
+      <article>
+        <div class="flex flex-row gap-2 divide-x divide-border mb-1">
+          <FormattedDate
+            date={pubDate}
+            style={`view-transition-name: article-date-${slug};`}
+          />
+          {
+            updatedDate && (
+              <span class="text-text-subtle italic">
+                Last updated on <FormattedDate date={updatedDate} />
+              </span>
+            )
+          }
+        </div>
+        <div class="prose">
+          <hgroup role="group">
+            <h1 style={`view-transition-name: article-title-${slug};`}>
+              {title}
+            </h1>
+            <p
+              class="text-2xl mb-[0.5em_0.25em] leading-[1.2]"
+              style={`view-transition-name: article-desc-${slug};`}
+            >
+              {description}
+            </p>
+          </hgroup>
+          <slot />
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

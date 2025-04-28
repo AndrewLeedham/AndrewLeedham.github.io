@@ -15,7 +15,7 @@ icon: loader
 
 For the purposes of this blog post the [Storybook](https://storybook.js.org/) in question is a React based component library using [Vite](https://vitejs.dev/) as the [Storybook builder](https://github.com/storybookjs/builder-vite). It is unfortunately closed source, but I will provide some working code based on it in this blog post. The icons are each their own React components along the lines of:
 
-<div style='display: none'>
+<div class='hidden'>
 
 ```twoslash include useicon
 
