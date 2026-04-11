@@ -26,7 +26,7 @@ For the purposes of this blog post the [Storybook](https://storybook.js.org/) in
 ```tsx twoslash
 // @filename: IconBase.tsx
 import React from "react";
-export type IconProps = Omit<JSX.IntrinsicElements["svg"], "ref">;
+export type IconProps = Omit<React.JSX.IntrinsicElements["svg"], "ref">;
 
 export default function IconBase(props: IconProps) {
   const { children, ...rest } = props;
@@ -79,7 +79,7 @@ For stories that have a control for the currently shown icon, we will dynamicall
 ```tsx twoslash
 // @filename: IconBase.tsx
 import React from "react";
-export type IconProps = Omit<JSX.IntrinsicElements["svg"], "ref">;
+export type IconProps = Omit<React.JSX.IntrinsicElements["svg"], "ref">;
 
 export default function IconBase(props: IconProps) {
   const { children, ...rest } = props;
@@ -120,7 +120,7 @@ This gives us a hook that returns a lazy component or undefined given an icon na
 ```tsx twoslash
 // @filename: IconBase.tsx
 import React from "react";
-export type IconProps = Omit<JSX.IntrinsicElements["svg"], "ref">;
+export type IconProps = Omit<React.JSX.IntrinsicElements["svg"], "ref">;
 
 export default function IconBase(props: IconProps) {
   const { children, ...rest } = props;
