@@ -24,23 +24,24 @@ const posts = (await getCollection("articles"))
       class="grow flex flex-col gap-10 max-w-prose mx-auto py-4 px-4 box-content"
     >
       <section>
-        <div class="relative w-[240px] mx-auto mb-6">
+        <div class="relative w-60 mx-auto mb-6">
           <Image
             class="rounded-full"
             src={me}
             alt="Black and white portrait of Andrew Leedham"
           />
           <span
-            class="absolute bottom-0 end-0 text-7xl animate-wave scale-100 transition-transform ease-[cubic-bezier(0.5,_0.33,_0.5,_2)] hover:scale-150 hover:[animation-play-state:paused] cursor-grab select-none"
+            class="absolute bottom-0 inset-end-0 text-7xl animate-wave scale-100 transition-transform ease-[cubic-bezier(0.5,0.33,0.5,2)] hover:scale-150 hover:[animation-play-state:paused] cursor-grab select-none"
             onclick="this.parentNode.replaceChild(this.cloneNode(true), this);"
             >👋</span
           >
         </div>
         <p>
           Hey I'm Andrew. A Full Stack Web Developer based in the U.K. I
-          currently work at Onyx Insight on all things web. I spend my free time
-          renovating my house and bouldering and manage to squeeze in a bit of
-          skiing and snowboarding now and again.
+          currently work as a Principal Software Developer at Onyx Insight on
+          all things web. I spend my free time renovating my house and
+          bouldering and manage to squeeze in a bit of skiing and snowboarding
+          now and again.
         </p>
       </section>
       <section>
